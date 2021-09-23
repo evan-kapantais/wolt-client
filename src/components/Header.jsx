@@ -1,23 +1,31 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
-const Header = ({ siteTitle }) => (
-  <header id="layout-header">
-    <div>
-      <h1>
-        <Link to="/">{siteTitle}</Link>
-      </h1>
-    </div>
-  </header>
-);
+import logo from "../images/wolt-logo.png";
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-};
+const Header = () => {
+  React.useEffect(() => {
+    if (window.location.pathname === "/") {
+      window.addEventListener("scroll", stickHeader);
+    }
+  }, []);
 
-Header.defaultProps = {
-  siteTitle: ``,
+  function stickHeader() {
+    const header = document.querySelector(".layout-header");
+    const classname = "layout-header__content";
+
+    window.scrollY > 0
+      ? header.classList.add(classname)
+      : header.classList.remove(classname);
+  }
+
+  return (
+    <header className="layout-header">
+      <Link to="/" className="brand">
+        <img id="logo" src={logo} alt="wolt logo" data-nofocus />
+      </Link>
+    </header>
+  );
 };
 
 export default Header;

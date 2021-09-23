@@ -2,9 +2,7 @@ import React from "react";
 import Subsection from "./Subsection";
 
 const Section = ({ section }) => {
-  // console.log(section);
-
-  const hasSubsections = section.subsection.length > 0;
+  // const hasSubsections = section.subsection.length > 0;
   const hasImmediateContent = section.content;
 
   const toggleSection = e => {
@@ -38,10 +36,10 @@ const Section = ({ section }) => {
           dangerouslySetInnerHTML={{ __html: section.content }}
         />
       )}
-      {hasSubsections &&
+      {/* {hasSubsections &&
         section.subsection.map(subsection => (
           <Subsection subsection={subsection} key={subsection.title} />
-        ))}
+        ))} */}
     </div>
   );
 };
