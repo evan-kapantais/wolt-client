@@ -47,6 +47,13 @@ a:focus {
   text-decoration: underline;
 }
 
+button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 p {
   font-size: 0.9rem;
 }
@@ -99,7 +106,6 @@ img {
 
 /* Custom styles */
 
-button,
 .button {
   display: flex;
   justify-content: center;
@@ -117,14 +123,12 @@ button,
   transition: all 200ms;
 }
 
-button:hover,
 .button:hover {
   color: var(--wolt-blue);
   background: #fff;
   letter-spacing: 1px;
 }
 
-button:hover,
 .button:hover {
   text-decoration: none;
 }
@@ -165,6 +169,8 @@ button:hover,
 
 /* Layout */
 
+/* Layout header */
+
 #layout {
   position: relative;
   background: rgb(247, 247, 247);
@@ -173,25 +179,23 @@ button:hover,
 }
 
 .layout-header {
+  display: flex;
+  justify-content: flex-end;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   padding: 2rem 1rem;
   z-index: 99;
+  overflow-x: hidden;
   transition: all 200ms;
 }
 
-.layout-header__content {
+.layout-header--scrolled {
   position: fixed;
   top: 0;
-  background: var(--wolt-overlay-blue);
-}
-
-.layout-header__content .brand {
-  width: 50px;
-  left: 2rem;
-  top: calc(50% - 12.5px);
+  background: var(--wolt-blue);
+  padding: 1rem;
 }
 
 .brand {
@@ -202,6 +206,64 @@ button:hover,
   left: calc(50% - 50px);
   transition: all 200ms;
 }
+
+.brand--scrolled {
+  width: 50px;
+  left: 2rem;
+  top: calc(50% - 12.5px);
+}
+
+/* Burger */
+
+.burger {
+  transform: translateX(80px);
+  will-change: transform;
+  transition: all 200ms;
+}
+
+.burger--scrolled {
+  transform: translateX(0);
+}
+
+.burger-slice {
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* Menu */
+
+.menu {
+  position: fixed;
+  top: 3.7rem;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 3.7rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--wolt-blue);
+  transform: translateY(-100%);
+  will-change: transform;
+  z-index: 999;
+  transition: all 400ms;
+}
+
+.menu-list {
+  list-style: none;
+}
+
+.menu-link {
+  display: block;
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 1.5rem 0;
+}
+
+/* Layout footer */
 
 #layout-footer {
   display: flex;

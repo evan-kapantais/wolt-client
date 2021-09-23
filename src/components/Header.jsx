@@ -3,27 +3,45 @@ import { Link } from "gatsby";
 
 import logo from "../images/wolt-logo.png";
 
-const Header = () => {
+const Header = ({ isMenuOpen, setIsMenuOpen }) => {
   React.useEffect(() => {
     if (window.location.pathname === "/") {
       window.addEventListener("scroll", stickHeader);
     }
   }, []);
 
-  function stickHeader() {
+  const stickHeader = () => {
     const header = document.querySelector(".layout-header");
-    const classname = "layout-header__content";
+    const burger = document.querySelector(".burger");
+    const brand = document.querySelector(".brand");
 
-    window.scrollY > 0
-      ? header.classList.add(classname)
-      : header.classList.remove(classname);
-  }
+    if (window.scrollY > 0) {
+      header.classList.add("layout-header--scrolled");
+      brand.classList.add("brand--scrolled");
+    } else {
+      header.classList.remove("layout-header--scrolled");
+      brand.classList.remove("brand--scrolled");
+    }
+
+    window.scrollY > window.innerHeight
+      ? burger.classList.add("burger--scrolled")
+      : burger.classList.remove("burger--scrolled");
+  };
 
   return (
     <header className="layout-header">
-      <Link to="/" className="brand">
+      <Link
+        to="/"
+        className="brand"
+        onClick={() => window.location.pathname === "/" && setIsMenuOpen(false)}
+      >
         <img id="logo" src={logo} alt="wolt logo" data-nofocus />
       </Link>
+      <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <div className="burger-slice" />
+        <div className="burger-slice" />
+        <div className="burger-slice" />
+      </button>
     </header>
   );
 };

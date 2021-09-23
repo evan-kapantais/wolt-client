@@ -6,6 +6,7 @@ import Seo from "../components/seo";
 
 import Topic from "../components/Topic";
 import Nav from "../components/Nav";
+import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 
 import logo from "../images/wolt-logo.png";
@@ -18,6 +19,7 @@ const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
 
   const [imageSource, setImageSource] = React.useState(null);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const focusImage = e => {
     setImageSource(e.currentTarget.src);
@@ -33,11 +35,19 @@ const IndexPage = ({ data }) => {
     });
   });
 
+  React.useEffect(() => {
+    const html = window.document.querySelector("html");
+
+    isMenuOpen
+      ? (html.style.overflow = "hidden")
+      : (html.style.overflow = "scroll");
+  }, [isMenuOpen]);
+
   const getTopicKey = topic =>
     topic.node.title.toLowerCase().replaceAll(" ", "-");
 
   return (
-    <Layout>
+    <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
       <Seo title="Home" />
       <section className="top-banner">
         <div className="banner__overlay" />
@@ -57,9 +67,6 @@ const IndexPage = ({ data }) => {
         </div>
       </section>
       <main id="main-content">
-        {/* <aside id="sidebar">
-          <Nav topics={topics} />
-        </aside> */}
         <section>
           <div id="center-container">
             {topics.map(topic => (
@@ -71,6 +78,11 @@ const IndexPage = ({ data }) => {
       {imageSource && (
         <ImageOverlay source={imageSource} setSource={setImageSource} />
       )}
+      <Menu
+        topics={topics}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
     </Layout>
   );
 };
