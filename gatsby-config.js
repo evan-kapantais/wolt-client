@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://intense-earth-02076.herokuapp.com/`,
+        apiURL: `https://wolt-server.herokuapp.com`,
         collectionTypes: ["section"],
         queryLimit: 1000,
       },
