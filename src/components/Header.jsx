@@ -10,6 +10,14 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
     }
   }, []);
 
+  React.useEffect(() => {
+    const header = document.querySelector(".layout-header");
+
+    isMenuOpen
+      ? header.classList.add("layout-header--menu")
+      : header.classList.remove("layout-header--menu");
+  }, [isMenuOpen]);
+
   const stickHeader = () => {
     const header = document.querySelector(".layout-header");
     const burger = document.querySelector(".burger");
@@ -28,6 +36,13 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
       : burger.classList.remove("burger--scrolled");
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+
+    // const header = document.querySelector(".layout-header");
+    // header.classList.toggle("layout-header--menu");
+  };
+
   return (
     <header className="layout-header">
       <Link
@@ -37,7 +52,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
       >
         <img id="logo" src={logo} alt="wolt logo" data-nofocus />
       </Link>
-      <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <button className="burger" onClick={toggleMenu}>
         <div className="burger-slice" />
         <div className="burger-slice" />
         <div className="burger-slice" />

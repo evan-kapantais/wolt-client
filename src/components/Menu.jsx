@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "gatsby";
+import { animateMenu } from "../utils/animations";
+
+import people from "../images/people.png";
 
 const Menu = ({ topics, isMenuOpen, setIsMenuOpen }) => {
+  // Animate the menu in / out
   useEffect(() => {
-    const menu = document.querySelector(".menu");
-
-    isMenuOpen
-      ? (menu.style.transform = "translateY(0px)")
-      : (menu.style.transform = "translateY(calc(-100% - 3.7rem))");
+    animateMenu(isMenuOpen);
   }, [isMenuOpen]);
 
   const getTopicKey = topic =>
@@ -17,7 +17,7 @@ const Menu = ({ topics, isMenuOpen, setIsMenuOpen }) => {
     <div className="menu">
       <ul className="menu-list">
         {topics.map(topic => (
-          <li key={getTopicKey(topic)}>
+          <li key={getTopicKey(topic)} className="menu-list__item">
             <Link
               className="menu-link"
               to={`#${getTopicKey(topic)}`}
@@ -28,6 +28,10 @@ const Menu = ({ topics, isMenuOpen, setIsMenuOpen }) => {
           </li>
         ))}
       </ul>
+      <img className="menu-deco" src={people} alt="wolt people" data-nofocus />
+      <footer className="menu-footer">
+        <p>© Wolt, {new Date().getFullYear()}</p>
+      </footer>
     </div>
   );
 };

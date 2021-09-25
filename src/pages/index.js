@@ -5,15 +5,22 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 
 import Topic from "../components/Topic";
-import Nav from "../components/Nav";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 
-import logo from "../images/wolt-logo.png";
-
 // TODO: integrate subsections jic
-// TODO: collapse answer when clicking a new one
-// TODO: fix color palette
+// TODO: font
+// TODO: optimise images
+// TODO: optimise tables
+// TODO: animate menu links
+// TODO: format menu links
+// TODO: add footer to menu
+// TODO: refactor css
+// TODO: remove !importants
+// TODO: check all data
+// TODO: replace images with GatsbyImage
+// TODO: animate menu button
+// TODO: polish header animations
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
@@ -21,20 +28,20 @@ const IndexPage = ({ data }) => {
   const [imageSource, setImageSource] = React.useState(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const focusImage = e => {
-    setImageSource(e.currentTarget.src);
-  };
-
+  // Focus the images after loading has finished
   React.useEffect(() => {
     const images = document.querySelectorAll("img");
 
     images.forEach(image => {
       if (!image.dataset.nofocus) {
-        image.addEventListener("click", focusImage);
+        image.addEventListener("click", e =>
+          setImageSource(e.currentTarget.src)
+        );
       }
     });
   });
 
+  // Cotrol document overflow based on menu state
   React.useEffect(() => {
     const html = window.document.querySelector("html");
 
@@ -43,6 +50,7 @@ const IndexPage = ({ data }) => {
       : (html.style.overflow = "scroll");
   }, [isMenuOpen]);
 
+  // Format topic title into id / key form
   const getTopicKey = topic =>
     topic.node.title.toLowerCase().replaceAll(" ", "-");
 
