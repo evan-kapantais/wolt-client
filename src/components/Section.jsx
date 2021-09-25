@@ -1,6 +1,5 @@
 import React from "react";
 // import Subsection from "./Subsection";
-import { StaticImage } from "gatsby-plugin-image";
 import dashVer from "../images/dash-vertical.svg";
 import dashHor from "../images/dash-horizontal.svg";
 

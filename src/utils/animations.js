@@ -25,14 +25,51 @@ const animateMenuDeco = isMenuOpen => {
 export const animateMenu = isMenuOpen => {
   const menu = document.querySelector(".menu");
 
-  // isMenuOpen
-  //   ? (menu.style.transform = "translateY(0px)")
-  //   : (menu.style.transform = "translateY(calc(-100% - 63px))");
-
   isMenuOpen
     ? menu.classList.add("menu--shown")
     : menu.classList.remove("menu--shown");
 
   animateMenuItems(isMenuOpen);
   animateMenuDeco(isMenuOpen);
+};
+
+const animateBurger = isMenuOpen => {
+  const burgerSlices = document.querySelectorAll(".burger-slice");
+
+  burgerSlices.forEach(slice =>
+    isMenuOpen
+      ? slice.classList.add("burger-slice--close")
+      : slice.classList.remove("burger-slice--close")
+  );
+};
+
+const fixMenuHeader = isMenuOpen => {
+  const header = document.querySelector(".layout-header");
+
+  isMenuOpen
+    ? header.classList.add("layout-header--menu")
+    : header.classList.remove("layout-header--menu");
+};
+
+export const animateHeader = isMenuOpen => {
+  fixMenuHeader(isMenuOpen);
+  animateBurger(isMenuOpen);
+};
+
+export const stickHeader = () => {
+  const header = document.querySelector(".layout-header");
+  const burger = document.querySelector(".burger");
+  const brand = document.querySelector(".brand");
+
+  if (window.scrollY > 0) {
+    header.classList.add("layout-header--scrolled");
+    brand.classList.add("brand--scrolled");
+  } else {
+    header.classList.remove("layout-header--scrolled");
+    brand.classList.remove("brand--scrolled");
+  }
+
+  window.scrollY > window.innerHeight
+    ? burger.classList.add("burger--scrolled")
+    : burger.classList.remove("burger--scrolled");
 };

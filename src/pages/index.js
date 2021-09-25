@@ -8,18 +8,15 @@ import Topic from "../components/Topic";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 
+// TODO: animate menu button
 // TODO: integrate subsections jic
 // TODO: font
 // TODO: optimise images
 // TODO: optimise tables
-// TODO: animate menu links
-// TODO: format menu links
-// TODO: add footer to menu
 // TODO: refactor css
 // TODO: remove !importants
 // TODO: check all data
 // TODO: replace images with GatsbyImage
-// TODO: animate menu button
 // TODO: polish header animations
 
 const IndexPage = ({ data }) => {

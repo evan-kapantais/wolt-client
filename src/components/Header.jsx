@@ -2,46 +2,20 @@ import * as React from "react";
 import { Link } from "gatsby";
 
 import logo from "../images/wolt-logo.png";
+import { animateHeader, stickHeader } from "../utils/animations";
 
 const Header = ({ isMenuOpen, setIsMenuOpen }) => {
+  // Add window scroll event listener
   React.useEffect(() => {
     if (window.location.pathname === "/") {
       window.addEventListener("scroll", stickHeader);
     }
   }, []);
 
+  // Animate header when opening / closing the menu
   React.useEffect(() => {
-    const header = document.querySelector(".layout-header");
-
-    isMenuOpen
-      ? header.classList.add("layout-header--menu")
-      : header.classList.remove("layout-header--menu");
+    animateHeader(isMenuOpen);
   }, [isMenuOpen]);
-
-  const stickHeader = () => {
-    const header = document.querySelector(".layout-header");
-    const burger = document.querySelector(".burger");
-    const brand = document.querySelector(".brand");
-
-    if (window.scrollY > 0) {
-      header.classList.add("layout-header--scrolled");
-      brand.classList.add("brand--scrolled");
-    } else {
-      header.classList.remove("layout-header--scrolled");
-      brand.classList.remove("brand--scrolled");
-    }
-
-    window.scrollY > window.innerHeight
-      ? burger.classList.add("burger--scrolled")
-      : burger.classList.remove("burger--scrolled");
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-
-    // const header = document.querySelector(".layout-header");
-    // header.classList.toggle("layout-header--menu");
-  };
 
   return (
     <header className="layout-header">
@@ -52,7 +26,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
       >
         <img id="logo" src={logo} alt="wolt logo" data-nofocus />
       </Link>
-      <button className="burger" onClick={toggleMenu}>
+      <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <div className="burger-slice" />
         <div className="burger-slice" />
         <div className="burger-slice" />

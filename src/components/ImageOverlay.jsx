@@ -17,8 +17,8 @@ const ImageOverlay = ({ source, setSource }) => {
   };
 
   return (
-    <div id="image-overlay" onClick={close}>
-      <img src={source} alt="focused image" />
+    <div id="image-overlay" onClick={close} onKeyUp={() => {}}>
+      <img src={source} alt="overlay" />
     </div>
   );
 };

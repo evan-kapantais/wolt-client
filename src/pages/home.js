@@ -3,9 +3,6 @@ import Seo from "../components/seo";
 import { Link } from "gatsby";
 import Layout from "../components/layout";
 
-import logo from "../images/wolt-logo.png";
-import partner from "../images/partner.jpeg";
-
 import "./home.css";
 
 const home = () => {
