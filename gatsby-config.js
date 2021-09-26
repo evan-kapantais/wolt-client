@@ -26,19 +26,19 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`,
       },
     },
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://intense-earth-02076.herokuapp.com`,
+        apiUrl: process.env.DEPLOY_URL
+          ? "https://intense-earth-02076.herokuapp.com"
+          : "http://localhost:1337",
         collectionTypes: ["section"],
         queryLimit: 1000,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 };

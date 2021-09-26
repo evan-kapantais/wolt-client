@@ -69,6 +69,7 @@ typings/
 # dotenv environment variable files
 
 .env\*
+.env
 
 # gatsby files
 
@@ -90,3 +91,5 @@ yarn-error.log
 .yarn-integrity
 
 .txt
+
+package-lock.json
