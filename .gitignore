@@ -93,3 +93,6 @@ yarn-error.log
 .txt
 
 package-lock.json
+
+# Local Netlify folder
+.netlify

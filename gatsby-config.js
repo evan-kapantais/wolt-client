@@ -32,9 +32,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiUrl: process.env.DEPLOY_URL
-          ? "https://intense-earth-02076.herokuapp.com"
-          : "http://localhost:1337",
+        apiUrl: "https://intense-earth-02076.herokuapp.com",
         collectionTypes: ["section"],
         queryLimit: 1000,
       },

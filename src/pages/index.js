@@ -20,6 +20,7 @@ import ImageOverlay from "../components/ImageOverlay";
 // TODO: polish header animations
 
 const IndexPage = ({ data }) => {
+  console.log(process.env.DEPLOY_URL);
   const topics = data.allStrapiSection.edges;
 
   const [imageSource, setImageSource] = React.useState(null);
