@@ -3,7 +3,7 @@ import React from "react";
 import Section from "./Section";
 
 const Topic = ({ topic }) => {
-  const key = topic.node.title.toLowerCase().replaceAll(" ", "-");
+  const key = topic.node.title.toLowerCase();
 
   return (
     <section key={key} className="topic" id={key}>

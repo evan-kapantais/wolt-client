@@ -18,9 +18,11 @@ import ImageOverlay from "../components/ImageOverlay";
 // TODO: check all data
 // TODO: replace images with GatsbyImage
 // TODO: polish header animations
+// TODO: remove home page
+// TODO: dev 404 page
+// TODO: migrate db in the backend
 
 const IndexPage = ({ data }) => {
-  console.log(process.env.DEPLOY_URL);
   const topics = data.allStrapiSection.edges;
 
   const [imageSource, setImageSource] = React.useState(null);
@@ -49,8 +51,7 @@ const IndexPage = ({ data }) => {
   }, [isMenuOpen]);
 
   // Format topic title into id / key form
-  const getTopicKey = topic =>
-    topic.node.title.toLowerCase().replaceAll(" ", "-");
+  const getTopicKey = topic => topic.node.title.toLowerCase();
 
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>

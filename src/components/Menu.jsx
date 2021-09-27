@@ -10,8 +10,7 @@ const Menu = ({ topics, isMenuOpen, setIsMenuOpen }) => {
     animateMenu(isMenuOpen);
   }, [isMenuOpen]);
 
-  const getTopicKey = topic =>
-    topic.node.title.toLowerCase().replaceAll(" ", "-");
+  const getTopicKey = topic => topic.node.title.toLowerCase();
 
   return (
     <div className="menu">

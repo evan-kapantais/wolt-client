@@ -2,12 +2,6 @@ import React from "react";
 import { Link } from "gatsby";
 
 const Nav = ({ topics }) => {
-  // const id = node.title.toLowerCase().replace(" ", "-");
-
-  topics.forEach(topic =>
-    console.log(topic.node.title.toLowerCase().replaceAll(" ", "-"))
-  );
-
   return (
     <nav>
       <h3 id="nav-title">Ενότητες</h3>
