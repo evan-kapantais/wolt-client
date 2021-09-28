@@ -8,21 +8,6 @@ import Topic from "../components/Topic";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 
-// TODO: animate menu button
-// TODO: integrate subsections jic
-// TODO: font
-// TODO: optimise images
-// TODO: optimise tables
-// TODO: refactor css
-// TODO: remove !importants
-// TODO: check all data
-// TODO: replace images with GatsbyImage
-// TODO: polish header animations
-// TODO: remove home page
-// TODO: dev 404 page
-// TODO: migrate db in the backend
-// TODO: replace favicon
-
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
 
@@ -66,8 +51,9 @@ const IndexPage = ({ data }) => {
               <Link
                 key={getTopicKey(topic)}
                 to={`#${getTopicKey(topic)}`}
-                className="button"
+                className="button topic-button"
               >
+                <span>{topic.node.emoji} </span>
                 {topic.node.title}
               </Link>
             ))}
@@ -101,6 +87,7 @@ export const data = graphql`
       edges {
         node {
           strapiId
+          emoji
           title
           section {
             content
