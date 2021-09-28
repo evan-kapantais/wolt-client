@@ -21,6 +21,7 @@ import ImageOverlay from "../components/ImageOverlay";
 // TODO: remove home page
 // TODO: dev 404 page
 // TODO: migrate db in the backend
+// TODO: replace favicon
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;

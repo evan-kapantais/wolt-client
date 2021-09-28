@@ -11,8 +11,7 @@ const Layout = ({ children, isMenuOpen, setIsMenuOpen }) => {
     <div id="layout">
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <main>{children}</main>
-      {typeof window !== "undefined" &&
-        window.location.pathname !== "/home" && <Footer />}
+      <Footer />
     </div>
   );
 };

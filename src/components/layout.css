@@ -168,20 +168,6 @@ img {
   background: var(--wolt-overlay-blue);
 }
 
-/* Home page */
-
-#home-page__container {
-  text-align: center;
-}
-
-#home-page__sub {
-  font-size: 2rem;
-  font-weight: 200;
-  line-height: 2.5rem;
-  color: #fff;
-  margin-bottom: 4rem;
-}
-
 /* Layout */
 
 /* Layout header */
