@@ -11,6 +11,7 @@
   --image-overlay-index: 3;
   --menu-index: 2;
   --animation-curve: cubic-bezier(0.24, 0.43, 0.1, 1.4);
+  --content-max-width: 700px;
 }
 
 @font-face {
@@ -169,6 +170,12 @@ img {
   justify-content: center;
   align-items: center;
   background: url(../images/partner.jpeg) no-repeat 73% 50% / cover;
+}
+
+/* Main content */
+
+#main-content {
+  padding: 0 2rem;
 }
 
 /* Topic buttons */
@@ -390,7 +397,7 @@ img {
 /* Layout footer */
 
 .footer-top {
-  padding: 2rem 1rem;
+  padding: 2rem;
   background: var(--wolt-blue);
   color: #fff;
 }
@@ -427,6 +434,7 @@ img {
 }
 
 .footer-bottom {
+  padding: 1rem 2rem;
   background: rgb(241, 241, 241);
 }
 
@@ -437,9 +445,8 @@ img {
 }
 
 .footer-container {
-  max-width: 800px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 1rem 2rem;
 }
 
 .heart {
@@ -490,8 +497,7 @@ img {
 
 #center-container {
   margin: 0 auto 4rem auto;
-  max-width: 800px;
-  padding: 0 2rem;
+  max-width: var(--content-max-width);
 }
 
 .topic {
