@@ -8,7 +8,7 @@ import "./layout.css";
 
 const Layout = ({ children, isMenuOpen, setIsMenuOpen }) => {
   const is404Page =
-    window.typeof !== "undefined" && window.location.pathname === "/404/";
+    typeof window !== "undefined" && window.location.pathname === "/404/";
 
   return (
     <div id={is404Page ? "layout-404" : "layout"}>
