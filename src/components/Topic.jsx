@@ -3,13 +3,16 @@ import React from "react";
 import Section from "./Section";
 
 const Topic = ({ topic }) => {
-  const key = topic.node.title.toLowerCase();
+  const id = topic.node.title.toLowerCase().replace(/\s/g, "-");
 
   return (
-    <section key={key} className="topic" id={key}>
-      <h1 className="topic-title">{topic.node.title}</h1>
-      {topic.node.section.map(section => (
-        <Section key={section.title} section={section} />
+    <section className="topic" id={id}>
+      <h1 className="topic-title">
+        <span>{topic.node.emoji} </span>
+        {topic.node.title}
+      </h1>
+      {topic.node.section.map((section, i) => (
+        <Section key={i} section={section} />
       ))}
     </section>
   );

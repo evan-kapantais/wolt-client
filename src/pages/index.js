@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -7,6 +7,7 @@ import Seo from "../components/seo";
 import Topic from "../components/Topic";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
+import TopicButton from "../components/TopicButton";
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
@@ -32,12 +33,9 @@ const IndexPage = ({ data }) => {
     const html = window.document.querySelector("html");
 
     isMenuOpen
-      ? (html.style.overflow = "hidden")
-      : (html.style.overflow = "scroll");
+      ? (html.style.overflowY = "hidden")
+      : (html.style.overflowY = "scroll");
   }, [isMenuOpen]);
-
-  // Format topic title into id / key form
-  const getTopicKey = topic => topic.node.title.toLowerCase();
 
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
@@ -47,15 +45,8 @@ const IndexPage = ({ data }) => {
         <div id="index-banner__container">
           <p id="index-sub">Διάλεξε Κατηγορία</p>
           <div id="topics-grid">
-            {topics.map(topic => (
-              <Link
-                key={getTopicKey(topic)}
-                to={`#${getTopicKey(topic)}`}
-                className="button topic-button"
-              >
-                <span>{topic.node.emoji} </span>
-                {topic.node.title}
-              </Link>
+            {topics.map((topic, i) => (
+              <TopicButton key={i} topic={topic} />
             ))}
           </div>
         </div>
@@ -63,8 +54,8 @@ const IndexPage = ({ data }) => {
       <main id="main-content">
         <section>
           <div id="center-container">
-            {topics.map(topic => (
-              <Topic key={topic.node.strapiId} topic={topic} />
+            {topics.map((topic, i) => (
+              <Topic key={i} topic={topic} />
             ))}
           </div>
         </section>

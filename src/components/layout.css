@@ -418,8 +418,11 @@ img {
   color: inherit;
 }
 
-#layout-footer section:first-of-type {
+.footer-section__topics {
   margin-right: 2.5rem;
+}
+
+.footer-section__wolt {
   margin-bottom: 2rem;
 }
 

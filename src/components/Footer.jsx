@@ -24,9 +24,9 @@ const Footer = () => {
         <footer id="layout-footer">
           <div className="footer-top">
             <div className="footer-container">
-              <h2>Πριν φύγεις</h2>
+              <h2>Είμαστε η Wolt</h2>
               <div className="footer-top__content">
-                <section>
+                <section className="footer-section__topics">
                   <h3>Ενότητες</h3>
                   <ul>
                     {data.allStrapiSection.edges.map((edge, i) => (
@@ -39,7 +39,7 @@ const Footer = () => {
                   </ul>
                 </section>
                 <div>
-                  <section>
+                  <section className="footer-section__wolt">
                     <h3>Η Wolt</h3>
                     <p>
                       H Wolt είναι η κορυφαία πλατφόρμα online delivery σε
