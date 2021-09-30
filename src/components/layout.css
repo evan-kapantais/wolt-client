@@ -169,6 +169,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 2rem;
   background: url(../images/partner.jpeg) no-repeat 73% 50% / cover;
 }
 
