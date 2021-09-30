@@ -217,10 +217,6 @@ img {
   color: #fff;
 }
 
-#layout-404 > .layout-header {
-  position: relative;
-}
-
 .layout-header {
   position: absolute;
   top: 0;
@@ -232,6 +228,10 @@ img {
   z-index: var(--header-index);
   overflow-x: hidden;
   transition: all 200ms;
+}
+
+#layout-404 > .layout-header {
+  position: relative;
 }
 
 .layout-header--menu {
@@ -709,5 +709,5 @@ figcaption {
 
 .fof-link {
   color: #fff;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
