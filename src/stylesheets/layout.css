@@ -1,3 +1,5 @@
+@import "./desktop.css";
+
 :root {
   --wolt-blue: #00c2e8;
   --wolt-overlay-blue: #00c1e8df;
@@ -12,6 +14,7 @@
   --menu-index: 2;
   --animation-curve: cubic-bezier(0.24, 0.43, 0.1, 1.4);
   --content-max-width: 700px;
+  --content-inline-padding: 1rem;
 }
 
 @font-face {
@@ -135,17 +138,13 @@ img {
 /* Custom styles */
 
 .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   margin: 0 auto;
   background: #fff;
-  text-align: center;
   color: #333;
   border-radius: var(--button-radius);
   box-shadow: var(--primary-shadow);
-  width: 150px;
-  height: 80px;
+  padding: 0.8rem 0.5rem;
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 200ms;
@@ -164,7 +163,7 @@ img {
 
 .top-banner {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -173,17 +172,26 @@ img {
   background: url(../images/partner.jpeg) no-repeat 73% 50% / cover;
 }
 
+#index-banner__container {
+  margin-block: 8rem;
+}
+
 /* Main content */
 
 #main-content {
-  padding: 0 2rem;
+  padding-inline: var(--content-inline-padding);
 }
 
 /* Topic buttons */
 
 .topic-button {
-  display: flex;
-  flex-flow: column nowrap;
+  position: relative;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.topic-button:last-of-type {
+  margin-bottom: 0;
 }
 
 /* Banner overlay */
@@ -398,7 +406,7 @@ img {
 /* Layout footer */
 
 .footer-top {
-  padding: 2rem;
+  padding: 2rem var(--content-inline-padding);
   background: var(--wolt-blue);
   color: #fff;
 }
@@ -438,7 +446,7 @@ img {
 }
 
 .footer-bottom {
-  padding: 1rem 2rem;
+  padding: 1rem var(--content-inline-padding);
   background: rgb(241, 241, 241);
 }
 
@@ -482,10 +490,10 @@ img {
 
 #topics-grid {
   margin: 0 auto;
-  display: grid;
+  /* display: grid;
   width: fit-content;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1rem; */
 }
 
 #banner__container {
@@ -709,5 +717,4 @@ figcaption {
 
 .fof-link {
   color: #fff;
-  /* text-decoration: underline; */
 }

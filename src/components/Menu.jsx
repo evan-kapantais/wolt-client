@@ -22,6 +22,7 @@ const Menu = ({ topics, isMenuOpen, setIsMenuOpen }) => {
               to={`#${getTopicKey(topic)}`}
               onClick={() => setIsMenuOpen(false)}
             >
+              <span>{topic.node.emoji} </span>
               {topic.node.title}
             </Link>
           </li>
