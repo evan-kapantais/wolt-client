@@ -7,10 +7,8 @@ import { animateHeader, stickHeader } from "../utils/animations";
 const Header = ({ isMenuOpen, setIsMenuOpen }) => {
   // Add window scroll event listener
   React.useEffect(() => {
-    if (window) {
-      if (window.location.pathname === "/") {
-        window.addEventListener("scroll", stickHeader);
-      }
+    if (window && window.innerWidth < 1200) {
+      window.addEventListener("scroll", stickHeader);
     }
   }, []);
 

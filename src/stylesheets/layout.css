@@ -718,3 +718,21 @@ figcaption {
 .fof-link {
   color: #fff;
 }
+
+@media only screen and (min-width: 1200px) {
+  .banner__overlay,
+  .burger,
+  .menu {
+    display: none;
+  }
+
+  .top-banner {
+    background: #fff;
+  }
+
+  .layout-header {
+    position: relative;
+    display: block;
+    overflow: unset;
+  }
+}

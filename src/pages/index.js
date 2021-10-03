@@ -8,9 +8,16 @@ import Topic from "../components/Topic";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 import TopicButton from "../components/TopicButton";
+import LrgIndex from "../components/large/LrgIndex";
+import MdIndex from "../components/medium/MdIndex";
+import LargeBanner from "../components/small/SmIndex";
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
+
+  const screenLarge = 1200;
+  const screenMedium = 800;
+  const screenSmall = 600;
 
   const [imageSource, setImageSource] = React.useState(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -40,6 +47,15 @@ const IndexPage = ({ data }) => {
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
       <Seo title="Home" />
+      {typeof window !== "undefined" && window.innerWidth > screenLarge && (
+        <LrgIndex data={data} />
+      )}
+      {typeof window !== "undefined" && window.innerWidth > screenMedium && (
+        <MdIndex />
+      )}
+      {typeof window !== "undefined" && window.innerWidth > screenMedium && (
+        <SmIndex />
+      )}
       <section className="top-banner">
         <div className="banner__overlay" />
         <div id="index-banner__container">
