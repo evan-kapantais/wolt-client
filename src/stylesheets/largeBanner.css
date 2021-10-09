@@ -60,6 +60,7 @@
 .image-wrapper.active {
   opacity: 1;
   right: 0;
+  transition-delay: 0ms;
 }
 
 .banner-image {

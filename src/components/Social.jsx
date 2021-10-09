@@ -5,7 +5,7 @@ import icons from "../utils/icons";
 const Social = () => {
   return (
     <div className="social-icons">
-      <Link to="https://www.facebook.com/WoltGreece/">
+      <Link to="https://www.facebook.com/WoltGreece/" className="social-link">
         <img
           data-nofocus
           className="social-icon"
@@ -13,7 +13,7 @@ const Social = () => {
           alt="facebok icon"
         />
       </Link>
-      <Link to="https://www.instagram.com/wolt.greece/">
+      <Link to="https://www.instagram.com/wolt.greece/" className="social-link">
         <img
           data-nofocus
           className="social-icon"
@@ -21,7 +21,7 @@ const Social = () => {
           alt="instagram icon"
         />
       </Link>
-      <Link to="https://twitter.com/GreeceWolt">
+      <Link to="https://twitter.com/GreeceWolt" className="social-link">
         <img
           data-nofocus
           className="social-icon"
@@ -29,7 +29,10 @@ const Social = () => {
           alt="twitter icon"
         />
       </Link>
-      <Link to="https://www.linkedin.com/company/wolt-oy/">
+      <Link
+        to="https://www.linkedin.com/company/wolt-oy/"
+        className="social-link"
+      >
         <img
           data-nofocus
           className="social-icon"
@@ -37,7 +40,7 @@ const Social = () => {
           alt="twitter icon"
         />
       </Link>
-      <Link to="https://wolt.com/el/">
+      <Link to="https://wolt.com/el/" className="social-link">
         <img
           data-nofocus
           className="social-icon"

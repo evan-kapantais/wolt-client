@@ -114,6 +114,24 @@ export const showTopicButtons = () => {
   }
 };
 
+export const showAside = () => {
+  const items = document.querySelectorAll(".aside-list-item");
+
+  for (let i = 0; i < items.length; ++i) {
+    items[i].style.transitionDelay = `${i * 100}ms`;
+  }
+
+  const showtime = items[items.length - 1].getBoundingClientRect().top - 900;
+
+  if (showtime <= 0) {
+    items.forEach(item => item.classList.add("active"));
+  }
+
+  if (items[items.length - 1].classList.contains("active")) {
+    window.document.removeEventListener("scroll", showAside);
+  }
+};
+
 // Sections
 
 const resetAllIcons = () => {
@@ -211,4 +229,24 @@ export const animateBanner = () => {
   heading.classList.add("active");
   pars.forEach(par => par.classList.add("active"));
   people.classList.add("active");
+};
+
+export const scrollBanner = () => {
+  const textWrapper = document.querySelector(".large-banner__text-wrapper");
+  const imageWrapper = document.querySelector(".image-wrapper");
+  const heading = document.querySelector(".large-banner__heading");
+  const people = document.querySelector(".large-banner__people");
+
+  textWrapper.style.transform = `translateY(-${window.scrollY / 5}px)`;
+
+  imageWrapper.style.transform = `translateY(-50%) translateX(${
+    window.scrollY / 5
+  }px)`;
+
+  people.style.transitionDelay = "0ms";
+  people.style.bottom = `-${window.scrollY / 8 + 50}px`;
+
+  heading.style.transitionDelay = "0ms";
+  heading.style.transform = `translateX(-${window.scrollY / 5}px)`;
+  heading.style.opacity = 1 - window.scrollY / 400;
 };

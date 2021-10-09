@@ -9,7 +9,7 @@ const Aside = ({ topics }) => {
     <aside>
       <ul>
         {topics.map((topic, i) => (
-          <li key={i}>
+          <li key={i} className="aside-list-item">
             <Link to={getLink(topic)} className="topic-text-link">
               <span>{topic.node.emoji}</span>
               {topic.node.title}
