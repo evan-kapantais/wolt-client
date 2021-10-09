@@ -7,18 +7,24 @@ import dashHor from "../images/dash-horizontal.svg";
 const Section = ({ section }) => {
   return (
     <div className="section">
-      <h2
-        className="section-title"
+      <button
+        type="button"
+        className="hollow-button"
         onClick={toggleSection}
+        onKeyPress={toggleSection}
+        onKeyDown={toggleSection}
+        onKeyUp={toggleSection}
         onMouseEnter={hoverSection}
         onMouseLeave={leaveSection}
       >
-        <div className="section-title__icon">
-          <img src={dashVer} alt="sign dash" data-nofocus />
-          <img src={dashHor} alt="sign dash" data-nofocus />
-        </div>
-        {section.title}
-      </h2>
+        <h2 className="section-title">
+          <div className="section-title__icon">
+            <img src={dashVer} alt="sign dash" data-nofocus />
+            <img src={dashHor} alt="sign dash" data-nofocus />
+          </div>
+          {section.title}
+        </h2>
+      </button>
       <div
         className="section-content"
         dangerouslySetInnerHTML={{ __html: section.content }}

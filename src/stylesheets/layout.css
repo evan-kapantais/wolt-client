@@ -71,6 +71,15 @@ button {
   cursor: pointer;
 }
 
+.hollow-button {
+  width: 100%;
+  padding: 0;
+}
+
+.hollow-button > * {
+  width: 100%;
+}
+
 p {
   font-size: 0.9rem;
 }

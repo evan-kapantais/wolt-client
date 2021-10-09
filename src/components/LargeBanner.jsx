@@ -70,7 +70,12 @@ const LargeBanner = ({ topics }) => {
           </ul>
           <h2>..ή συνέχισε παρακάτω.</h2>
           <Link to="#γενικά">
-            <img src={arrow} className="scroll-arrow" data-nofocus />
+            <img
+              src={arrow}
+              alt="back to top icon"
+              className="scroll-arrow"
+              data-nofocus
+            />
           </Link>
         </div>
       </section>
