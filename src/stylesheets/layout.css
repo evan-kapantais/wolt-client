@@ -604,6 +604,11 @@ aside {
   transition: all 500ms var(--animation-curve);
 }
 
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .section:last-of-type {
   margin-bottom: 0;
 }
