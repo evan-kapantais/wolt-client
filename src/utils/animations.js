@@ -61,14 +61,11 @@ export const animateHeader = isMenuOpen => {
 export const stickHeader = () => {
   const header = document.querySelector(".layout-header");
   const burger = document.querySelector(".burger");
-  const brand = document.querySelector(".brand");
 
-  if (window.scrollY > 0) {
+  if (window.scrollY > window.innerHeight * 2) {
     header.classList.add("layout-header--scrolled");
-    brand.classList.add("brand--scrolled");
   } else {
     header.classList.remove("layout-header--scrolled");
-    brand.classList.remove("brand--scrolled");
   }
 
   window.scrollY > window.innerHeight

@@ -6,6 +6,7 @@ import {
   animateBanner,
   scrollBanner,
   showAside,
+  scrollDeco,
 } from "../utils/animations";
 
 import arrow from "../images/chevron-up-black.svg";
@@ -20,6 +21,7 @@ const LargeBanner = ({ topics }) => {
     window.document.addEventListener("scroll", showTopicButtons);
     window.document.addEventListener("scroll", scrollBanner);
     window.document.addEventListener("scroll", showAside);
+    window.document.addEventListener("scroll", scrollDeco);
   }, []);
 
   // Animate banner on load (move to index.js)

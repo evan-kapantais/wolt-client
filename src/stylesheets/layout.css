@@ -252,16 +252,24 @@ img {
 }
 
 .layout-header {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: -100px;
   left: 0;
   width: 100%;
   display: none;
-  justify-content: flex-end;
   padding: 2rem 1rem;
+  background: var(--wolt-blue);
   z-index: var(--header-index);
-  overflow-x: hidden;
+  overflow: hidden;
   transition: all 200ms;
+}
+
+.header-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #layout-404 > .layout-header {
@@ -277,8 +285,7 @@ img {
 .layout-header--scrolled {
   position: fixed;
   top: 0;
-  background: var(--wolt-blue);
-  padding: 1rem;
+  padding: 1rem 2rem;
   height: 63px;
   box-shadow: var(--primary-shadow);
   border-radius: 0 0 8px 8px;
@@ -286,17 +293,7 @@ img {
 
 .brand {
   display: block;
-  width: 100px;
-  position: absolute;
-  top: 2rem;
-  left: calc(50% - 50px);
-  transition: all 200ms;
-}
-
-.brand--scrolled {
   width: 50px;
-  left: 2rem;
-  top: calc(50% - 12.5px);
 }
 
 /* Burger */
@@ -364,7 +361,7 @@ img {
   align-items: center;
   padding: 0 2rem;
   background: var(--wolt-blue);
-  transform: translateY(-100vh);
+  transform: translateY(-102vh);
   will-change: transform;
   z-index: var(--menu-index);
   transition: all 400ms;
@@ -885,7 +882,7 @@ figcaption {
 
 @media only screen and (max-width: 1200px) {
   .layout-header {
-    display: flex;
+    display: block;
   }
 }
 

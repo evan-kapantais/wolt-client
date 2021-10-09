@@ -252,9 +252,8 @@
 
 .deco {
   width: 100%;
-  height: 60vmin;
-  background: url(../images/partner-01.jpeg) no-repeat center / cover;
-  background-attachment: fixed;
+  height: 50vmin;
+  background: url(../images/partner-01.jpg) no-repeat center / cover;
 }
 
 @media (max-width: 1260px) {

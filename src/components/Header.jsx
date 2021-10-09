@@ -19,14 +19,16 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
 
   return (
     <header className="layout-header">
-      <Link to="/" className="brand" onClick={() => setIsMenuOpen(false)}>
-        <img id="logo" src={logo} alt="wolt logo" data-nofocus />
-      </Link>
-      <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <div className="burger-slice" />
-        <div className="burger-slice" />
-        <div className="burger-slice" />
-      </button>
+      <div className="header-container">
+        <Link to="/" className="brand" onClick={() => setIsMenuOpen(false)}>
+          <img id="logo" src={logo} alt="wolt logo" data-nofocus />
+        </Link>
+        <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <div className="burger-slice" />
+          <div className="burger-slice" />
+          <div className="burger-slice" />
+        </button>
+      </div>
     </header>
   );
 };
