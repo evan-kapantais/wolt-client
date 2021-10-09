@@ -748,7 +748,7 @@ figcaption {
 
 .back-to-top {
   position: fixed;
-  bottom: 6rem;
+  bottom: 1.5rem;
   right: 4rem;
   display: flex;
   align-items: center;
@@ -770,6 +770,7 @@ figcaption {
 .back-to-top:hover {
   opacity: 1;
   border-radius: var(--button-radius);
+  background: #fff;
   text-decoration: none;
 }
 

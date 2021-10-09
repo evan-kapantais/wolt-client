@@ -12,6 +12,7 @@ import Aside from "../components/Aside";
 import LargeBanner from "../components/LargeBanner";
 
 import arrowTop from "../images/chevron-up-black.svg";
+import { showBackToTop } from "../utils/animations";
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
@@ -19,17 +20,9 @@ const IndexPage = ({ data }) => {
   const [imageSource, setImageSource] = React.useState(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const handleScroll = () => {
-    const backTotop = document.querySelector(".back-to-top");
-
-    window.scrollY > window.innerHeight * 2
-      ? backTotop.classList.add("active")
-      : backTotop.classList.remove("active");
-  };
-
   React.useEffect(() => {
     typeof window !== "undefined" &&
-      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", showBackToTop);
   }, []);
 
   // Focus the images after loading has finished

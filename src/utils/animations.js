@@ -149,6 +149,14 @@ export const toggleSection = e => {
   const icon = title.querySelector(".section-title__icon");
   const dashHor = icon.querySelectorAll("img")[1];
 
+  const isMouseClick = e.screenX > 0 && e.screenY > 0;
+  const isEnterKey = e.code === "Enter";
+  const isSpaceKey = e.code === "Space";
+
+  if (!isMouseClick && !isEnterKey && !isSpaceKey) {
+    return;
+  }
+
   // Collapse section
   if (content.style.maxHeight) {
     icon.classList.remove("section-title__icon--active");
@@ -177,4 +185,30 @@ export const hoverSection = e => {
 export const leaveSection = e => {
   const icon = e.currentTarget.querySelector(".section-title__icon");
   icon.classList.remove("section-title__icon--hover");
+};
+
+// Back to top
+
+export const showBackToTop = () => {
+  const backTotop = document.querySelector(".back-to-top");
+
+  window.scrollY > window.innerHeight * 2
+    ? backTotop.classList.add("active")
+    : backTotop.classList.remove("active");
+};
+
+// Banner
+
+export const animateBanner = () => {
+  const textWrapper = document.querySelector(".large-banner__text-wrapper");
+  const imageWrapper = document.querySelector(".image-wrapper");
+  const heading = document.querySelector(".large-banner__heading");
+  const pars = document.querySelectorAll(".large-banner p");
+  const people = document.querySelector(".large-banner__people");
+
+  imageWrapper.classList.add("active");
+  textWrapper.classList.add("active");
+  heading.classList.add("active");
+  pars.forEach(par => par.classList.add("active"));
+  people.classList.add("active");
 };

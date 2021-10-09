@@ -11,8 +11,6 @@ const Section = ({ section }) => {
         type="button"
         className="hollow-button"
         onClick={toggleSection}
-        onKeyPress={toggleSection}
-        onKeyDown={toggleSection}
         onKeyUp={toggleSection}
         onMouseEnter={hoverSection}
         onMouseLeave={leaveSection}

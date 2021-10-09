@@ -1,6 +1,10 @@
 import { Link } from "gatsby";
 import React, { useEffect } from "react";
-import { showSections, showTopicButtons } from "../utils/animations";
+import {
+  showSections,
+  showTopicButtons,
+  animateBanner,
+} from "../utils/animations";
 
 import arrow from "../images/chevron-up-black.svg";
 import people from "../images/people.png";
@@ -12,7 +16,12 @@ const LargeBanner = ({ topics }) => {
     typeof window !== "undefined" &&
       window.document.addEventListener("scroll", showSections);
     window.document.addEventListener("scroll", showTopicButtons);
-  });
+  }, []);
+
+  // Animate banner on load (move to index.js)
+  useEffect(() => {
+    animateBanner();
+  }, []);
 
   return (
     <>
@@ -58,9 +67,10 @@ const LargeBanner = ({ topics }) => {
           <h2>Διάλεξε κατηγορία..</h2>
           <ul className="large-topics-grid">
             {topics.map((topic, i) => (
-              <li key={i}>
+              <li key={i} className="topic-item">
                 <Link
                   to={`#${topic.node.title.toLowerCase().replace(/\s/g, "-")}`}
+                  className="topic-link"
                 >
                   <div>{topic.node.emoji}</div>
                   {topic.node.title}
