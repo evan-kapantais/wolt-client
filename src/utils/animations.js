@@ -132,6 +132,11 @@ export const showAside = () => {
   }
 };
 
+export const scrollDeco = () => {
+  const deco = document.querySelector(".deco");
+  deco.style.backgroundPosition = `center ${window.scrollY / 30}%`;
+};
+
 // Sections
 
 const resetAllIcons = () => {
@@ -239,9 +244,9 @@ export const scrollBanner = () => {
 
   textWrapper.style.transform = `translateY(-${window.scrollY / 5}px)`;
 
-  imageWrapper.style.transform = `translateY(-50%) translateX(${
-    window.scrollY / 5
-  }px)`;
+  imageWrapper.style.transform = `translateY(${
+    window.innerWidth > 1260 ? "-50%" : "-5rem"
+  }) translateX(${window.scrollY / 5}px)`;
 
   people.style.transitionDelay = "0ms";
   people.style.bottom = `-${window.scrollY / 8 + 50}px`;
