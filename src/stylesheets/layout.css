@@ -475,7 +475,11 @@ img {
   width: 24px;
   height: 24px;
   margin-right: 0.5rem;
-  fill: #fff;
+  transition: transform 200ms var(--animation-curve);
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
 }
 
 /* Banner */
@@ -735,7 +739,7 @@ figcaption {
 
 .back-to-top {
   position: fixed;
-  bottom: 2rem;
+  bottom: 6rem;
   right: 4rem;
   display: flex;
   align-items: center;
