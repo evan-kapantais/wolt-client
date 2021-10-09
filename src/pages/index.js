@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -8,19 +8,29 @@ import Topic from "../components/Topic";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 import TopicButton from "../components/TopicButton";
-import LrgIndex from "../components/large/LrgIndex";
-import MdIndex from "../components/medium/MdIndex";
-import LargeBanner from "../components/small/SmIndex";
+import Aside from "../components/Aside";
+import LargeBanner from "../components/LargeBanner";
+
+import arrowTop from "../images/chevron-up-black.svg";
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
 
-  const screenLarge = 1200;
-  const screenMedium = 800;
-  const screenSmall = 600;
-
   const [imageSource, setImageSource] = React.useState(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const handleScroll = () => {
+    const backTotop = document.querySelector(".back-to-top");
+
+    window.scrollY > window.innerHeight * 2
+      ? backTotop.classList.add("active")
+      : backTotop.classList.remove("active");
+  };
+
+  React.useEffect(() => {
+    typeof window !== "undefined" &&
+      window.addEventListener("scroll", handleScroll);
+  }, []);
 
   // Focus the images after loading has finished
   React.useEffect(() => {
@@ -47,16 +57,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
       <Seo title="Home" />
-      {typeof window !== "undefined" && window.innerWidth > screenLarge && (
-        <LrgIndex data={data} />
-      )}
-      {typeof window !== "undefined" && window.innerWidth > screenMedium && (
-        <MdIndex />
-      )}
-      {typeof window !== "undefined" && window.innerWidth > screenMedium && (
-        <SmIndex />
-      )}
-      <section className="top-banner">
+      {/* <section className="top-banner">
         <div className="banner__overlay" />
         <div id="index-banner__container">
           <p id="index-sub">Διάλεξε Κατηγορία</p>
@@ -66,9 +67,11 @@ const IndexPage = ({ data }) => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+      <LargeBanner topics={topics} />
       <main id="main-content">
-        <section>
+        <Aside topics={topics} />
+        <section className="topics-section">
           <div id="center-container">
             {topics.map((topic, i) => (
               <Topic key={i} topic={topic} />
@@ -84,6 +87,10 @@ const IndexPage = ({ data }) => {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
+      <Link to="/" className="back-to-top">
+        <span>Back To Top</span>
+        <img src={arrowTop} alt="back to top arrow" data-nofocus />
+      </Link>
     </Layout>
   );
 };

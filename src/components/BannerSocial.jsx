@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "gatsby";
 import icons from "../utils/icons";
 
-const Social = () => {
+const BannerSocial = () => {
   return (
-    <div className="social-icons">
-      <Link to="https://www.facebook.com/WoltGreece/">
+    <div className="banner-social">
+      <Link className="social-link" to="https://www.facebook.com/WoltGreece/">
         <img
           data-nofocus
           className="social-icon"
@@ -13,7 +13,7 @@ const Social = () => {
           alt="facebok icon"
         />
       </Link>
-      <Link to="https://www.instagram.com/wolt.greece/">
+      <Link className="social-link" to="https://www.instagram.com/wolt.greece/">
         <img
           data-nofocus
           className="social-icon"
@@ -21,7 +21,7 @@ const Social = () => {
           alt="instagram icon"
         />
       </Link>
-      <Link to="https://twitter.com/GreeceWolt">
+      <Link className="social-link" to="https://twitter.com/GreeceWolt">
         <img
           data-nofocus
           className="social-icon"
@@ -29,7 +29,10 @@ const Social = () => {
           alt="twitter icon"
         />
       </Link>
-      <Link to="https://www.linkedin.com/company/wolt-oy/">
+      <Link
+        className="social-link"
+        to="https://www.linkedin.com/company/wolt-oy/"
+      >
         <img
           data-nofocus
           className="social-icon"
@@ -37,7 +40,7 @@ const Social = () => {
           alt="twitter icon"
         />
       </Link>
-      <Link to="https://wolt.com/el/">
+      <Link className="social-link" to="https://wolt.com/el/">
         <img
           data-nofocus
           className="social-icon"
@@ -49,4 +52,4 @@ const Social = () => {
   );
 };
 
-export default Social;
+export default BannerSocial;

@@ -1,3 +1,5 @@
+// Animate items on menu open
+
 const animateMenuItems = isMenuOpen => {
   const menuItems = document.querySelectorAll(".menu-list__item");
 
@@ -72,4 +74,42 @@ export const stickHeader = () => {
   window.scrollY > window.innerHeight
     ? burger.classList.add("burger--scrolled")
     : burger.classList.remove("burger--scrolled");
+};
+
+// Show on scroll
+
+export const showSections = () => {
+  const sections = document.querySelectorAll(".section");
+
+  sections.forEach(section => {
+    const showtime = section.getBoundingClientRect().top - 900;
+
+    showtime <= 0 && section.classList.add("active");
+  });
+
+  if (sections[sections.length - 1].classList.contains("active")) {
+    window.document.removeEventListener("scroll", showSections);
+  }
+};
+
+export const showTopicButtons = () => {
+  const topics = document.querySelectorAll(".large-topics-grid li");
+
+  for (let i = 0; i < topics.length; ++i) {
+    const showtime = topics[i].getBoundingClientRect().top - 900;
+
+    topics[i].style.transitionDelay = `${i * 50}ms`;
+
+    showtime <= 0 && topics[i].classList.add("active");
+  }
+
+  if (topics[topics.length - 1].classList.contains("active")) {
+    window.document.removeEventListener("scroll", showTopicButtons);
+
+    topics.forEach(topic => {
+      setTimeout(() => {
+        topic.removeAttribute("style");
+      });
+    });
+  }
 };

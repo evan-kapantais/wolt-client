@@ -26,33 +26,20 @@ const Footer = () => {
             <div className="footer-container">
               <h2>Είμαστε η Wolt</h2>
               <div className="footer-top__content">
-                <section className="footer-section__topics">
-                  <h3>Ενότητες</h3>
-                  <ul>
-                    {data.allStrapiSection.edges.map((edge, i) => (
-                      <li key={i}>
-                        <Link className="footer-link" to={getLink(edge)}>
-                          {edge.node.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                <section className="footer-section__wolt">
+                  <h3>Η Wolt</h3>
+                  <p>
+                    H Wolt είναι η κορυφαία πλατφόρμα online delivery σε πολλές
+                    χώρες της Ευρώπης και Ασίας. Ιδρύθηκε στη Φινλανδία το 2014
+                    και ήδη λειτουργεί σε 23 χώρες και πάνω από 150 πόλεις. Έχει
+                    στο ενεργητικό της πάνω από 30 εκατομμύρια χρήστες, 40.000
+                    εστιατόρια, 100.000 διανομείς και 3000 υπαλλήλους.
+                  </p>
                 </section>
-                <div>
-                  <section className="footer-section__wolt">
-                    <h3>Η Wolt</h3>
-                    <p>
-                      H Wolt είναι η κορυφαία πλατφόρμα online delivery σε
-                      πολλές χώρες της Ευρώπη και Ασίας. Iδρύθηκε στη Φινλανδία
-                      το 2014 και ήδη λειτουργεί σε 23 χώρες και πάνω από 150
-                      πόλεις.
-                    </p>
-                  </section>
-                  <section>
-                    <h3>Ακολούθησέ μας</h3>
-                    <Social />
-                  </section>
-                </div>
+                <section>
+                  <h3>Ακολούθησέ μας</h3>
+                  <Social />
+                </section>
               </div>
             </div>
           </div>

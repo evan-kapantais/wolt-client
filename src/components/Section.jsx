@@ -7,6 +7,17 @@ const Section = ({ section }) => {
   // const hasSubsections = section.subsection.length > 0;
   const hasImmediateContent = section.content;
 
+  const resetAllIcons = () => {
+    const allSectionIcons = document.querySelectorAll(".section-title__icon");
+
+    allSectionIcons.forEach(si => {
+      const dashHor = si.querySelectorAll("img")[1];
+
+      si.classList.remove("section-title__icon--active");
+      dashHor.style.transform = "scale(1)";
+    });
+  };
+
   // Collapse all other expanded sections
   const collapseAll = () => {
     const allSectionTitles = document.querySelectorAll(".section-title");
@@ -22,6 +33,8 @@ const Section = ({ section }) => {
     allSectionTitles.forEach(st =>
       st.classList.remove("section-title--active")
     );
+
+    resetAllIcons();
   };
 
   // Expand / collapse section
@@ -34,6 +47,7 @@ const Section = ({ section }) => {
     // Collapse section
     if (content.style.maxHeight) {
       icon.classList.remove("section-title__icon--active");
+      icon.classList.add("section-title__icon--hover");
       dashHor.style.transform = "scale(1)";
       title.classList.remove("section-title--active");
       content.style.maxHeight = null;
@@ -42,6 +56,7 @@ const Section = ({ section }) => {
     } else {
       collapseAll();
       icon.classList.add("section-title__icon--active");
+      icon.classList.remove("section-title__icon--hover");
       dashHor.style.transform = "scale(0)";
       title.classList.add("section-title--active");
       content.style.maxHeight = content.scrollHeight + "px";

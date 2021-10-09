@@ -7,7 +7,7 @@ import { animateHeader, stickHeader } from "../utils/animations";
 const Header = ({ isMenuOpen, setIsMenuOpen }) => {
   // Add window scroll event listener
   React.useEffect(() => {
-    if (window && window.innerWidth < 1200) {
+    if (typeof window !== "undefined") {
       window.addEventListener("scroll", stickHeader);
     }
   }, []);
@@ -22,7 +22,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
       <Link to="/" className="brand" onClick={() => setIsMenuOpen(false)}>
         <img id="logo" src={logo} alt="wolt logo" data-nofocus />
       </Link>
-
       <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <div className="burger-slice" />
         <div className="burger-slice" />
