@@ -73,9 +73,29 @@ export const stickHeader = () => {
     : burger.classList.remove("burger--scrolled");
 };
 
-// Show on scroll
+// Animate on scroll
 
-export const showSections = () => {
+const scrollBanner = () => {
+  const textWrapper = document.querySelector(".large-banner__text-wrapper");
+  const imageWrapper = document.querySelector(".image-wrapper");
+  const heading = document.querySelector(".large-banner__heading");
+  const people = document.querySelector(".large-banner__people");
+
+  textWrapper.style.transform = `translateY(-${window.scrollY / 5}px)`;
+
+  imageWrapper.style.transform = `translateY(${
+    window.innerWidth > 1260 ? "-50%" : "-5rem"
+  }) translateX(${window.scrollY / 5}px)`;
+
+  people.style.transitionDelay = "0ms";
+  people.style.bottom = `-${window.scrollY / 8 + 50}px`;
+
+  heading.style.transitionDelay = "0ms";
+  heading.style.transform = `translateX(-${window.scrollY / 5}px)`;
+  heading.style.opacity = 1 - window.scrollY / 400;
+};
+
+const showSections = () => {
   const sections = document.querySelectorAll(".section");
 
   sections.forEach(section => {
@@ -89,7 +109,7 @@ export const showSections = () => {
   }
 };
 
-export const showTopicButtons = () => {
+const showTopicButtons = () => {
   const topics = document.querySelectorAll(".large-topics-grid li");
 
   for (let i = 0; i < topics.length; ++i) {
@@ -111,7 +131,7 @@ export const showTopicButtons = () => {
   }
 };
 
-export const showAside = () => {
+const showAside = () => {
   const items = document.querySelectorAll(".aside-list-item");
 
   for (let i = 0; i < items.length; ++i) {
@@ -129,9 +149,17 @@ export const showAside = () => {
   }
 };
 
-export const scrollDeco = () => {
+const scrollDeco = () => {
   const deco = document.querySelector(".deco");
   deco.style.backgroundPosition = `center ${window.scrollY / 30}%`;
+};
+
+export const handleScroll = () => {
+  showSections();
+  showTopicButtons();
+  showAside();
+  scrollDeco();
+  scrollBanner();
 };
 
 // Sections
@@ -217,7 +245,7 @@ export const showBackToTop = () => {
     : backTotop.classList.remove("active");
 };
 
-// Banner
+// Load animations
 
 export const animateBanner = () => {
   const textWrapper = document.querySelector(".large-banner__text-wrapper");
@@ -231,24 +259,4 @@ export const animateBanner = () => {
   heading.classList.add("active");
   pars.forEach(par => par.classList.add("active"));
   people.classList.add("active");
-};
-
-export const scrollBanner = () => {
-  const textWrapper = document.querySelector(".large-banner__text-wrapper");
-  const imageWrapper = document.querySelector(".image-wrapper");
-  const heading = document.querySelector(".large-banner__heading");
-  const people = document.querySelector(".large-banner__people");
-
-  textWrapper.style.transform = `translateY(-${window.scrollY / 5}px)`;
-
-  imageWrapper.style.transform = `translateY(${
-    window.innerWidth > 1260 ? "-50%" : "-5rem"
-  }) translateX(${window.scrollY / 5}px)`;
-
-  people.style.transitionDelay = "0ms";
-  people.style.bottom = `-${window.scrollY / 8 + 50}px`;
-
-  heading.style.transitionDelay = "0ms";
-  heading.style.transform = `translateX(-${window.scrollY / 5}px)`;
-  heading.style.opacity = 1 - window.scrollY / 400;
 };
