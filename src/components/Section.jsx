@@ -4,9 +4,6 @@ import dashVer from "../images/dash-vertical.svg";
 import dashHor from "../images/dash-horizontal.svg";
 
 const Section = ({ section }) => {
-  // const hasSubsections = section.subsection.length > 0;
-  const hasImmediateContent = section.content;
-
   const resetAllIcons = () => {
     const allSectionIcons = document.querySelectorAll(".section-title__icon");
 
@@ -75,10 +72,10 @@ const Section = ({ section }) => {
   };
 
   return (
-    <div className={hasImmediateContent ? "section" : ""}>
+    <div className="section">
       <h2
-        className={hasImmediateContent ? "section-title" : ""}
-        onClick={hasImmediateContent && toggleSection}
+        className="section-title"
+        onClick={toggleSection}
         onMouseEnter={hoverSection}
         onMouseLeave={leaveSection}
       >
@@ -88,16 +85,10 @@ const Section = ({ section }) => {
         </div>
         {section.title}
       </h2>
-      {hasImmediateContent && (
-        <div
-          className="section-content"
-          dangerouslySetInnerHTML={{ __html: section.content }}
-        />
-      )}
-      {/* {hasSubsections &&
-        section.subsection.map(subsection => (
-          <Subsection subsection={subsection} key={subsection.title} />
-        ))} */}
+      <div
+        className="section-content"
+        dangerouslySetInnerHTML={{ __html: section.content }}
+      />
     </div>
   );
 };
