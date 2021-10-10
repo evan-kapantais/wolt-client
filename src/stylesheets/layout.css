@@ -741,7 +741,7 @@ img {
 /* Aside */
 
 aside {
-  position: sticky;
+  position: sticky !important;
   width: 20%;
   height: 100vh;
   top: 0;
@@ -977,6 +977,7 @@ figcaption {
     animation: none;
   }
 }
+
 .deco {
   width: 100%;
   height: 50vmin;
@@ -1017,7 +1018,6 @@ figcaption {
     position: relative;
     transform: unset;
     min-height: unset;
-    /* height: 50vh; */
     width: calc(100% - 4rem);
     transform: translateY(-6rem);
   }
@@ -1030,6 +1030,18 @@ figcaption {
 @media only screen and (max-width: 1200px) {
   .layout-header {
     display: block;
+  }
+
+  .center-container {
+    padding: 0 1rem;
+  }
+
+  aside {
+    display: none;
+  }
+
+  .back-to-top {
+    display: none;
   }
 }
 
@@ -1044,6 +1056,10 @@ figcaption {
 
   .large-banner__heading {
     margin-bottom: 2rem;
+  }
+
+  .large-banner p {
+    font-size: 1rem;
   }
 
   .large-topics-grid {
