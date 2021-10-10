@@ -20,7 +20,25 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`,
+          quality: 50,
+          breakpoints: [370, 560, 1200],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+      },
+    },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -38,6 +56,7 @@ module.exports = {
       options: {
         apiURL: `https://wolt-server.herokuapp.com`,
         collectionTypes: ["section"],
+        singleTypes: ["version", "banner-text", "banner-image"],
         queryLimit: 1000,
       },
     },

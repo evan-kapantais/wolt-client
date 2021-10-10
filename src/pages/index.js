@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { graphql, Link } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -19,6 +20,8 @@ import bannerImage from "../images/partner.jpeg";
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
+
+  const image = getImage(data.strapiBannerImage.image.localFile);
 
   const [imageSource, setImageSource] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,19 +71,18 @@ const IndexPage = ({ data }) => {
       <section className="large-banner">
         <div className="large-banner__inner">
           <div className="large-banner__text-wrapper">
+            <div className="version">
+              <span>Latest Version</span>
+              <span>{data.strapiVersion.date}</span>
+            </div>
             <div className="large-banner__text">
               <h1 className="large-banner__heading">
                 Καλωσήρθες στη <br />{" "}
                 <span className="site-title">Wolt Greece</span>
               </h1>
-              <p>
-                Εδώ θα βρείς απαντήσεις για όλες τις ερωτήσεις που μπορεί να
-                έχεις σχετικά με τη συνεργασία σου μαζί μας.
-              </p>
-              <p>
-                Μην ξεχνάς να ρίχνεις συχνά μια ματιά στη σελίδα, καθώς
-                ενημερώνεται τακτικά.
-              </p>
+              <div
+                dangerouslySetInnerHTML={{ __html: data.strapiBannerText.text }}
+              />
               <img
                 src={people}
                 alt="wolt people"
@@ -91,10 +93,10 @@ const IndexPage = ({ data }) => {
           </div>
           <div className="large-banner__image-div">
             <div className="image-wrapper">
-              <img
-                className="banner-image"
-                src={bannerImage}
+              <GatsbyImage
+                image={image}
                 alt="wolt partner"
+                className="banner-image"
                 data-nofocus
               />
             </div>
@@ -169,6 +171,21 @@ export const data = graphql`
           }
         }
       }
+    }
+    strapiBannerText {
+      text
+    }
+    strapiBannerImage {
+      image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+    strapiVersion {
+      date(formatString: "MMMM, YYYY")
     }
   }
 `;

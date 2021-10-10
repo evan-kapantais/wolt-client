@@ -569,6 +569,18 @@ img {
   transform: translateY(0);
 }
 
+.version {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.version span {
+  display: block;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
 .large-banner__heading {
   line-height: 1;
   margin-bottom: 4rem;
@@ -1060,6 +1072,11 @@ figcaption {
 
   .large-banner p {
     font-size: 1rem;
+  }
+
+  .version {
+    left: unset;
+    right: 1rem;
   }
 
   .large-topics-grid {
