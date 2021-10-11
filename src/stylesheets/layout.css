@@ -531,7 +531,7 @@ img {
   height: 50%;
   min-height: 600px;
   opacity: 0;
-  transition: all 600ms 300ms var(--animation-curve);
+  transition: all 600ms 400ms var(--animation-curve);
 }
 
 .image-wrapper.active {
