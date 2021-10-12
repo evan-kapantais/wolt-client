@@ -16,7 +16,6 @@ import { animateBanner, handleScroll } from "../utils/animations";
 
 import arrow from "../images/chevron-up-black.svg";
 import people from "../images/people.png";
-import bannerImage from "../images/partner.jpeg";
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
