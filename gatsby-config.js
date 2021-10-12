@@ -4,10 +4,10 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Wolt`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Wolt GR`,
+    description: `An extensive FAQ page for Wolt Greece's partners.`,
+    author: `@evan-kapantais`,
+    siteUrl: `https://wolt-client.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -29,12 +29,6 @@ module.exports = {
           quality: 50,
           breakpoints: [370, 560, 1200],
           backgroundColor: `transparent`,
-          tracedSVGOptions: {},
-          blurredOptions: {},
-          jpgOptions: {},
-          pngOptions: {},
-          webpOptions: {},
-          avifOptions: {},
         },
       },
     },
@@ -42,13 +36,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `wolt-client`,
+        short_name: `wolt`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#00c2e8`,
+        theme_color: `#00c2e8`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/wolt-icon.png`,
       },
     },
     {

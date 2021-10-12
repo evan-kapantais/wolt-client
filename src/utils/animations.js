@@ -100,7 +100,6 @@ const showSections = () => {
 
   sections.forEach(section => {
     const showtime = section.getBoundingClientRect().top - 900;
-
     showtime <= 0 && section.classList.add("active");
   });
 

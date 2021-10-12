@@ -67,7 +67,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
-      <Seo title="Home" />
+      <Seo title="FAQ" />
       <section className="large-banner">
         <div className="large-banner__inner">
           <div className="large-banner__text-wrapper">
@@ -102,8 +102,17 @@ const IndexPage = ({ data }) => {
             </div>
           </div>
         </div>
+        <Link to="#select-topic" className="scroll-link scroll-link__banner">
+          <p>Ξεκίνα Εδώ</p>
+          <img
+            src={arrow}
+            alt="back to top icon"
+            className="scroll-arrow"
+            data-nofocus
+          />
+        </Link>
       </section>
-      <section className="large-topics">
+      <section id="select-topic" className="large-topics">
         <div>
           <h2>Διάλεξε κατηγορία..</h2>
           <ul className="large-topics-grid">
@@ -120,7 +129,7 @@ const IndexPage = ({ data }) => {
             ))}
           </ul>
           <h2>..ή συνέχισε παρακάτω.</h2>
-          <Link to="#γενικά">
+          <Link to="#γενικά" className="scroll-link">
             <img
               src={arrow}
               alt="back to top icon"
