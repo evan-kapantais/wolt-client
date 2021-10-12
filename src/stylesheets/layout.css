@@ -780,6 +780,7 @@ aside {
   border-radius: var(--button-radius);
   will-change: transform;
   white-space: nowrap;
+  font-size: 0.9rem;
   transition: all 200ms;
 }
 
@@ -822,6 +823,7 @@ aside {
   width: 100%;
   text-align: left;
   font-size: 0.9rem;
+  font-family: Helvetica, Arial, sans-serif;
   padding: 1rem;
   border: none;
   background: var(--wolt-blue);
