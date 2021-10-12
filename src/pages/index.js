@@ -22,6 +22,8 @@ const IndexPage = ({ data }) => {
 
   const image = getImage(data.strapiBannerImage.image.localFile);
 
+  console.log(image);
+
   const [imageSource, setImageSource] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

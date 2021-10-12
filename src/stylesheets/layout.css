@@ -207,21 +207,6 @@ img {
   text-decoration: none;
 }
 
-.top-banner {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 2rem;
-  background: url(../images/partner.jpeg) no-repeat 73% 50% / cover;
-}
-
-#index-banner__container {
-  margin-block: 8rem;
-}
-
 /* Main content */
 
 #main-content {
