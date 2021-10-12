@@ -252,10 +252,12 @@ export const animateBanner = () => {
   const heading = document.querySelector(".large-banner__heading");
   const pars = document.querySelectorAll(".large-banner p");
   const people = document.querySelector(".large-banner__people");
+  const version = document.querySelector(".version");
 
   imageWrapper.classList.add("active");
   textWrapper.classList.add("active");
   heading.classList.add("active");
   pars.forEach(par => par.classList.add("active"));
   people.classList.add("active");
+  version.classList.add("active");
 };
