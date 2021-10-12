@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 
 const ImageOverlay = ({ source, setSource }) => {
+  // Show overlay
   useEffect(() => {
     const overlay = document.querySelector("#image-overlay");
     overlay.className = "image-overlay--shown";
   }, []);
 
+  // Hide overlay
   const close = e => {
     const overlay = e.currentTarget;
 

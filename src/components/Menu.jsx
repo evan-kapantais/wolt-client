@@ -4,22 +4,18 @@ import { animateMenu } from "../utils/animations";
 
 import people from "../images/people.png";
 
-const Menu = ({ topics, isMenuOpen, setIsMenuOpen }) => {
-  // Animate the menu in / out
-  useEffect(() => {
-    animateMenu(isMenuOpen);
-  }, [isMenuOpen]);
-
-  const getTopicKey = topic => topic.node.title.toLowerCase();
+const Menu = ({ topics, setIsMenuOpen }) => {
+  const getLink = topic =>
+    `#${topic.node.title.toLowerCase().replace(/\s/g, "-")}`;
 
   return (
     <div className="menu">
       <ul className="menu-list">
-        {topics.map(topic => (
-          <li key={getTopicKey(topic)} className="menu-list__item">
+        {topics.map((topic, i) => (
+          <li key={i} className="menu-list__item">
             <Link
               className="menu-link"
-              to={`#${getTopicKey(topic)}`}
+              to={getLink(topic)}
               onClick={() => setIsMenuOpen(false)}
             >
               <span>{topic.node.emoji} </span>

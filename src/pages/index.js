@@ -12,7 +12,13 @@ import Aside from "../components/Aside";
 
 import arrowTop from "../images/chevron-up-black.svg";
 import { showBackToTop } from "../utils/animations";
-import { animateBanner, handleScroll } from "../utils/animations";
+import {
+  animateBanner,
+  handleScroll,
+  stickHeader,
+  animateMenu,
+  animateHeader,
+} from "../utils/animations";
 
 import arrow from "../images/chevron-up-black.svg";
 import people from "../images/people.png";
@@ -22,14 +28,16 @@ const IndexPage = ({ data }) => {
 
   const image = getImage(data.strapiBannerImage.image.localFile);
 
-  console.log(image);
-
   const [imageSource, setImageSource] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Init event listeners on load
   useEffect(() => {
-    typeof window !== "undefined" &&
+    if (typeof window !== "undefined") {
       window.addEventListener("scroll", showBackToTop);
+      window.addEventListener("scroll", stickHeader);
+      window.addEventListener("scroll", handleScroll);
+    }
   }, []);
 
   // Focus the images after loading has finished
@@ -45,21 +53,17 @@ const IndexPage = ({ data }) => {
     });
   }, []);
 
-  // Cotrol document overflow based on menu state
+  // Cotrol document overflow && menu
   useEffect(() => {
     const html = window.document.querySelector("html");
 
     isMenuOpen
       ? (html.style.overflowY = "hidden")
       : (html.style.overflowY = "scroll");
-  }, [isMenuOpen]);
 
-  // Add scroll event listeners
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.document.addEventListener("scroll", handleScroll);
-    }
-  }, []);
+    animateHeader(isMenuOpen);
+    animateMenu(isMenuOpen);
+  }, [isMenuOpen]);
 
   // Animate banner on load
   useEffect(() => {

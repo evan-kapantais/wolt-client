@@ -1,22 +1,9 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { Link } from "gatsby";
 
 import logo from "../images/wolt-logo.png";
-import { animateHeader, stickHeader } from "../utils/animations";
 
 const Header = ({ isMenuOpen, setIsMenuOpen }) => {
-  // Add window scroll event listener
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", stickHeader);
-    }
-  }, []);
-
-  // Animate header when opening / closing the menu
-  React.useEffect(() => {
-    animateHeader(isMenuOpen);
-  }, [isMenuOpen]);
-
   return (
     <header className="layout-header">
       <div className="header-container">

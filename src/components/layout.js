@@ -7,11 +7,8 @@ import Footer from "./Footer";
 import "../stylesheets/layout.css";
 
 const Layout = ({ children, isMenuOpen, setIsMenuOpen }) => {
-  const is404Page =
-    typeof window !== "undefined" && window.location.pathname === "/404/";
-
   return (
-    <div id={is404Page ? "layout-404" : "layout"}>
+    <div className="layout">
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <main>{children}</main>
       <Footer />

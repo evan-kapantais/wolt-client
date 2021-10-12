@@ -4,9 +4,6 @@ import Social from "./Social";
 import { StaticQuery, graphql } from "gatsby";
 
 const Footer = () => {
-  const getLink = edge =>
-    `/#${edge.node.title.toLowerCase().replace(/\s/g, "-")}`;
-
   return (
     <StaticQuery
       query={graphql`
