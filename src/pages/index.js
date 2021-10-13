@@ -26,7 +26,8 @@ import people from "../images/people.png";
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
 
-  const image = getImage(data.strapiBannerImage.image.localFile);
+  const bannerImage = getImage(data.strapiBannerImage.image.localFile);
+  const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
 
   const [imageSource, setImageSource] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -99,7 +100,7 @@ const IndexPage = ({ data }) => {
           <div className="large-banner__image-div">
             <div className="image-wrapper">
               <GatsbyImage
-                image={image}
+                image={bannerImage}
                 alt="wolt partner"
                 className="banner-image"
                 data-nofocus
@@ -144,7 +145,14 @@ const IndexPage = ({ data }) => {
           </Link>
         </div>
       </section>
-      <section className="deco"></section>
+      <section className="deco">
+        <GatsbyImage
+          image={decoImage}
+          alt="wolt partner"
+          className="deco-image"
+          data-nofocus
+        />
+      </section>
       <main id="main-content">
         <Aside topics={topics} />
         <section className="topics-section">
@@ -190,6 +198,15 @@ export const data = graphql`
       text
     }
     strapiBannerImage {
+      image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+    strapiDecorativeImage {
       image {
         localFile {
           childImageSharp {

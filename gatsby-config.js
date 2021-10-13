@@ -50,7 +50,12 @@ module.exports = {
       options: {
         apiURL: `https://wolt-server.herokuapp.com`,
         collectionTypes: ["section"],
-        singleTypes: ["version", "banner-text", "banner-image"],
+        singleTypes: [
+          "version",
+          "banner-text",
+          "banner-image",
+          "decorative-image",
+        ],
         queryLimit: 1000,
       },
     },

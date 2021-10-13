@@ -987,18 +987,32 @@ figcaption {
   width: 100px;
 }
 
+.deco {
+  width: 100%;
+  height: 50vmin;
+}
+
+.deco-image {
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;
+  opacity: 0;
+  box-shadow: var(--primary-shadow);
+  transition: all 800ms;
+}
+
+.deco-image.active {
+  width: calc(100% - 4rem);
+  opacity: 1;
+  margin: 0 2rem;
+}
+
 /* Queries */
 
 @media (prefers-reduced-motion) {
   .scroll-arrow {
     animation: none;
   }
-}
-
-.deco {
-  width: 100%;
-  height: 50vmin;
-  background: url(../images/partner-01.jpg) no-repeat center / cover;
 }
 
 @media only screen and (max-width: 1260px) {

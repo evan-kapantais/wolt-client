@@ -148,15 +148,23 @@ const showAside = () => {
   }
 };
 
+const showDeco = () => {
+  const decoImage = document.querySelector(".deco-image");
+
+  const showtime = decoImage.getBoundingClientRect().top - 700;
+  showtime <= 0 && decoImage.classList.add("active");
+};
+
 const scrollDeco = () => {
-  const deco = document.querySelector(".deco");
-  deco.style.backgroundPosition = `center ${window.scrollY / 30}%`;
+  const deco = document.querySelector(".deco-image");
+  deco.style.objectPosition = `center ${window.scrollY / 30}%`;
 };
 
 export const handleScroll = () => {
   showSections();
   showTopicButtons();
   showAside();
+  showDeco();
   scrollDeco();
   scrollBanner();
 };
