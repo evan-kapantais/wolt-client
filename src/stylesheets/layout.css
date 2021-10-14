@@ -721,10 +721,7 @@ img {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  /* background: rgb(255, 253, 209); */
   background: #f2f3f5;
-  /* background: var(--wolt-blue); */
-  /* color: #fff; */
   box-shadow: var(--primary-shadow);
   border-radius: var(--button-radius);
   padding: 4rem 2rem;
