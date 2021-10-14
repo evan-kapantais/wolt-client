@@ -710,6 +710,79 @@ img {
   animation: wiggle 2s infinite;
 }
 
+/* News */
+
+#news {
+  position: relative;
+  padding: 8rem 2rem;
+}
+
+.news-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* background: rgb(255, 253, 209); */
+  background: #f2f3f5;
+  /* background: var(--wolt-blue); */
+  /* color: #fff; */
+  box-shadow: var(--primary-shadow);
+  border-radius: var(--button-radius);
+  padding: 4rem 2rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 1s var(--animation-curve);
+}
+
+.news-container.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.news-container hr {
+  border-color: rgba(255, 255, 255, 0.3);
+  margin: 2.5rem 0;
+}
+
+.news-container hr:last-of-type {
+  display: none;
+}
+
+.news-container:after {
+  content: "📌";
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+}
+
+.news-title {
+  /* margin: 0 0 3rem 0; */
+  position: absolute;
+  top: -5.5rem;
+  left: 1rem;
+  line-height: 1;
+  font-size: 4rem;
+  font-family: "Proxima Soft", Helvetica, sans-serif;
+}
+
+.news-item__title {
+  font-size: 1rem;
+}
+
+.phone-deco {
+  width: 200px;
+  position: absolute;
+  bottom: 8rem;
+  right: 20rem;
+  opacity: 0;
+  transition: all 500ms 1s var(--animation-curve);
+}
+
+.phone-deco.active {
+  opacity: 1;
+  right: 13rem;
+}
+
 /* Topics */
 
 .topics-section {
@@ -971,10 +1044,6 @@ figcaption {
   text-decoration: none;
 }
 
-.back-to-top img {
-  width: 32px;
-}
-
 .back-to-top span {
   width: 0;
   white-space: nowrap;
@@ -1012,6 +1081,12 @@ figcaption {
 @media (prefers-reduced-motion) {
   .scroll-arrow {
     animation: none;
+  }
+}
+
+@media only screen and (max-width: 1700px) {
+  .phone-deco {
+    display: none;
   }
 }
 
@@ -1104,6 +1179,16 @@ figcaption {
 
   .large-topics-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-container {
+    padding: 2rem;
+  }
+
+  .news-title {
+    font-size: 2rem;
+    position: unset;
+    margin: 0 0 3rem 0;
   }
 
   .footer-top__content {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { graphql, Link } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -9,8 +9,8 @@ import Topic from "../components/Topic";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 import Aside from "../components/Aside";
+import NewsItem from "../components/NewsItem";
 
-import arrowTop from "../images/chevron-up-black.svg";
 import { showBackToTop } from "../utils/animations";
 import {
   animateBanner,
@@ -21,10 +21,10 @@ import {
 } from "../utils/animations";
 
 import arrow from "../images/chevron-up-black.svg";
-import people from "../images/people.png";
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
+  const newsItems = data.allStrapiNewsItem.edges;
 
   const bannerImage = getImage(data.strapiBannerImage.image.localFile);
   const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
@@ -89,8 +89,8 @@ const IndexPage = ({ data }) => {
               <div
                 dangerouslySetInnerHTML={{ __html: data.strapiBannerText.text }}
               />
-              <img
-                src={people}
+              <StaticImage
+                src="../images/people.png"
                 alt="wolt people"
                 data-nofocus
                 className="large-banner__people"
@@ -108,15 +108,39 @@ const IndexPage = ({ data }) => {
             </div>
           </div>
         </div>
-        <Link to="#select-topic" className="scroll-link scroll-link__banner">
+        <Link to="#news" className="scroll-link scroll-link__banner">
           <p>Ξεκίνα Εδώ</p>
-          <img
-            src={arrow}
+          <StaticImage
+            src="../images/chevron-up-black.svg"
             alt="back to top icon"
             className="scroll-arrow"
             data-nofocus
           />
         </Link>
+      </section>
+      <section id="news">
+        <StaticImage
+          src="../images/phone.png"
+          alt="phone"
+          className="phone-deco"
+          data-nofocus
+        />
+        <div className="news-container">
+          <h1 className="news-title">Τα Νέα Μας</h1>
+          {newsItems.length > 0 ? (
+            newsItems.map((newsItem, i) => (
+              <React.Fragment key={i}>
+                <NewsItem newsItem={newsItem} />
+                <hr />
+              </React.Fragment>
+            ))
+          ) : (
+            <p>
+              Δεν υπάρχουν νέα αυτή τη στιγμή. Μπορείς να συνεχίσεις{" "}
+              <Link to="#select-topic">παρακάτω</Link>.
+            </p>
+          )}
+        </div>
       </section>
       <section id="select-topic" className="large-topics">
         <div>
@@ -173,7 +197,11 @@ const IndexPage = ({ data }) => {
       />
       <Link to="/" className="back-to-top">
         <span>Back To Top</span>
-        <img src={arrowTop} alt="back to top arrow" data-nofocus />
+        <StaticImage
+          src="../images/chevron-up-black.svg"
+          alt="back to top arrow"
+          data-nofocus
+        />
       </Link>
     </Layout>
   );
@@ -203,6 +231,14 @@ export const data = graphql`
           childImageSharp {
             gatsbyImageData
           }
+        }
+      }
+    }
+    allStrapiNewsItem {
+      edges {
+        node {
+          title
+          content
         }
       }
     }
