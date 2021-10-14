@@ -25,6 +25,7 @@ import people from "../images/people.png";
 
 const IndexPage = ({ data }) => {
   const topics = data.allStrapiSection.edges;
+  const topicsOrder = data.strapiTopicsOrder.order.split("\n");
 
   const bannerImage = getImage(data.strapiBannerImage.image.localFile);
   const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
@@ -69,6 +70,31 @@ const IndexPage = ({ data }) => {
   // Animate banner on load
   useEffect(() => {
     animateBanner();
+  }, []);
+
+  const returnOrderedTopics = () => {
+    const orderedTopics = [];
+
+    topicsOrder.forEach(title => {
+      const found = topics.find(topic => topic.node.title === title);
+
+      found
+        ? orderedTopics.push(found)
+        : console.log(`Topic ${title} not found.`);
+    });
+
+    console.log(orderedTopics);
+    console.log(topics);
+
+    if (orderedTopics.length === topics.length) {
+      return orderedTopics;
+    } else {
+      return topics;
+    }
+  };
+
+  useEffect(() => {
+    returnOrderedTopics();
   }, []);
 
   return (
@@ -157,7 +183,7 @@ const IndexPage = ({ data }) => {
         <Aside topics={topics} />
         <section className="topics-section">
           <div id="center-container">
-            {topics.map((topic, i) => (
+            {returnOrderedTopics().map((topic, i) => (
               <Topic key={i} topic={topic} />
             ))}
           </div>
@@ -193,6 +219,9 @@ export const data = graphql`
           }
         }
       }
+    }
+    strapiTopicsOrder {
+      order
     }
     strapiBannerText {
       text

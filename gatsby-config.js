@@ -55,6 +55,7 @@ module.exports = {
           "banner-text",
           "banner-image",
           "decorative-image",
+          "topics-order",
         ],
         queryLimit: 1000,
       },
