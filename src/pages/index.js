@@ -30,18 +30,19 @@ import {
 } from "../utils/animations";
 
 const IndexPage = ({ data }) => {
+  // State
   const [isLoading, setIsLoading] = useState(true);
   const [imageSource, setImageSource] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [topics, setTopics] = useState([]);
 
-  // const topics = data.allStrapiSection.edges;
+  // Sourced content
   const topicsOrder = data.strapiTopicsOrder.order.split("\n");
   const newsItems = data.allStrapiNewsItem.edges;
-
   const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
 
-  const returnOrderedTopics = () => {
+  // Order topics based on strapi data
+  const orderTopics = () => {
     const topics = data.allStrapiSection.edges;
 
     const orderedTopics = [];
@@ -63,9 +64,9 @@ const IndexPage = ({ data }) => {
     setIsLoading(false);
   };
 
-  // Testing
+  // Order topics on load
   useEffect(() => {
-    returnOrderedTopics();
+    orderTopics();
   }, []);
 
   // Init event listeners after loading
