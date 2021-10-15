@@ -60,7 +60,7 @@ const IndexPage = ({ data }) => {
     });
 
     setTopics([...orderedTopics]);
-    // setIsLoading(false);
+    setIsLoading(false);
   };
 
   // Testing
@@ -108,7 +108,11 @@ const IndexPage = ({ data }) => {
 
   // Animate banner on load
   useEffect(() => {
-    !isLoading && animateBanner();
+    if (!isLoading) {
+      setTimeout(() => {
+        animateBanner();
+      });
+    }
   }, [isLoading]);
 
   return (
