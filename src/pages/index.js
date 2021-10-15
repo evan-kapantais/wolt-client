@@ -61,7 +61,9 @@ const IndexPage = ({ data }) => {
     });
 
     setTopics([...orderedTopics]);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   };
 
   // Order topics on load
