@@ -1,98 +1,107 @@
+// Core imports
 import React, { useState, useEffect } from "react";
-import { graphql, Link } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { graphql } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
 
+// Top-level component imports
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
+// Component imports
 import Topic from "../components/Topic";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 import Aside from "../components/Aside";
+import SelectTopicSection from "../components/SelectTopicSection";
+import DecoSection from "../components/DecoSection";
+import BackToTop from "../components/BackToTop";
+import NewsSection from "../components/NewsSection";
+import BannerSection from "../components/BannerSection";
 
-import arrowTop from "../images/chevron-up-black.svg";
-import { showBackToTop } from "../utils/animations";
+// Animation inports
 import {
   animateBanner,
   handleScroll,
   stickHeader,
   animateMenu,
   animateHeader,
+  showBackToTop,
 } from "../utils/animations";
 
-import arrow from "../images/chevron-up-black.svg";
-import people from "../images/people.png";
-
 const IndexPage = ({ data }) => {
-  const topics = data.allStrapiSection.edges;
-  const topicsOrder = data.strapiTopicsOrder.order.split("\n");
-
-  const bannerImage = getImage(data.strapiBannerImage.image.localFile);
-  const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [imageSource, setImageSource] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Init event listeners on load
+  const topics = data.allStrapiSection.edges;
+  const topicsOrder = data.strapiTopicsOrder.order.split("\n");
+  const newsItems = data.allStrapiNewsItem.edges;
+
+  const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
+
+  // Init event listeners after loading
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && !isLoading) {
       window.addEventListener("scroll", showBackToTop);
       window.addEventListener("scroll", stickHeader);
       window.addEventListener("scroll", handleScroll);
     }
-  }, []);
+  }, [isLoading]);
 
   // Focus the images after loading has finished
   useEffect(() => {
-    const images = document.querySelectorAll("img");
+    if (!isLoading) {
+      const images = document.querySelectorAll("img");
 
-    images.forEach(image => {
-      if (!image.dataset.nofocus) {
-        image.addEventListener("click", e =>
-          setImageSource(e.currentTarget.src)
-        );
-      }
-    });
-  }, []);
+      images.forEach(image => {
+        if (!image.dataset.nofocus) {
+          image.addEventListener("click", e =>
+            setImageSource(e.currentTarget.src)
+          );
+        }
+      });
+    }
+  }, [isLoading]);
 
   // Cotrol document overflow && menu
   useEffect(() => {
-    const html = window.document.querySelector("html");
+    if (!isLoading) {
+      const html = window.document.querySelector("html");
 
-    isMenuOpen
-      ? (html.style.overflowY = "hidden")
-      : (html.style.overflowY = "scroll");
+      isMenuOpen
+        ? (html.style.overflowY = "hidden")
+        : (html.style.overflowY = "scroll");
 
-    animateHeader(isMenuOpen);
-    animateMenu(isMenuOpen);
+      animateHeader(isMenuOpen);
+      animateMenu(isMenuOpen);
+    }
   }, [isMenuOpen]);
 
   // Animate banner on load
   useEffect(() => {
-    animateBanner();
-  }, []);
+    !isLoading && animateBanner();
+  }, [isLoading]);
 
   const returnOrderedTopics = () => {
     const orderedTopics = [];
 
+    console.log(`The desired order is ${topicsOrder}`);
+
     topicsOrder.forEach(title => {
       const found = topics.find(topic => topic.node.title === title);
 
-      found
-        ? orderedTopics.push(found)
-        : console.log(`Topic ${title} not found.`);
+      if (found) {
+        console.log(`Adding ${title} to array..`);
+        orderedTopics.push(found);
+      } else {
+        console.log(`Failed to find ${title} in topics`);
+      }
     });
 
-    console.log(orderedTopics);
-    console.log(topics);
-
-    if (orderedTopics.length === topics.length) {
-      return orderedTopics;
-    } else {
-      return topics;
-    }
+    return orderedTopics;
   };
 
+  // Testing
   useEffect(() => {
     returnOrderedTopics();
   }, []);
@@ -100,95 +109,24 @@ const IndexPage = ({ data }) => {
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
       <Seo title="FAQ" />
-      <section className="large-banner">
-        <div className="large-banner__inner">
-          <div className="large-banner__text-wrapper">
-            <div className="version">
-              <span>Latest Version</span>
-              <span>{data.strapiVersion.date}</span>
-            </div>
-            <div className="large-banner__text">
-              <h1 className="large-banner__heading">
-                Καλωσήρθες στη <br />{" "}
-                <span className="site-title">Wolt Greece</span>
-              </h1>
-              <div
-                dangerouslySetInnerHTML={{ __html: data.strapiBannerText.text }}
-              />
-              <img
-                src={people}
-                alt="wolt people"
-                data-nofocus
-                className="large-banner__people"
-              />
-            </div>
-          </div>
-          <div className="large-banner__image-div">
-            <div className="image-wrapper">
-              <GatsbyImage
-                image={bannerImage}
-                alt="wolt partner"
-                className="banner-image"
-                data-nofocus
-              />
-            </div>
-          </div>
-        </div>
-        <Link to="#select-topic" className="scroll-link scroll-link__banner">
-          <p>Ξεκίνα Εδώ</p>
-          <img
-            src={arrow}
-            alt="back to top icon"
-            className="scroll-arrow"
-            data-nofocus
-          />
-        </Link>
-      </section>
-      <section id="select-topic" className="large-topics">
-        <div>
-          <h2>Διάλεξε κατηγορία..</h2>
-          <ul className="large-topics-grid">
-            {topics.map((topic, i) => (
-              <li key={i} className="topic-item">
-                <Link
-                  to={`#${topic.node.title.toLowerCase().replace(/\s/g, "-")}`}
-                  className="topic-link"
-                >
-                  <div>{topic.node.emoji}</div>
-                  {topic.node.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <h2>..ή συνέχισε παρακάτω.</h2>
-          <Link to="#γενικά" className="scroll-link">
-            <img
-              src={arrow}
-              alt="back to top icon"
-              className="scroll-arrow"
-              data-nofocus
-            />
-          </Link>
-        </div>
-      </section>
-      <section className="deco">
-        <GatsbyImage
-          image={decoImage}
-          alt="wolt partner"
-          className="deco-image"
-          data-nofocus
-        />
-      </section>
-      <main id="main-content">
+      <BannerSection data={data} />
+      <NewsSection newsItems={newsItems} />
+      <SelectTopicSection topics={topics} />
+      <DecoSection decoImage={decoImage} />
+      <section id="main-content">
         <Aside topics={topics} />
-        <section className="topics-section">
-          <div id="center-container">
-            {returnOrderedTopics().map((topic, i) => (
-              <Topic key={i} topic={topic} />
-            ))}
-          </div>
+        <section id="topics" className="topics-section">
+          {isLoading ? (
+            <p>Loading content...</p>
+          ) : (
+            <div id="center-container">
+              {returnOrderedTopics().map((topic, i) => (
+                <Topic key={i} topic={topic} />
+              ))}
+            </div>
+          )}
         </section>
-      </main>
+      </section>
       {imageSource && (
         <ImageOverlay source={imageSource} setSource={setImageSource} />
       )}
@@ -197,10 +135,7 @@ const IndexPage = ({ data }) => {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
-      <Link to="/" className="back-to-top">
-        <span>Back To Top</span>
-        <img src={arrowTop} alt="back to top arrow" data-nofocus />
-      </Link>
+      <BackToTop />
     </Layout>
   );
 };
@@ -232,6 +167,14 @@ export const data = graphql`
           childImageSharp {
             gatsbyImageData
           }
+        }
+      }
+    }
+    allStrapiNewsItem {
+      edges {
+        node {
+          title
+          content
         }
       }
     }

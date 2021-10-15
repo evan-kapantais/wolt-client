@@ -49,7 +49,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `https://wolt-server.herokuapp.com`,
-        collectionTypes: ["section"],
+        collectionTypes: ["section", "news-item"],
         singleTypes: [
           "version",
           "banner-text",

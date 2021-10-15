@@ -160,6 +160,27 @@ const scrollDeco = () => {
   deco.style.objectPosition = `center ${window.scrollY / 30}%`;
 };
 
+const showNews = () => {
+  const newsContainer = document.querySelector(".news-container");
+  const phone = document.querySelector(".phone-deco");
+
+  const showtime = newsContainer.getBoundingClientRect().top - 700;
+  const phoneShowtime = phone.getBoundingClientRect().top - 700;
+  showtime <= 0 && newsContainer.classList.add("active");
+  phoneShowtime <= 0 && phone.classList.add("active");
+};
+
+const scrollNews = () => {
+  const phone = document.querySelector(".phone-deco");
+
+  if (phone.classList.contains("active")) {
+    setTimeout(() => {
+      phone.style.transitionDelay = "0ms";
+    }, 2500);
+    phone.style.bottom = `${8 + window.scrollY / 500}rem`;
+  }
+};
+
 export const handleScroll = () => {
   showSections();
   showTopicButtons();
@@ -167,6 +188,8 @@ export const handleScroll = () => {
   showDeco();
   scrollDeco();
   scrollBanner();
+  showNews();
+  scrollNews();
 };
 
 // Sections
