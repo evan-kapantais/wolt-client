@@ -8,6 +8,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 
 // Component imports
+import Loading from "../components/Loading";
 import Topic from "../components/Topic";
 import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
@@ -32,12 +33,40 @@ const IndexPage = ({ data }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [imageSource, setImageSource] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [topics, setTopics] = useState([]);
 
-  const topics = data.allStrapiSection.edges;
+  // const topics = data.allStrapiSection.edges;
   const topicsOrder = data.strapiTopicsOrder.order.split("\n");
   const newsItems = data.allStrapiNewsItem.edges;
 
   const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
+
+  const returnOrderedTopics = () => {
+    const topics = data.allStrapiSection.edges;
+
+    const orderedTopics = [];
+
+    console.log(`The desired order is ${topicsOrder}`);
+
+    topicsOrder.forEach(title => {
+      const found = topics.find(topic => topic.node.title === title);
+
+      if (found) {
+        console.log(`Adding ${title} to array..`);
+        orderedTopics.push(found);
+      } else {
+        console.log(`Failed to find ${title} in topics`);
+      }
+    });
+
+    setTopics([...orderedTopics]);
+    // setIsLoading(false);
+  };
+
+  // Testing
+  useEffect(() => {
+    returnOrderedTopics();
+  }, []);
 
   // Init event listeners after loading
   useEffect(() => {
@@ -82,60 +111,38 @@ const IndexPage = ({ data }) => {
     !isLoading && animateBanner();
   }, [isLoading]);
 
-  const returnOrderedTopics = () => {
-    const orderedTopics = [];
-
-    console.log(`The desired order is ${topicsOrder}`);
-
-    topicsOrder.forEach(title => {
-      const found = topics.find(topic => topic.node.title === title);
-
-      if (found) {
-        console.log(`Adding ${title} to array..`);
-        orderedTopics.push(found);
-      } else {
-        console.log(`Failed to find ${title} in topics`);
-      }
-    });
-
-    return orderedTopics;
-  };
-
-  // Testing
-  useEffect(() => {
-    returnOrderedTopics();
-  }, []);
-
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
       <Seo title="FAQ" />
-      <BannerSection data={data} />
-      <NewsSection newsItems={newsItems} />
-      <SelectTopicSection topics={topics} />
-      <DecoSection decoImage={decoImage} />
-      <section id="main-content">
-        <Aside topics={topics} />
-        <section id="topics" className="topics-section">
-          {isLoading ? (
-            <p>Loading content...</p>
-          ) : (
-            <div id="center-container">
-              {returnOrderedTopics().map((topic, i) => (
-                <Topic key={i} topic={topic} />
-              ))}
-            </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <BannerSection data={data} />
+          <NewsSection newsItems={newsItems} />
+          <SelectTopicSection topics={topics} />
+          <DecoSection decoImage={decoImage} />
+          <section id="main-content">
+            <Aside topics={topics} />
+            <section id="topics" className="topics-section">
+              <div id="center-container">
+                {topics.map((topic, i) => (
+                  <Topic key={i} topic={topic} />
+                ))}
+              </div>
+            </section>
+          </section>
+          {imageSource && (
+            <ImageOverlay source={imageSource} setSource={setImageSource} />
           )}
-        </section>
-      </section>
-      {imageSource && (
-        <ImageOverlay source={imageSource} setSource={setImageSource} />
+          <Menu
+            topics={topics}
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
+          <BackToTop />
+        </>
       )}
-      <Menu
-        topics={topics}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-      />
-      <BackToTop />
     </Layout>
   );
 };

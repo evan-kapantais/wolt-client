@@ -1073,6 +1073,35 @@ figcaption {
   margin: 0 2rem;
 }
 
+/* Loader */
+
+@keyframes pulse {
+  from {
+    transform: scale(0) translateY(1rem);
+  }
+  to {
+    transform: scale(1) translateY(0rem);
+  }
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-dot {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: var(--wolt-blue);
+  border-radius: 50%;
+  margin: 0 0.5rem;
+  animation: pulse 500ms var(--animation-curve) infinite alternate;
+}
+
 /* Queries */
 
 @media (prefers-reduced-motion) {
