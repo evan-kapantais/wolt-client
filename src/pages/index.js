@@ -47,23 +47,16 @@ const IndexPage = ({ data }) => {
 
     const orderedTopics = [];
 
-    console.log(`The desired order is ${topicsOrder}`);
-
     topicsOrder.forEach(title => {
       const found = topics.find(topic => topic.node.title === title);
 
       if (found) {
-        console.log(`Adding ${title} to array..`);
         orderedTopics.push(found);
-      } else {
-        console.log(`Failed to find ${title} in topics`);
       }
     });
 
     setTopics([...orderedTopics]);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    setIsLoading(false);
   };
 
   // Order topics on load
