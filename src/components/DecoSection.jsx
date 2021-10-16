@@ -6,6 +6,7 @@ const DecoSection = ({ decoImage }) => {
     <section className="deco">
       <GatsbyImage
         image={decoImage}
+        loading="lazy"
         alt="wolt partner"
         className="deco-image"
         data-nofocus

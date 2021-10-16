@@ -41,10 +41,9 @@ const IndexPage = ({ data }) => {
   const newsItems = data.allStrapiNewsItem.edges;
   const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
 
-  // Order topics based on strapi data
-  const orderTopics = () => {
+  // Order topics on load
+  useEffect(() => {
     const topics = data.allStrapiSection.edges;
-
     const orderedTopics = [];
 
     topicsOrder.forEach(title => {
@@ -57,11 +56,6 @@ const IndexPage = ({ data }) => {
 
     setTopics([...orderedTopics]);
     setIsLoading(false);
-  };
-
-  // Order topics on load
-  useEffect(() => {
-    orderTopics();
   }, []);
 
   // Init event listeners after loading
@@ -101,6 +95,31 @@ const IndexPage = ({ data }) => {
       animateMenu(isMenuOpen);
     }
   }, [isMenuOpen, isLoading]);
+
+  // Remove empty elements after loading has finished
+  useEffect(() => {
+    if (!isLoading) {
+      const newsItemElements = document.querySelectorAll(".news-item *");
+      const sectionElements = document.querySelectorAll(".section *");
+      const sectionBreaks = document.querySelectorAll(".section br");
+
+      sectionElements.forEach(element => {
+        if (element.innerHTML === "&nbsp;") {
+          element.remove();
+        }
+      });
+
+      newsItemElements.forEach(element => {
+        if (element.innerHTML === "&nbsp;") {
+          element.remove();
+        }
+      });
+
+      sectionBreaks.forEach(br => {
+        br.remove();
+      });
+    }
+  }, [isLoading]);
 
   // Animate banner on load
   useEffect(() => {
