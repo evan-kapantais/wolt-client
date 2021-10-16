@@ -1,8 +1,9 @@
 :root {
   --wolt-blue: #00c2e8;
-  --wolt-overlay-blue: #00c1e8df;
   --wolt-dark-blue: #02a9ca;
+  --wolt-ocean-blue: #0080ff;
   --wolt-light-blue: #c6f6ff;
+  --ice-gray: #f2f3f5;
   --table-header-color: rgb(255, 218, 218);
   --button-radius: 8px;
   --primary-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -159,7 +160,8 @@ tr:nth-child(odd) {
 }
 
 tr:first-child {
-  background: var(--wolt-light-blue);
+  background: var(--wolt-ocean-blue);
+  color: #fff;
   font-weight: 600;
 }
 
@@ -722,7 +724,7 @@ img {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  background: #f2f3f5;
+  background: var(--ice-gray);
   box-shadow: var(--primary-shadow);
   border-radius: var(--button-radius);
   padding: 4rem 2rem;
@@ -879,6 +881,10 @@ aside {
   margin-bottom: 0;
 }
 
+.section-title__button {
+  background: var(--wolt-blue);
+}
+
 .section-title {
   margin: 0;
   width: 100%;
@@ -887,13 +893,12 @@ aside {
   font-family: Helvetica, Arial, sans-serif;
   padding: 1rem;
   border: none;
-  background: var(--wolt-blue);
   color: #fff;
   cursor: pointer;
   transition: all 200ms;
 }
 
-.section-title--active {
+.section-title__button.active {
   background: var(--wolt-dark-blue);
 }
 
@@ -918,7 +923,7 @@ aside {
   transform: translateX(0);
 }
 
-.section-title__icon--active {
+.section-title__icon.active {
   margin-right: 1rem;
   transform: rotate(90deg);
 }

@@ -208,13 +208,13 @@ const resetAllIcons = () => {
   allSectionIcons.forEach(si => {
     const dashHor = si.querySelectorAll("img")[1];
 
-    si.classList.remove("section-title__icon--active");
+    si.classList.remove("active");
     dashHor.style.transform = "scale(1)";
   });
 };
 
 const collapseAll = () => {
-  const allSectionTitles = document.querySelectorAll(".section-title");
+  const allSectionTitles = document.querySelectorAll(".section-title__button");
   const allSectionContent = document.querySelectorAll(".section-content");
 
   allSectionContent.forEach(sc => {
@@ -224,7 +224,7 @@ const collapseAll = () => {
     }
   });
 
-  allSectionTitles.forEach(st => st.classList.remove("section-title--active"));
+  allSectionTitles.forEach(st => st.classList.remove("active"));
 
   resetAllIcons();
 };
@@ -245,19 +245,19 @@ export const toggleSection = e => {
 
   // Collapse section
   if (content.style.maxHeight) {
-    icon.classList.remove("section-title__icon--active");
+    icon.classList.remove("active");
     icon.classList.add("section-title__icon--hover");
     dashHor.style.transform = "scale(1)";
-    title.classList.remove("section-title--active");
+    title.classList.remove("active");
     content.style.maxHeight = null;
     content.style.padding = "0 1rem";
     // Expand section
   } else {
     collapseAll();
-    icon.classList.add("section-title__icon--active");
+    icon.classList.add("active");
     icon.classList.remove("section-title__icon--hover");
     dashHor.style.transform = "scale(0)";
-    title.classList.add("section-title--active");
+    title.classList.add("active");
     content.style.maxHeight = content.scrollHeight + "px";
     content.style.padding = "1rem";
   }

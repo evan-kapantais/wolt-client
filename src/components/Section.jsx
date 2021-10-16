@@ -9,7 +9,7 @@ const Section = ({ section }) => {
     <div className="section">
       <button
         type="button"
-        className="hollow-button"
+        className="hollow-button section-title__button"
         onClick={toggleSection}
         onKeyUp={toggleSection}
         onMouseEnter={hoverSection}
