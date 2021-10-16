@@ -100,7 +100,7 @@ const IndexPage = ({ data }) => {
       animateHeader(isMenuOpen);
       animateMenu(isMenuOpen);
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isLoading]);
 
   // Animate banner on load
   useEffect(() => {
@@ -131,6 +131,7 @@ const IndexPage = ({ data }) => {
                 ))}
               </div>
             </section>
+            <div></div>
           </section>
           {imageSource && (
             <ImageOverlay source={imageSource} setSource={setImageSource} />
