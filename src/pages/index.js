@@ -100,14 +100,7 @@ const IndexPage = ({ data }) => {
   useEffect(() => {
     if (!isLoading) {
       const newsItemElements = document.querySelectorAll(".news-item *");
-      const sectionElements = document.querySelectorAll(".section *");
       const sectionBreaks = document.querySelectorAll(".section br");
-
-      sectionElements.forEach(element => {
-        if (element.innerHTML === "&nbsp;") {
-          element.remove();
-        }
-      });
 
       newsItemElements.forEach(element => {
         if (element.innerHTML === "&nbsp;") {
@@ -117,6 +110,7 @@ const IndexPage = ({ data }) => {
 
       sectionBreaks.forEach(br => {
         br.remove();
+        console.log(`Removed ${br}`);
       });
     }
   }, [isLoading]);

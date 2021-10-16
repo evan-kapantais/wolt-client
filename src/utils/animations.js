@@ -101,6 +101,14 @@ const showSections = () => {
   sections.forEach(section => {
     const showtime = section.getBoundingClientRect().top - 900;
     showtime <= 0 && section.classList.add("active");
+
+    // Delete empty elements
+    const contentPars = document.querySelectorAll(".section-content *");
+    contentPars.forEach(par => {
+      if (par.innerHTML === "&nbsp;") {
+        par.remove();
+      }
+    });
   });
 
   if (sections[sections.length - 1].classList.contains("active")) {
