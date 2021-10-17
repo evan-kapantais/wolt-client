@@ -110,7 +110,6 @@ const IndexPage = ({ data }) => {
 
       sectionBreaks.forEach(br => {
         br.remove();
-        console.log(`Removed ${br}`);
       });
     }
   }, [isLoading]);
