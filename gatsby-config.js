@@ -1,6 +1,4 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
@@ -48,7 +46,10 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://wolt-server.herokuapp.com`,
+        apiURL:
+          process.env.NODE_ENV === `development`
+            ? `http://localhost:1337`
+            : `http://wolt-server.herokuapp.com`,
         collectionTypes: ["section", "news-item"],
         singleTypes: [
           "version",
