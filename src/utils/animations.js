@@ -1,3 +1,7 @@
+// Variables
+const getShowtime = element =>
+  element.getBoundingClientRect().top - window.innerHeight;
+
 // Animate items on menu open
 
 const animateMenuItems = isMenuOpen => {
@@ -99,8 +103,7 @@ const showSections = () => {
   const sections = document.querySelectorAll(".section");
 
   sections.forEach(section => {
-    const showtime = section.getBoundingClientRect().top - 900;
-    showtime <= 0 && section.classList.add("active");
+    getShowtime(section) <= 0 && section.classList.add("active");
 
     // Delete empty elements
     const contentPars = document.querySelectorAll(".section-content *");
@@ -111,7 +114,7 @@ const showSections = () => {
     });
   });
 
-  if (sections[sections.length - 1].classList.contains("active")) {
+  if (sections[sections.length - 1]?.classList.contains("active")) {
     window.document.removeEventListener("scroll", showSections);
   }
 };
@@ -120,14 +123,11 @@ const showTopicButtons = () => {
   const topics = document.querySelectorAll(".large-topics-grid li");
 
   for (let i = 0; i < topics.length; ++i) {
-    const showtime = topics[i].getBoundingClientRect().top - 900;
-
     topics[i].style.transitionDelay = `${i * 50}ms`;
-
-    showtime <= 0 && topics[i].classList.add("active");
+    getShowtime(topics[i]) <= 0 && topics[i].classList.add("active");
   }
 
-  if (topics[topics.length - 1].classList.contains("active")) {
+  if (topics[topics.length - 1]?.classList.contains("active")) {
     window.document.removeEventListener("scroll", showTopicButtons);
 
     topics.forEach(topic => {

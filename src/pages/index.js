@@ -1,5 +1,5 @@
 // Core imports
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
@@ -8,16 +8,11 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 
 // Component imports
-import Loading from "../components/Loading";
-import Topic from "../components/Topic";
-import Menu from "../components/Menu";
-import ImageOverlay from "../components/ImageOverlay";
-import Aside from "../components/Aside";
-import SelectTopicSection from "../components/SelectTopicSection";
-import DecoSection from "../components/DecoSection";
-import BackToTop from "../components/BackToTop";
-import NewsSection from "../components/NewsSection";
 import BannerSection from "../components/BannerSection";
+import Loading from "../components/Loading";
+import Menu from "../components/Menu";
+import BackToTop from "../components/BackToTop";
+import ImageOverlay from "../components/ImageOverlay";
 
 // Animation inports
 import {
@@ -28,6 +23,15 @@ import {
   animateHeader,
   showBackToTop,
 } from "../utils/animations";
+
+// Dynamic imports
+const Topic = lazy(() => import("../components/Topic"));
+const Aside = lazy(() => import("../components/Aside"));
+const SelectTopicSection = lazy(() =>
+  import("../components/SelectTopicSection")
+);
+const DecoSection = lazy(() => import("../components/DecoSection"));
+const NewsSection = lazy(() => import("../components/NewsSection"));
 
 const IndexPage = ({ data }) => {
   // State
@@ -131,20 +135,22 @@ const IndexPage = ({ data }) => {
       ) : (
         <>
           <BannerSection data={data} />
-          <NewsSection newsItems={newsItems} />
-          <SelectTopicSection topics={topics} />
-          <DecoSection decoImage={decoImage} />
-          <section id="main-content">
-            <Aside topics={topics} />
-            <section id="topics" className="topics-section">
-              <div id="center-container">
-                {topics.map((topic, i) => (
-                  <Topic key={i} topic={topic} />
-                ))}
-              </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <NewsSection newsItems={newsItems} />
+            <SelectTopicSection topics={topics} />
+            <DecoSection decoImage={decoImage} />
+            <section id="main-content">
+              <Aside topics={topics} />
+              <section id="topics" className="topics-section">
+                <div id="center-container">
+                  {topics.map((topic, i) => (
+                    <Topic key={i} topic={topic} />
+                  ))}
+                </div>
+              </section>
+              <div></div>
             </section>
-            <div></div>
-          </section>
+          </Suspense>
           {imageSource && (
             <ImageOverlay source={imageSource} setSource={setImageSource} />
           )}
