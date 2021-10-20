@@ -1,9 +1,33 @@
 import React from "react";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Link } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 
-const BannerSection = ({ data }) => {
+const BannerSection = ({ data, country }) => {
   const bannerImage = getImage(data.strapiBannerImage.image.localFile);
+
+  const getVersion = () => {
+    switch (country.symbol) {
+      case "Cy":
+        return data.strapiCyVersion.date;
+      case "Mt":
+        return data.strapiMtVersion.date;
+      case "Gr":
+      default:
+        return data.strapiVersion.date;
+    }
+  };
+
+  const getBannerText = () => {
+    switch (country.symbol) {
+      case "Cy":
+        return data.strapiCyBannerText.text;
+      case "Mt":
+        return data.strapiMtBannerText.text;
+      case "Gr":
+      default:
+        return data.strapiBannerText.text;
+    }
+  };
 
   return (
     <section className="large-banner">
@@ -11,16 +35,16 @@ const BannerSection = ({ data }) => {
         <div className="large-banner__text-wrapper">
           <div className="version">
             <span>Latest Version</span>
-            <span>{data.strapiVersion.date}</span>
+            <span>{getVersion()}</span>
           </div>
           <div className="large-banner__text">
             <h1 className="large-banner__heading">
-              Καλωσήρθες στη <br />{" "}
-              <span className="site-title">Wolt Greece</span>
+              {country.symbol === "Gr" ? "Καλωσήρθες στη" : "Welcome To"} <br />{" "}
+              <span className="site-title">Wolt {country.name}</span>
             </h1>
             <div
               dangerouslySetInnerHTML={{
-                __html: data.strapiBannerText.text,
+                __html: getBannerText(),
               }}
             />
             <StaticImage
@@ -43,7 +67,7 @@ const BannerSection = ({ data }) => {
         </div>
       </div>
       <Link to="#news" className="scroll-link scroll-link__banner">
-        <p>Ξεκίνα Εδώ</p>
+        <p>{country.symbol === "Gr" ? "Ξεκίνα Εδώ" : "Start Here"}</p>
         <StaticImage
           src="../images/chevron-up-black.svg"
           alt="back to top icon"

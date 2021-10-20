@@ -141,6 +141,10 @@ const showTopicButtons = () => {
 const showAside = () => {
   const items = document.querySelectorAll(".aside-list-item");
 
+  if (!items) {
+    return;
+  }
+
   for (let i = 0; i < items.length; ++i) {
     items[i].style.transitionDelay = `${i * 100}ms`;
   }

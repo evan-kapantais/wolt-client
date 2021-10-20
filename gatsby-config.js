@@ -2,8 +2,8 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `Wolt GR`,
-    description: `An extensive FAQ page for Wolt Greece's partners.`,
+    title: `Wolt FAQ`,
+    description: `An extensive FAQ page for Wolt's Southern Europe's partners.`,
     author: `@evan-kapantais`,
     siteUrl: `https://wolt-client.netlify.app`,
   },
@@ -30,7 +30,6 @@ module.exports = {
         },
       },
     },
-
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -50,13 +49,26 @@ module.exports = {
           process.env.NODE_ENV === `development`
             ? `http://localhost:1337`
             : `http://wolt-server.herokuapp.com`,
-        collectionTypes: ["section", "news-item"],
+        collectionTypes: [
+          "section",
+          "news-item",
+          "cy-topic",
+          "cy-news-item",
+          "mt-topic",
+          "mt-news-item",
+        ],
         singleTypes: [
           "version",
           "banner-text",
           "banner-image",
           "decorative-image",
           "topics-order",
+          "cy-topics-order",
+          "cy-version",
+          "cy-banner-text",
+          "mt-topics-order",
+          "mt-version",
+          "mt-banner-text",
         ],
         queryLimit: 1000,
       },

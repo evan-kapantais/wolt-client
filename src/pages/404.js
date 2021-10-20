@@ -3,53 +3,14 @@ import { Link } from "gatsby";
 import Seo from "../components/seo";
 
 const NotFoundPage = () => {
-  let interval = null;
-
-  const addOmikrons = e => {
-    const emoji = e.currentTarget.querySelector(".fof-emoji");
-    const span = e.currentTarget.querySelector(".omikron");
-
-    clearInterval(interval);
-
-    emoji.innerText = "😮";
-
-    interval = setInterval(() => {
-      if (span.innerText.length < 10) {
-        span.innerText += "o";
-      }
-    }, 50);
-  };
-
-  const substractOmikrons = e => {
-    const emoji = e.currentTarget.querySelector(".fof-emoji");
-    const span = e.currentTarget.querySelector(".omikron");
-
-    clearInterval(interval);
-
-    emoji.innerText = "😕";
-
-    interval = setInterval(() => {
-      if (span.innerText.length > 1) {
-        span.innerText = span.innerText.slice(0, -1);
-      }
-    }, 50);
-  };
-
   return (
     <section className="fof-page">
       <Seo title="404" />
       <div className="fof-container">
-        <h1
-          className="fof-title"
-          onMouseEnter={addOmikrons}
-          onMouseLeave={substractOmikrons}
-        >
+        <h1 className="fof-title">
           <span className="fof-emoji">😕</span>
-          <br />O
-          <span className="omikron" style={{ fontSize: "inherit" }}>
-            o
-          </span>
-          ps!
+          <br />
+          Oops!
         </h1>
         <p className="fof-subtitle">
           Looks like the page you requested does not exist. <br />

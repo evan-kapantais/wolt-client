@@ -11,6 +11,7 @@ import Seo from "../components/seo";
 import BannerSection from "../components/BannerSection";
 import Loading from "../components/Loading";
 import Menu from "../components/Menu";
+import BackToTop from "../components/BackToTop";
 import ImageOverlay from "../components/ImageOverlay";
 
 // Animation inports
@@ -40,24 +41,25 @@ const IndexPage = ({ data }) => {
   const [topics, setTopics] = useState([]);
 
   // Sourced content
-  const topicsOrder = data.strapiTopicsOrder.order.split("\n");
-  const newsItems = data.allStrapiNewsItem.edges;
+  const topicsOrder = data.strapiMtTopicsOrder.order.split("\n");
+  const newsItems = data.allStrapiMtNewsItem.edges;
   const decoImage = getImage(data.strapiDecorativeImage.image.localFile);
 
   // Order topics on load
   useEffect(() => {
-    const topics = data.allStrapiSection.edges;
-    const orderedTopics = [];
+    const topics = data.allStrapiMtTopic.edges;
+    // const orderedTopics = [];
+    setTopics(topics);
 
-    topicsOrder.forEach(title => {
-      const found = topics.find(topic => topic.node.title === title);
+    // topicsOrder.forEach(title => {
+    //   const found = topics.find(topic => topic.node.title === title);
 
-      if (found) {
-        orderedTopics.push(found);
-      }
-    });
+    //   if (found) {
+    //     orderedTopics.push(found);
+    //   }
+    // });
 
-    setTopics([...orderedTopics]);
+    // setTopics([...orderedTopics]);
     setIsLoading(false);
   }, []);
 
@@ -135,7 +137,7 @@ const IndexPage = ({ data }) => {
         <>
           <BannerSection
             data={data}
-            country={{ symbol: "Gr", name: "Greece" }}
+            country={{ symbol: "Mt", name: "Malta" }}
           />
           <Suspense fallback={<div>Loading...</div>}>
             <NewsSection newsItems={newsItems} />
@@ -161,7 +163,7 @@ const IndexPage = ({ data }) => {
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
           />
-          {/* <BackToTop /> */}
+          <BackToTop />
         </>
       )}
     </Layout>
@@ -170,12 +172,11 @@ const IndexPage = ({ data }) => {
 
 export const data = graphql`
   query {
-    allStrapiSection(sort: { fields: strapiId, order: ASC }) {
+    allStrapiMtTopic(sort: { fields: strapiId, order: ASC }) {
       edges {
         node {
-          strapiId
-          emoji
           title
+          emoji
           section {
             content
             title
@@ -183,10 +184,10 @@ export const data = graphql`
         }
       }
     }
-    strapiTopicsOrder {
+    strapiMtTopicsOrder {
       order
     }
-    strapiBannerText {
+    strapiMtBannerText {
       text
     }
     strapiBannerImage {
@@ -198,7 +199,7 @@ export const data = graphql`
         }
       }
     }
-    allStrapiNewsItem {
+    allStrapiMtNewsItem {
       edges {
         node {
           title
@@ -215,7 +216,7 @@ export const data = graphql`
         }
       }
     }
-    strapiVersion {
+    strapiMtVersion {
       date(formatString: "MMMM, YYYY")
     }
   }
