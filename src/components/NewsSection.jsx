@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import NewsItem from "./NewsItem";
+import { scrollNews, showNews } from "../utils/animations";
 
 const NewsSection = ({ newsItems }) => {
   const isGreekPage =
     typeof window !== "undefined" && window.location.pathname === "/";
 
   const areThereNews = newsItems.length >= 1 && newsItems[0].node.title !== "";
+
+  // Add scroll event listeners
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", showNews);
+      window.addEventListener("scroll", scrollNews);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", showNews);
+      window.removeEventListener("scroll", scrollNews);
+    };
+  }, []);
 
   return (
     <section id="news">

@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "gatsby";
+import { showAside } from "../utils/animations";
 
 const Aside = ({ topics }) => {
+  // Add scroll event listeners
+  useEffect(() => {
+    typeof window !== "undefined" &&
+      window.addEventListener("scroll", showAside);
+
+    return () => {
+      window.removeEventListener("scroll", showAside);
+    };
+  }, []);
+
   const getLink = topic =>
     `#${topic.node.title.toLowerCase().replace(/\s/g, "-")}`;
 

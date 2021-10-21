@@ -138,7 +138,7 @@ const showTopicButtons = () => {
   }
 };
 
-const showAside = () => {
+export const showAside = () => {
   const items = document.querySelectorAll(".aside-list-item");
 
   if (items) {
@@ -158,19 +158,19 @@ const showAside = () => {
   }
 };
 
-const showDeco = () => {
+export const showDeco = () => {
   const decoImage = document.querySelector(".deco-image");
 
   const showtime = decoImage.getBoundingClientRect().top - 700;
   showtime <= 0 && decoImage.classList.add("active");
 };
 
-const scrollDeco = () => {
+export const scrollDeco = () => {
   const deco = document.querySelector(".deco-image");
   deco.style.objectPosition = `center ${window.scrollY / 30}%`;
 };
 
-const showNews = () => {
+export const showNews = () => {
   const newsContainer = document.querySelector(".news-container");
   const phone = document.querySelector(".phone-deco");
 
@@ -185,7 +185,7 @@ const showNews = () => {
   }
 };
 
-const scrollNews = () => {
+export const scrollNews = () => {
   const phone = document.querySelector(".phone-deco");
 
   if (phone && phone.classList.contains("active")) {
@@ -200,11 +200,7 @@ export const handleScroll = () => {
   showSections();
   showTopicButtons();
   showAside();
-  showDeco();
-  scrollDeco();
   scrollBanner();
-  showNews();
-  scrollNews();
 };
 
 // Sections
