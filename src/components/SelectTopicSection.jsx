@@ -3,10 +3,13 @@ import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
 const SelectTopicSection = ({ topics }) => {
+  const isGreekPage =
+    typeof window !== "undefined" && window.location.pathname === "/";
+
   return (
     <section id="select-topic" className="large-topics">
       <div>
-        <h2>Διάλεξε κατηγορία..</h2>
+        <h2>{isGreekPage ? "Διάλεξε κατηγορία.." : "Select a category.."}</h2>
         <ul className="large-topics-grid">
           {topics.map((topic, i) => (
             <li key={i} className="topic-item">
@@ -20,7 +23,9 @@ const SelectTopicSection = ({ topics }) => {
             </li>
           ))}
         </ul>
-        <h2>..ή συνέχισε παρακάτω.</h2>
+        <h2>
+          {isGreekPage ? "..ή συνέχισε παρακάτω." : "..or keep scrolling."}
+        </h2>
         <Link to="#topics" className="scroll-link">
           <StaticImage
             src="../images/chevron-up-black.svg"

@@ -15,14 +15,8 @@ import BackToTop from "../components/BackToTop";
 import ImageOverlay from "../components/ImageOverlay";
 
 // Animation inports
-import {
-  animateBanner,
-  handleScroll,
-  stickHeader,
-  animateMenu,
-  animateHeader,
-  showBackToTop,
-} from "../utils/animations";
+import { animateBanner, animateMenu, animateHeader } from "../utils/animations";
+import { initListeners, setDocumentOverflow } from "../utils/helpers";
 
 // Dynamic imports
 const Topic = lazy(() => import("../components/Topic"));
@@ -48,28 +42,23 @@ const IndexPage = ({ data }) => {
   // Order topics on load
   useEffect(() => {
     const topics = data.allStrapiCyTopic.edges;
-    // const orderedTopics = [];
-    setTopics(topics);
+    const orderedTopics = [];
 
-    // topicsOrder.forEach(title => {
-    //   const found = topics.find(topic => topic.node.title === title);
+    topicsOrder.forEach(title => {
+      const found = topics.find(topic => topic.node.title === title);
 
-    //   if (found) {
-    //     orderedTopics.push(found);
-    //   }
-    // });
+      if (found) {
+        orderedTopics.push(found);
+      }
+    });
 
-    // setTopics([...orderedTopics]);
+    setTopics([...orderedTopics]);
     setIsLoading(false);
   }, []);
 
   // Init event listeners after loading
   useEffect(() => {
-    if (typeof window !== "undefined" && !isLoading) {
-      window.addEventListener("scroll", showBackToTop);
-      window.addEventListener("scroll", stickHeader);
-      window.addEventListener("scroll", handleScroll);
-    }
+    initListeners(isLoading);
   }, [isLoading]);
 
   // Focus the images after loading has finished
@@ -89,16 +78,7 @@ const IndexPage = ({ data }) => {
 
   // Cotrol document overflow && menu
   useEffect(() => {
-    if (!isLoading) {
-      const html = window.document.querySelector("html");
-
-      isMenuOpen
-        ? (html.style.overflowY = "hidden")
-        : (html.style.overflowY = "scroll");
-
-      animateHeader(isMenuOpen);
-      animateMenu(isMenuOpen);
-    }
+    setDocumentOverflow(isLoading, isMenuOpen);
   }, [isMenuOpen, isLoading]);
 
   // Remove empty elements after loading has finished

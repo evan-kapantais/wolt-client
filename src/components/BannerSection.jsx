@@ -34,7 +34,7 @@ const BannerSection = ({ data, country }) => {
       <div className="large-banner__inner">
         <div className="large-banner__text-wrapper">
           <div className="version">
-            <span>Latest Version</span>
+            <span>Version</span>
             <span>{getVersion()}</span>
           </div>
           <div className="large-banner__text">
