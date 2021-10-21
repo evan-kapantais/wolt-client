@@ -7,6 +7,10 @@ const NewsSection = ({ newsItems }) => {
   const isGreekPage =
     typeof window !== "undefined" && window.location.pathname === "/";
 
+  const areThereNews =
+    (newsItems.length === 1 && newsItems[0].node.title !== "empty") ||
+    newsItems[0].node.title === " ";
+
   return (
     <section id="news">
       <StaticImage
@@ -17,7 +21,7 @@ const NewsSection = ({ newsItems }) => {
       />
       <div className="news-container">
         <h1 className="news-title">{isGreekPage ? "Τα Νέα Μας" : "News"}</h1>
-        {newsItems.length > 0 ? (
+        {areThereNews ? (
           newsItems.map((newsItem, i) => (
             <React.Fragment key={i}>
               <NewsItem newsItem={newsItem} />

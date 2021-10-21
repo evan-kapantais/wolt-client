@@ -48,18 +48,17 @@ const IndexPage = ({ data }) => {
   // Order topics on load
   useEffect(() => {
     const topics = data.allStrapiMtTopic.edges;
-    // const orderedTopics = [];
-    setTopics(topics);
+    const orderedTopics = [];
 
-    // topicsOrder.forEach(title => {
-    //   const found = topics.find(topic => topic.node.title === title);
+    topicsOrder.forEach(title => {
+      const found = topics.find(topic => topic.node.title === title);
 
-    //   if (found) {
-    //     orderedTopics.push(found);
-    //   }
-    // });
+      if (found) {
+        orderedTopics.push(found);
+      }
+    });
 
-    // setTopics([...orderedTopics]);
+    setTopics([...orderedTopics]);
     setIsLoading(false);
   }, []);
 
@@ -130,7 +129,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
-      <Seo title="FAQ" />
+      <Seo title=" Malta FAQ" />
       {isLoading ? (
         <Loading />
       ) : (
@@ -163,7 +162,6 @@ const IndexPage = ({ data }) => {
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
           />
-          <BackToTop />
         </>
       )}
     </Layout>

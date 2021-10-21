@@ -110,7 +110,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}>
-      <Seo title="FAQ" />
+      <Seo title="Cyprus FAQ" />
       {isLoading ? (
         <Loading />
       ) : (
@@ -143,7 +143,6 @@ const IndexPage = ({ data }) => {
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
           />
-          <BackToTop />
         </>
       )}
     </Layout>

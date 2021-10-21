@@ -2,7 +2,7 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `Wolt FAQ`,
+    title: `Wolt`,
     description: `An extensive FAQ page for Wolt's Southern Europe's partners.`,
     author: `@evan-kapantais`,
     siteUrl: `https://wolt-client.netlify.app`,
