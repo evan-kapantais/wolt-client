@@ -720,6 +720,10 @@ img {
   padding: 8rem 1rem;
 }
 
+#news[data-news="false"] {
+  display: none;
+}
+
 .news-container {
   position: relative;
   max-width: 1200px;
