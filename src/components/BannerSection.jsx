@@ -66,7 +66,10 @@ const BannerSection = ({ data, country }) => {
           </div>
         </div>
       </div>
-      <Link to="#news" className="scroll-link scroll-link__banner">
+      <Link
+        to={"#news" || "#select-topic"}
+        className="scroll-link scroll-link__banner"
+      >
         <p>{country.symbol === "Gr" ? "Ξεκίνα Εδώ" : "Start Here"}</p>
         <StaticImage
           src="../images/chevron-up-black.svg"

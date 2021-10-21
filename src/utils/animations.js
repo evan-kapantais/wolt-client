@@ -141,22 +141,20 @@ const showTopicButtons = () => {
 const showAside = () => {
   const items = document.querySelectorAll(".aside-list-item");
 
-  if (!items) {
-    return;
-  }
+  if (items) {
+    for (let i = 0; i < items.length; ++i) {
+      items[i].style.transitionDelay = `${i * 100}ms`;
+    }
 
-  for (let i = 0; i < items.length; ++i) {
-    items[i].style.transitionDelay = `${i * 100}ms`;
-  }
+    const showtime = items[items.length - 1]?.getBoundingClientRect().top - 900;
 
-  const showtime = items[items.length - 1].getBoundingClientRect().top - 900;
+    if (showtime <= 0) {
+      items.forEach(item => item.classList.add("active"));
+    }
 
-  if (showtime <= 0) {
-    items.forEach(item => item.classList.add("active"));
-  }
-
-  if (items[items.length - 1].classList.contains("active")) {
-    window.document.removeEventListener("scroll", showAside);
+    if (items[items.length - 1]?.classList.contains("active")) {
+      window.document.removeEventListener("scroll", showAside);
+    }
   }
 };
 
@@ -176,16 +174,21 @@ const showNews = () => {
   const newsContainer = document.querySelector(".news-container");
   const phone = document.querySelector(".phone-deco");
 
-  const showtime = newsContainer.getBoundingClientRect().top - 700;
-  const phoneShowtime = phone.getBoundingClientRect().top - 700;
-  showtime <= 0 && newsContainer.classList.add("active");
-  phoneShowtime <= 0 && phone.classList.add("active");
+  if (newsContainer) {
+    const showtime = newsContainer.getBoundingClientRect().top - 700;
+    showtime <= 0 && newsContainer.classList.add("active");
+  }
+
+  if (phone) {
+    const phoneShowtime = phone.getBoundingClientRect().top - 700;
+    phoneShowtime <= 0 && phone.classList.add("active");
+  }
 };
 
 const scrollNews = () => {
   const phone = document.querySelector(".phone-deco");
 
-  if (phone.classList.contains("active")) {
+  if (phone && phone.classList.contains("active")) {
     setTimeout(() => {
       phone.style.transitionDelay = "0ms";
     }, 2500);
