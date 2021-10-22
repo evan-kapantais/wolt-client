@@ -7,7 +7,11 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <header className="layout-header">
       <div className="header-container">
-        <Link to="/" className="brand" onClick={() => setIsMenuOpen(false)}>
+        <Link
+          to={typeof window !== "undefined" ? window.location.pathname : "#"}
+          className="brand"
+          onClick={() => setIsMenuOpen(false)}
+        >
           <img id="logo" src={logo} alt="wolt logo" data-nofocus />
         </Link>
         <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
