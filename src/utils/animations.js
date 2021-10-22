@@ -79,7 +79,7 @@ export const stickHeader = () => {
 
 // Animate on scroll
 
-const scrollBanner = () => {
+export const scrollBanner = () => {
   const textWrapper = document.querySelector(".large-banner__text-wrapper");
   const imageWrapper = document.querySelector(".image-wrapper");
   const heading = document.querySelector(".large-banner__heading");
@@ -99,7 +99,7 @@ const scrollBanner = () => {
   heading.style.opacity = 1 - window.scrollY / 400;
 };
 
-const showSections = () => {
+export const showSections = () => {
   const sections = document.querySelectorAll(".section");
 
   sections.forEach(section => {
@@ -119,7 +119,7 @@ const showSections = () => {
   }
 };
 
-const showTopicButtons = () => {
+export const showTopicButtons = () => {
   const topics = document.querySelectorAll(".large-topics-grid li");
 
   for (let i = 0; i < topics.length; ++i) {
@@ -197,10 +197,7 @@ export const scrollNews = () => {
 };
 
 export const handleScroll = () => {
-  showSections();
-  showTopicButtons();
-  showAside();
-  scrollBanner();
+  // showSections();
 };
 
 // Sections

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import { showTopicButtons } from "../utils/animations";
 
 const SelectTopicSection = ({ topics }) => {
   const isGreekPage =
     typeof window !== "undefined" && window.location.pathname === "/";
+
+  // Add scroll event listener
+  useEffect(() => {
+    typeof window !== "undefined" &&
+      window.addEventListener("scroll", showTopicButtons);
+
+    return () => {
+      window.removeEventListener("scroll", showTopicButtons);
+    };
+  }, []);
 
   return (
     <section id="select-topic" className="large-topics">

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Link, StaticQuery, graphql } from "gatsby";
+import { Link } from "gatsby";
+import { scrollBanner } from "../utils/animations";
 
 const BannerSection = ({ data, country }) => {
   const bannerImage = getImage(data.strapiBannerImage.image.localFile);
@@ -28,6 +29,16 @@ const BannerSection = ({ data, country }) => {
         return data.strapiBannerText.text;
     }
   };
+
+  // Add scroll event listener
+  useEffect(() => {
+    typeof window !== "undefined" &&
+      window.addEventListener("scroll", scrollBanner);
+
+    return () => {
+      window.removeEventListener("scroll", scrollBanner);
+    };
+  }, []);
 
   return (
     <section className="large-banner">

@@ -11,21 +11,20 @@ import Seo from "../components/seo";
 import BannerSection from "../components/BannerSection";
 import Loading from "../components/Loading";
 import Menu from "../components/Menu";
-import BackToTop from "../components/BackToTop";
 import ImageOverlay from "../components/ImageOverlay";
 
 // Animation inports
-import { animateBanner, animateMenu, animateHeader } from "../utils/animations";
-import { initListeners, setDocumentOverflow } from "../utils/helpers";
+import { animateBanner, showBackToTop, stickHeader } from "../utils/animations";
+import { setDocumentOverflow } from "../utils/helpers";
 
 // Dynamic imports
-const Topic = lazy(() => import("../components/Topic"));
 const Aside = lazy(() => import("../components/Aside"));
 const SelectTopicSection = lazy(() =>
   import("../components/SelectTopicSection")
 );
 const DecoSection = lazy(() => import("../components/DecoSection"));
 const NewsSection = lazy(() => import("../components/NewsSection"));
+const FAQSection = lazy(() => import("../components/FAQSection"));
 
 const IndexPage = ({ data }) => {
   // State
@@ -58,7 +57,10 @@ const IndexPage = ({ data }) => {
 
   // Init event listeners after loading
   useEffect(() => {
-    initListeners(isLoading);
+    if (typeof window !== "undefined" && !isLoading) {
+      window.addEventListener("scroll", showBackToTop);
+      window.addEventListener("scroll", stickHeader);
+    }
   }, [isLoading]);
 
   // Focus the images after loading has finished
@@ -125,13 +127,7 @@ const IndexPage = ({ data }) => {
             <DecoSection decoImage={decoImage} />
             <section id="main-content">
               <Aside topics={topics} />
-              <section id="topics" className="topics-section">
-                <div id="center-container">
-                  {topics.map((topic, i) => (
-                    <Topic key={i} topic={topic} />
-                  ))}
-                </div>
-              </section>
+              <FAQSection topics={topics} />
               <div></div>
             </section>
           </Suspense>

@@ -1,5 +1,4 @@
 import {
-  handleScroll,
   stickHeader,
   showBackToTop,
   animateMenu,
@@ -24,7 +23,6 @@ export const initListeners = isLoading => {
   if (typeof window !== "undefined" && !isLoading) {
     window.addEventListener("scroll", showBackToTop);
     window.addEventListener("scroll", stickHeader);
-    window.addEventListener("scroll", handleScroll);
   }
 };
 

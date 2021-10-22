@@ -14,23 +14,17 @@ import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 
 // Animation inports
-import {
-  animateBanner,
-  handleScroll,
-  stickHeader,
-  animateMenu,
-  animateHeader,
-  showBackToTop,
-} from "../utils/animations";
+import { animateBanner, stickHeader, showBackToTop } from "../utils/animations";
+import { setDocumentOverflow } from "../utils/helpers";
 
 // Dynamic imports
-const Topic = lazy(() => import("../components/Topic"));
 const Aside = lazy(() => import("../components/Aside"));
 const SelectTopicSection = lazy(() =>
   import("../components/SelectTopicSection")
 );
 const DecoSection = lazy(() => import("../components/DecoSection"));
 const NewsSection = lazy(() => import("../components/NewsSection"));
+const FAQSection = lazy(() => import("../components/FAQSection"));
 
 const IndexPage = ({ data }) => {
   // State
@@ -66,7 +60,6 @@ const IndexPage = ({ data }) => {
     if (typeof window !== "undefined" && !isLoading) {
       window.addEventListener("scroll", showBackToTop);
       window.addEventListener("scroll", stickHeader);
-      window.addEventListener("scroll", handleScroll);
     }
   }, [isLoading]);
 
@@ -87,16 +80,7 @@ const IndexPage = ({ data }) => {
 
   // Cotrol document overflow && menu
   useEffect(() => {
-    if (!isLoading) {
-      const html = window.document.querySelector("html");
-
-      isMenuOpen
-        ? (html.style.overflowY = "hidden")
-        : (html.style.overflowY = "scroll");
-
-      animateHeader(isMenuOpen);
-      animateMenu(isMenuOpen);
-    }
+    setDocumentOverflow(isLoading, isMenuOpen);
   }, [isMenuOpen, isLoading]);
 
   // Remove empty elements after loading has finished
@@ -143,13 +127,7 @@ const IndexPage = ({ data }) => {
             <DecoSection decoImage={decoImage} />
             <section id="main-content">
               <Aside topics={topics} />
-              <section id="topics" className="topics-section">
-                <div id="center-container">
-                  {topics.map((topic, i) => (
-                    <Topic key={i} topic={topic} />
-                  ))}
-                </div>
-              </section>
+              <FAQSection topics={topics} />
               <div></div>
             </section>
           </Suspense>
