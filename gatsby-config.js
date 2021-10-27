@@ -56,6 +56,7 @@ module.exports = {
           "cy-news-item",
           "mt-topic",
           "mt-news-item",
+          "test-items",
         ],
         singleTypes: [
           "version",

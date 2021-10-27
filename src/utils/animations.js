@@ -265,7 +265,12 @@ export const toggleSection = e => {
 
 export const hoverSection = e => {
   const icon = e.currentTarget.querySelector(".section-title__icon");
+  const tables = e.currentTarget.parentElement.querySelectorAll(".table");
+
   icon.classList.add("section-title__icon--hover");
+  tables.forEach(table => {
+    table.removeAttribute("style");
+  });
 };
 
 export const leaveSection = e => {
