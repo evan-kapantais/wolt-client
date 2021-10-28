@@ -171,13 +171,10 @@ export const showAside = () => {
 export const showDeco = () => {
   const decoImage = document.querySelector(".deco-image");
 
-  const showtime = decoImage.getBoundingClientRect().top - 700;
-  showtime <= 0 && decoImage.classList.add("active");
-};
+  getShowtime(decoImage) <= 0 && decoImage.classList.add("active");
 
-export const scrollDeco = () => {
-  const deco = document.querySelector(".deco-image");
-  deco.style.objectPosition = `center ${window.scrollY / 30}%`;
+  decoImage.classList.contains("active") &&
+    window.removeEventListener("scroll", showDeco);
 };
 
 export const showNews = () => {
