@@ -882,8 +882,7 @@ aside {
   box-shadow: var(--primary-shadow);
   transform: translateY(1rem);
   opacity: 0;
-  will-change: transform;
-  transition: all 500ms var(--animation-curve);
+  transition: all 400ms var(--animation-curve);
 }
 
 .section.active {

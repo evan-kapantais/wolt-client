@@ -1,6 +1,16 @@
-// Variables
+// Helpers
 const getShowtime = element =>
   element.getBoundingClientRect().top - window.innerHeight;
+
+const removeTableStyles = tables => {
+  tables.forEach(table => {
+    const elements = table.querySelectorAll("*");
+
+    table.removeAttribute("style");
+
+    elements.forEach(element => element.removeAttribute("style"));
+  });
+};
 
 // Animate items on menu open
 
@@ -173,6 +183,9 @@ export const scrollDeco = () => {
 export const showNews = () => {
   const newsContainer = document.querySelector(".news-container");
   const phone = document.querySelector(".phone-deco");
+  const tables = newsContainer.querySelectorAll(".table");
+
+  tables.length > 0 && removeTableStyles(tables);
 
   if (newsContainer) {
     const showtime = newsContainer.getBoundingClientRect().top - 700;
@@ -227,16 +240,6 @@ const collapseAll = () => {
   allSectionTitles.forEach(st => st.classList.remove("active"));
 
   resetAllIcons();
-};
-
-const removeTableStyles = tables => {
-  tables.forEach(table => {
-    const elements = table.querySelectorAll("*");
-
-    table.removeAttribute("style");
-
-    elements.forEach(element => element.removeAttribute("style"));
-  });
 };
 
 export const toggleSection = e => {
