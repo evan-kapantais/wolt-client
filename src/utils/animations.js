@@ -229,6 +229,16 @@ const collapseAll = () => {
   resetAllIcons();
 };
 
+const removeTableStyles = tables => {
+  tables.forEach(table => {
+    const elements = table.querySelectorAll("*");
+
+    table.removeAttribute("style");
+
+    elements.forEach(element => element.removeAttribute("style"));
+  });
+};
+
 export const toggleSection = e => {
   const title = e.currentTarget;
   const content = title.nextElementSibling;
@@ -268,9 +278,8 @@ export const hoverSection = e => {
   const tables = e.currentTarget.parentElement.querySelectorAll(".table");
 
   icon.classList.add("section-title__icon--hover");
-  tables.forEach(table => {
-    table.removeAttribute("style");
-  });
+
+  tables.length > 0 && removeTableStyles(tables);
 };
 
 export const leaveSection = e => {
