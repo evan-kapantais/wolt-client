@@ -34,7 +34,6 @@ const BannerSection = ({ data, country }) => {
   useEffect(() => {
     typeof window !== "undefined" &&
       window.addEventListener("scroll", scrollBanner);
-
     return () => {
       window.removeEventListener("scroll", scrollBanner);
     };

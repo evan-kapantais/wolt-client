@@ -95,17 +95,17 @@ export const scrollBanner = () => {
   const heading = document.querySelector(".large-banner__heading");
   const people = document.querySelector(".large-banner__people");
 
-  textWrapper.style.transform = `translateY(-${window.scrollY / 5}px)`;
+  textWrapper.style.transform = `translateY(-${window.scrollY / 20}px)`;
 
   imageWrapper.style.transform = `translateY(${
-    window.innerWidth > 1260 ? "-50%" : "-5rem"
-  }) translateX(${window.scrollY / 5}px)`;
+    window.innerWidth > 1260 ? "-50%" : "-6rem"
+  }) translateX(${window.scrollY / 20}px)`;
 
   people.style.transitionDelay = "0ms";
-  people.style.bottom = `-${window.scrollY / 8 + 50}px`;
+  people.style.bottom = `-${window.scrollY / 10 + 50}px`;
 
   heading.style.transitionDelay = "0ms";
-  heading.style.transform = `translateX(-${window.scrollY / 5}px)`;
+  heading.style.transform = `translateX(-${window.scrollY / 20}px)`;
   heading.style.opacity = 1 - window.scrollY / 400;
 };
 
