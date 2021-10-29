@@ -33,7 +33,9 @@ const BannerSection = ({ data, country }) => {
   // Add scroll event listener
   useEffect(() => {
     typeof window !== "undefined" &&
+      window.innerWidth > 560 &&
       window.addEventListener("scroll", scrollBanner);
+
     return () => {
       window.removeEventListener("scroll", scrollBanner);
     };
@@ -75,19 +77,19 @@ const BannerSection = ({ data, country }) => {
             />
           </div>
         </div>
+        <Link
+          to={"#news" || "#select-topic"}
+          className="scroll-link scroll-link__banner"
+        >
+          <p>{country.symbol === "Gr" ? "Ξεκίνα Εδώ" : "Start Here"}</p>
+          <StaticImage
+            src="../images/scroll-arrow.svg"
+            alt="scroll arrow"
+            className="scroll-arrow__banner"
+            data-nofocus
+          />
+        </Link>
       </div>
-      <Link
-        to={"#news" || "#select-topic"}
-        className="scroll-link scroll-link__banner"
-      >
-        <p>{country.symbol === "Gr" ? "Ξεκίνα Εδώ" : "Start Here"}</p>
-        <StaticImage
-          src="../images/chevron-up-black.svg"
-          alt="back to top icon"
-          className="scroll-arrow"
-          data-nofocus
-        />
-      </Link>
     </section>
   );
 };

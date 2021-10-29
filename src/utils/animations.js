@@ -306,6 +306,7 @@ export const animateBanner = () => {
   const pars = document.querySelectorAll(".large-banner p");
   const people = document.querySelector(".large-banner__people");
   const version = document.querySelector(".version");
+  const scrollArrow = document.querySelector(".scroll-arrow__banner");
 
   imageWrapper.classList.add("active");
   textWrapper.classList.add("active");
@@ -313,4 +314,5 @@ export const animateBanner = () => {
   pars.forEach(par => par.classList.add("active"));
   people.classList.add("active");
   version.classList.add("active");
+  scrollArrow.classList.add("active");
 };
