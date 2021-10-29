@@ -101,10 +101,8 @@ export const scrollBanner = () => {
     window.innerWidth > 1260 ? "-50%" : "-6rem"
   }) translateX(${window.scrollY / 20}px)`;
 
-  people.style.transitionDelay = "0ms";
   people.style.bottom = `-${window.scrollY / 10 + 50}px`;
 
-  heading.style.transitionDelay = "0ms";
   heading.style.transform = `translateX(-${window.scrollY / 20}px)`;
   heading.style.opacity = 1 - window.scrollY / 400;
 };
@@ -156,11 +154,8 @@ export const showAside = () => {
       items[i].style.transitionDelay = `${i * 100}ms`;
     }
 
-    const showtime = items[items.length - 1]?.getBoundingClientRect().top - 900;
-
-    if (showtime <= 0) {
+    getShowtime(items[items.length - 1]) <= 0 &&
       items.forEach(item => item.classList.add("active"));
-    }
 
     if (items[items.length - 1]?.classList.contains("active")) {
       window.document.removeEventListener("scroll", showAside);
@@ -184,14 +179,15 @@ export const showNews = () => {
 
   tables.length > 0 && removeTableStyles(tables);
 
-  if (newsContainer) {
-    const showtime = newsContainer.getBoundingClientRect().top - 700;
-    showtime <= 0 && newsContainer.classList.add("active");
-  }
+  newsContainer &&
+    getShowtime(newsContainer) <= 0 &&
+    newsContainer.classList.add("active");
 
   if (phone) {
-    const phoneShowtime = phone.getBoundingClientRect().top - 700;
-    phoneShowtime <= 0 && phone.classList.add("active");
+    setTimeout(() => {
+      phone.style.transitionDelay = "0ms";
+    }, 2500);
+    getShowtime(phone) <= 0 && phone.classList.add("active");
   }
 };
 
@@ -199,15 +195,8 @@ export const scrollNews = () => {
   const phone = document.querySelector(".phone-deco");
 
   if (phone && phone.classList.contains("active")) {
-    setTimeout(() => {
-      phone.style.transitionDelay = "0ms";
-    }, 2500);
     phone.style.bottom = `${8 + window.scrollY / 500}rem`;
   }
-};
-
-export const handleScroll = () => {
-  // showSections();
 };
 
 // Sections
@@ -315,4 +304,9 @@ export const animateBanner = () => {
   people.classList.add("active");
   version.classList.add("active");
   scrollArrow.classList.add("active");
+
+  setTimeout(() => {
+    heading.style.transitionDelay = "0ms";
+    people.style.transitionDelay = "0ms";
+  }, 2000);
 };
