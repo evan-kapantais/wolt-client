@@ -44,11 +44,6 @@ const focusImage = image => {
 
   const imageElement = image.cloneNode(true);
 
-  // Container approach
-  // const container = document.querySelector(".image-overlay__container");
-  // container.prepend(imageElement);
-
-  // Overlay approach
   overlay.appendChild(imageElement);
 
   overlay.classList.add("active");

@@ -24,7 +24,6 @@ const ImageOverlay = () => {
   // Hide overlay
   const close = e => {
     const overlay = e.currentTarget;
-    // const container = overlay.querySelector(".image-overlay__container");
 
     if (e.target !== overlay && e.target.type !== "button") {
       return;
