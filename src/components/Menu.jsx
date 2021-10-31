@@ -24,7 +24,7 @@ const Menu = ({ topics, setIsMenuOpen }) => {
           </li>
         ))}
       </ul>
-      <img className="menu-deco" src={people} alt="wolt people" data-nofocus />
+      <img className="menu-deco" src={people} alt="wolt people" />
       <footer className="menu-footer">
         <p>© Wolt, {new Date().getFullYear()}</p>
       </footer>

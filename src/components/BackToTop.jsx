@@ -12,7 +12,6 @@ const BackToTop = () => {
       <StaticImage
         src="../images/chevron-up-black.svg"
         alt="back to top arrow"
-        data-nofocus
       />
     </button>
   );

@@ -17,8 +17,8 @@ const Section = ({ section }) => {
       >
         <h2 className="section-title">
           <div className="section-title__icon">
-            <img src={dashVer} alt="sign dash" data-nofocus />
-            <img src={dashHor} alt="sign dash" data-nofocus />
+            <img src={dashVer} alt="sign dash" />
+            <img src={dashHor} alt="sign dash" />
           </div>
           {section.title}
         </h2>

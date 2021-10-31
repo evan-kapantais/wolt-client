@@ -29,7 +29,6 @@ const FAQSection = lazy(() => import("../components/FAQSection"));
 const IndexPage = ({ data }) => {
   // State
   const [isLoading, setIsLoading] = useState(true);
-  const [imageSource, setImageSource] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [topics, setTopics] = useState([]);
 
@@ -60,21 +59,6 @@ const IndexPage = ({ data }) => {
     if (typeof window !== "undefined" && !isLoading) {
       window.addEventListener("scroll", showBackToTop);
       window.addEventListener("scroll", stickHeader);
-    }
-  }, [isLoading]);
-
-  // Focus the images after loading has finished
-  useEffect(() => {
-    if (!isLoading) {
-      const images = document.querySelectorAll("img");
-
-      images.forEach(image => {
-        if (!image.dataset.nofocus) {
-          image.addEventListener("click", e =>
-            setImageSource(e.currentTarget.src)
-          );
-        }
-      });
     }
   }, [isLoading]);
 
@@ -131,9 +115,7 @@ const IndexPage = ({ data }) => {
               <div></div>
             </section>
           </Suspense>
-          {imageSource && (
-            <ImageOverlay source={imageSource} setSource={setImageSource} />
-          )}
+          <ImageOverlay />
           <Menu
             topics={topics}
             isMenuOpen={isMenuOpen}

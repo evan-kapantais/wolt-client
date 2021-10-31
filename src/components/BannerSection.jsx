@@ -62,7 +62,6 @@ const BannerSection = ({ data, country }) => {
             <StaticImage
               src="../images/people.png"
               alt="wolt people"
-              data-nofocus
               className="large-banner__people"
             />
           </div>
@@ -73,7 +72,6 @@ const BannerSection = ({ data, country }) => {
               image={bannerImage}
               alt="wolt partner"
               className="banner-image"
-              data-nofocus
             />
           </div>
         </div>
@@ -86,7 +84,6 @@ const BannerSection = ({ data, country }) => {
             src="../images/scroll-arrow.svg"
             alt="scroll arrow"
             className="scroll-arrow__banner"
-            data-nofocus
           />
         </Link>
       </div>

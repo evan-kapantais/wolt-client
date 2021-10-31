@@ -29,7 +29,6 @@ const NewsSection = ({ newsItems }) => {
         src="../images/phone.png"
         alt="phone"
         className="phone-deco"
-        data-nofocus
       />
       <div className="news-container">
         <h1 className="news-title">{isGreekPage ? "Τα Νέα Μας" : "News"}</h1>

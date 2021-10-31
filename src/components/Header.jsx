@@ -12,7 +12,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
           className="brand"
           onClick={() => setIsMenuOpen(false)}
         >
-          <img id="logo" src={logo} alt="wolt logo" data-nofocus />
+          <img id="logo" src={logo} alt="wolt logo" />
         </Link>
         <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <div className="burger-slice" />

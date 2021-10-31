@@ -38,3 +38,30 @@ export const setDocumentOverflow = (isLoading, isMenuOpen) => {
     animateMenu(isMenuOpen);
   }
 };
+
+const focusImage = image => {
+  const overlay = document.querySelector(".image-overlay");
+
+  const imageElement = image.cloneNode(true);
+
+  // Container approach
+  // const container = document.querySelector(".image-overlay__container");
+  // container.prepend(imageElement);
+
+  // Overlay approach
+  overlay.appendChild(imageElement);
+
+  overlay.classList.add("active");
+};
+
+export const addImageListener = section => {
+  const images = section.querySelectorAll(".image");
+
+  images.length > 0 &&
+    images.forEach(image => {
+      if (!image.hasAttribute("data-listening")) {
+        image.setAttribute("data-listening", true);
+        image.addEventListener("click", () => focusImage(image));
+      }
+    });
+};

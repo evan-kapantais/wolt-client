@@ -1,3 +1,5 @@
+import { addImageListener } from "./helpers";
+
 // Helpers
 const getShowtime = element =>
   element.getBoundingClientRect().top - window.innerHeight;
@@ -230,6 +232,7 @@ const collapseAll = () => {
 
 export const toggleSection = e => {
   const title = e.currentTarget;
+  const section = e.currentTarget.parentElement;
   const content = title.nextElementSibling;
   const icon = title.querySelector(".section-title__icon");
   const dashHor = icon.querySelectorAll("img")[1];
@@ -253,6 +256,7 @@ export const toggleSection = e => {
     // Expand section
   } else {
     collapseAll();
+    addImageListener(section);
     icon.classList.add("active");
     icon.classList.remove("section-title__icon--hover");
     dashHor.style.transform = "scale(0)";
@@ -263,8 +267,9 @@ export const toggleSection = e => {
 };
 
 export const hoverSection = e => {
+  const section = e.currentTarget.parentElement;
   const icon = e.currentTarget.querySelector(".section-title__icon");
-  const tables = e.currentTarget.parentElement.querySelectorAll(".table");
+  const tables = section.querySelectorAll(".table");
 
   icon.classList.add("section-title__icon--hover");
 

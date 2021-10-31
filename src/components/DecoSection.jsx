@@ -20,7 +20,6 @@ const DecoSection = ({ decoImage }) => {
         loading="lazy"
         alt="wolt partner"
         className="deco-image"
-        data-nofocus
       />
     </section>
   );

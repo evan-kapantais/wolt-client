@@ -42,7 +42,6 @@ const SelectTopicSection = ({ topics }) => {
             src="../images/chevron-up-black.svg"
             alt="back to top icon"
             className="scroll-arrow"
-            data-nofocus
           />
         </Link>
       </div>

@@ -6,47 +6,26 @@ const BannerSocial = () => {
   return (
     <div className="banner-social">
       <Link className="social-link" to="https://www.facebook.com/WoltGreece/">
-        <img
-          data-nofocus
-          className="social-icon"
-          src={icons.facebook}
-          alt="facebok icon"
-        />
+        <img className="social-icon" src={icons.facebook} alt="facebok icon" />
       </Link>
       <Link className="social-link" to="https://www.instagram.com/wolt.greece/">
         <img
-          data-nofocus
           className="social-icon"
           src={icons.instagram}
           alt="instagram icon"
         />
       </Link>
       <Link className="social-link" to="https://twitter.com/GreeceWolt">
-        <img
-          data-nofocus
-          className="social-icon"
-          src={icons.twitter}
-          alt="twitter icon"
-        />
+        <img className="social-icon" src={icons.twitter} alt="twitter icon" />
       </Link>
       <Link
         className="social-link"
         to="https://www.linkedin.com/company/wolt-oy/"
       >
-        <img
-          data-nofocus
-          className="social-icon"
-          src={icons.linkedin}
-          alt="twitter icon"
-        />
+        <img className="social-icon" src={icons.linkedin} alt="twitter icon" />
       </Link>
       <Link className="social-link" to="https://wolt.com/el/">
-        <img
-          data-nofocus
-          className="social-icon"
-          src={icons.website}
-          alt="twitter icon"
-        />
+        <img className="social-icon" src={icons.website} alt="twitter icon" />
       </Link>
     </div>
   );

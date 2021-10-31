@@ -1,26 +1,61 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-const ImageOverlay = ({ source, setSource }) => {
-  // Show overlay
+import zoomIn from "../images/zoom-in.svg";
+import zoomOut from "../images/zoom-out.svg";
+
+const ImageOverlay = () => {
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  // Zoom figure in / out
   useEffect(() => {
-    const overlay = document.querySelector("#image-overlay");
-    overlay.className = "image-overlay--shown";
-  }, []);
+    const figure = document.querySelector(".image-overlay figure");
+
+    if (!figure) {
+      return;
+    }
+
+    figure.style.transform = `scale(${zoomLevel})`;
+
+    return () => {
+      figure.style.transform = `scale(1)`;
+    };
+  }, [zoomLevel]);
 
   // Hide overlay
   const close = e => {
     const overlay = e.currentTarget;
+    // const container = overlay.querySelector(".image-overlay__container");
 
-    if (e.target !== overlay) {
+    if (e.target !== overlay && e.target.type !== "button") {
       return;
     }
 
-    setSource(null);
+    overlay.removeChild(overlay.lastChild);
+    overlay.classList.remove("active");
   };
 
   return (
-    <div id="image-overlay" onClick={close} onKeyUp={() => {}}>
-      <img src={source} alt="overlay" />
+    <div className="image-overlay" onClick={close} onKeyUp={() => {}}>
+      <button type="button" className="image-overlay__close">
+        ✕
+      </button>
+      <div className="image-overlay__container"></div>
+      <div className="zoom-wrapper">
+        <button
+          type="button"
+          className="zoom-button"
+          onClick={() => setZoomLevel(zoomLevel - 0.1)}
+        >
+          <img src={zoomOut} alt="zoom out" />
+        </button>
+        <button
+          type="button"
+          className="zoom-button"
+          onClick={() => setZoomLevel(zoomLevel + 0.1)}
+        >
+          <img src={zoomIn} alt="zoom in" />
+        </button>
+      </div>
     </div>
   );
 };

@@ -14,7 +14,6 @@ const Social = () => {
       {links[country].facebook && (
         <Link to={links[country].facebook} className="social-link">
           <img
-            data-nofocus
             className="social-icon"
             src={icons.facebook}
             alt="facebok icon"
@@ -24,7 +23,6 @@ const Social = () => {
       {links[country].instagram && (
         <Link to={links[country].instagram} className="social-link">
           <img
-            data-nofocus
             className="social-icon"
             src={icons.instagram}
             alt="instagram icon"
@@ -33,18 +31,12 @@ const Social = () => {
       )}
       {links[country].twitter && (
         <Link to={links[country].twitter} className="social-link">
-          <img
-            data-nofocus
-            className="social-icon"
-            src={icons.twitter}
-            alt="twitter icon"
-          />
+          <img className="social-icon" src={icons.twitter} alt="twitter icon" />
         </Link>
       )}
       {links[country].linkedin && (
         <Link to={links[country].linkedin} className="social-link">
           <img
-            data-nofocus
             className="social-icon"
             src={icons.linkedin}
             alt="linkedin icon"
@@ -53,12 +45,7 @@ const Social = () => {
       )}
       {links[country].site && (
         <Link to={links[country].site} className="social-link">
-          <img
-            data-nofocus
-            className="social-icon"
-            src={icons.website}
-            alt="website icon"
-          />
+          <img className="social-icon" src={icons.website} alt="website icon" />
         </Link>
       )}
     </div>
