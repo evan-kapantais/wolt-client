@@ -15,10 +15,6 @@ const ImageOverlay = () => {
     }
 
     figure.style.transform = `scale(${zoomLevel})`;
-
-    return () => {
-      figure.style.transform = `scale(1)`;
-    };
   }, [zoomLevel]);
 
   // Hide overlay
@@ -38,7 +34,6 @@ const ImageOverlay = () => {
       <button type="button" className="image-overlay__close">
         ✕
       </button>
-      <div className="image-overlay__container"></div>
       <div className="zoom-wrapper">
         <button
           type="button"

@@ -1,4 +1,4 @@
-import { addImageListener } from "./helpers";
+import { addImageListener, formatImages } from "./helpers";
 
 // Helpers
 const getShowtime = element =>
@@ -257,6 +257,7 @@ export const toggleSection = e => {
   } else {
     collapseAll();
     addImageListener(section);
+    formatImages(section);
     icon.classList.add("active");
     icon.classList.remove("section-title__icon--hover");
     dashHor.style.transform = "scale(0)";

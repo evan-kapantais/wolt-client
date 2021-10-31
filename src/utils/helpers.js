@@ -60,3 +60,18 @@ export const addImageListener = section => {
       }
     });
 };
+
+export const formatImages = section => {
+  const images = section.querySelectorAll("figure.image");
+
+  if (images.length === 0) {
+    return;
+  }
+
+  images.forEach(image => {
+    image.className = "image";
+    const hasInlineStyle = image.getAttribute("style");
+
+    hasInlineStyle && image.removeAttribute("style");
+  });
+};
