@@ -75,20 +75,6 @@ body {
   font-feature-settings: "kern", "liga", "clig", "calt";
 }
 
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--wolt-blue);
-  border-radius: var(--button-radius);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--wolt-dark-blue);
-  border-radius: var(--button-radius);
-}
-
 a {
   -webkit-text-decoration-skip: objects;
   text-decoration: none;
