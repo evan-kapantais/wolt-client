@@ -1142,10 +1142,6 @@ figcaption {
     display: block;
   }
 
-  .large-banner__people {
-    display: none;
-  }
-
   .large-banner__text-wrapper {
     padding: 8rem 2rem;
     background: none;
@@ -1155,6 +1151,10 @@ figcaption {
     justify-content: flex-start;
     z-index: 1;
     box-shadow: none;
+  }
+
+  .large-banner__text p {
+    max-width: 500px;
   }
 
   .site-title {
@@ -1184,11 +1184,16 @@ figcaption {
   }
 
   .image-wrapper {
-    transform: unset;
-    min-height: unset;
     width: 100%;
     height: 100%;
-    top: unset;
+    top: 4rem;
+    right: 0;
+    min-height: unset;
+    transform: unset;
+  }
+
+  .image-wrapper.active {
+    top: 0;
   }
 
   .version {
@@ -1287,10 +1292,6 @@ figcaption {
 
   .version {
     left: 2rem;
-  }
-
-  .large-banner__people {
-    display: none;
   }
 
   .scroll-link__banner {
