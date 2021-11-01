@@ -95,15 +95,14 @@ export const scrollBanner = () => {
   const textWrapper = document.querySelector(".large-banner__text-wrapper");
   const imageWrapper = document.querySelector(".image-wrapper");
   const heading = document.querySelector(".large-banner__heading");
-  const people = document.querySelector(".large-banner__people");
 
   textWrapper.style.transform = `translateY(-${window.scrollY / 20}px)`;
 
-  imageWrapper.style.transform = `translateY(${
-    window.innerWidth > 1260 ? "-50%" : "-6rem"
-  }) translateX(${window.scrollY / 20}px)`;
-
-  people.style.bottom = `-${window.scrollY / 10 + 50}px`;
+  if (typeof window !== "undefined" && window.innerWidth > 1260) {
+    imageWrapper.style.transform = `translateY(${
+      window.innerWidth > 1260 ? "-50%" : "-6rem"
+    }) translateX(${window.scrollY / 20}px)`;
+  }
 
   heading.style.transform = `translateX(-${window.scrollY / 20}px)`;
   heading.style.opacity = 1 - window.scrollY / 400;
@@ -299,7 +298,6 @@ export const animateBanner = () => {
   const imageWrapper = document.querySelector(".image-wrapper");
   const heading = document.querySelector(".large-banner__heading");
   const pars = document.querySelectorAll(".large-banner p");
-  const people = document.querySelector(".large-banner__people");
   const version = document.querySelector(".version");
   const scrollArrow = document.querySelector(".scroll-arrow__banner");
 
@@ -307,12 +305,10 @@ export const animateBanner = () => {
   textWrapper.classList.add("active");
   heading.classList.add("active");
   pars.forEach(par => par.classList.add("active"));
-  people.classList.add("active");
   version.classList.add("active");
   scrollArrow.classList.add("active");
 
   setTimeout(() => {
     heading.style.transitionDelay = "0ms";
-    people.style.transitionDelay = "0ms";
   }, 2000);
 };

@@ -46,8 +46,7 @@ const BannerSection = ({ data, country }) => {
       <div className="large-banner__inner">
         <div className="large-banner__text-wrapper">
           <div className="version">
-            <span>Version</span>
-            <span>{getVersion()}</span>
+            <span>✍️ {getVersion()}</span>
           </div>
           <div className="large-banner__text">
             <h1 className="large-banner__heading">
@@ -59,12 +58,18 @@ const BannerSection = ({ data, country }) => {
                 __html: getBannerText(),
               }}
             />
-            <StaticImage
-              src="../images/people.png"
-              alt="wolt people"
-              className="large-banner__people"
-            />
           </div>
+          <Link
+            to={"#news" || "#select-topic"}
+            className="scroll-link scroll-link__banner"
+          >
+            <p>{country.symbol === "Gr" ? "Ξεκίνα Εδώ" : "Start Here"}</p>
+            <StaticImage
+              src="../images/scroll-arrow.svg"
+              alt="scroll arrow"
+              className="scroll-arrow__banner"
+            />
+          </Link>
         </div>
         <div className="large-banner__image-div">
           <div className="image-wrapper">
@@ -75,17 +80,6 @@ const BannerSection = ({ data, country }) => {
             />
           </div>
         </div>
-        <Link
-          to={"#news" || "#select-topic"}
-          className="scroll-link scroll-link__banner"
-        >
-          <p>{country.symbol === "Gr" ? "Ξεκίνα Εδώ" : "Start Here"}</p>
-          <StaticImage
-            src="../images/scroll-arrow.svg"
-            alt="scroll arrow"
-            className="scroll-arrow__banner"
-          />
-        </Link>
       </div>
     </section>
   );
