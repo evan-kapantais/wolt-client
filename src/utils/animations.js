@@ -101,9 +101,7 @@ export const scrollBanner = () => {
   textWrapper.style.transform = `translateY(-${window.scrollY / 20}px)`;
 
   if (typeof window !== "undefined" && window.innerWidth > 1260) {
-    imageWrapper.style.transform = `translateY(${
-      window.innerWidth > 1260 ? "-50%" : "-6rem"
-    }) translateX(${window.scrollY / 20}px)`;
+    imageWrapper.style.transform = `translateX(${window.scrollY / 20}px)`;
   }
 
   heading.style.transform = `translateX(-${window.scrollY / 20}px)`;
@@ -312,5 +310,6 @@ export const animateBanner = () => {
 
   setTimeout(() => {
     heading.style.transitionDelay = "0ms";
+    imageWrapper.style.transitionDelay = "0ms";
   }, 2000);
 };

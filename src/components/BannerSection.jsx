@@ -65,11 +65,56 @@ const BannerSection = ({ data, country }) => {
             className="scroll-link scroll-link__banner"
           >
             <p>{country.symbol === "Gr" ? "Ξεκίνα Εδώ" : "Start Here"}</p>
-            <StaticImage
-              src="../images/scroll-arrow.svg"
-              alt="scroll arrow"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="200"
+              height="32"
+              viewBox="0 0 200 32"
               className="scroll-arrow__banner"
-            />
+            >
+              <defs>
+                <clipPath id="clip-iPhone_XR_XS_Max_11_1">
+                  <rect width="200" height="32" />
+                </clipPath>
+              </defs>
+              <g
+                id="iPhone_XR_XS_Max_11_1"
+                data-name="iPhone XR, XS Max, 11 – 1"
+                clip-path="url(#clip-iPhone_XR_XS_Max_11_1)"
+              >
+                <line
+                  className="arrow-line"
+                  id="Line_7"
+                  data-name="Line 7"
+                  x2="189"
+                  transform="translate(1 1)"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                />
+                <line
+                  className="arrow-line"
+                  id="Line_8"
+                  data-name="Line 8"
+                  y1="30"
+                  transform="translate(190 1)"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                />
+                <line
+                  className="arrow-line"
+                  id="Line_9"
+                  data-name="Line 9"
+                  y1="10"
+                  x2="9"
+                  transform="translate(190 21)"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                />
+              </g>
+            </svg>
           </Link>
         </div>
         <div className="large-banner__image-div">
