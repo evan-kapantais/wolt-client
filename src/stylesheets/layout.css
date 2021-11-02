@@ -565,7 +565,6 @@ img {
   top: 1rem;
   left: 2rem;
   opacity: 0;
-  color: rgba(255, 255, 255, 0.8);
   transition: all 500ms 1600ms;
 }
 
@@ -574,9 +573,12 @@ img {
 }
 
 .version span {
-  display: block;
   font-size: 0.85rem;
-  margin: 0;
+}
+
+.version-emoji {
+  display: inline-block;
+  margin-right: 0.75rem;
 }
 
 .large-banner__heading {
