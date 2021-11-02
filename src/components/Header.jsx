@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import logo from "../images/wolt-logo.png";
+import logo from "../images/logo-circle.svg";
 
 const Header = ({ isMenuOpen, setIsMenuOpen }) => {
   return (

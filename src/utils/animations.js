@@ -14,7 +14,7 @@ const removeTableStyles = tables => {
   });
 };
 
-// Animate items on menu open
+// Animate elements on menu open
 
 const animateMenuItems = isMenuOpen => {
   const menuItems = document.querySelectorAll(".menu-list__item");
@@ -64,9 +64,13 @@ const animateBurger = isMenuOpen => {
 const fixMenuHeader = isMenuOpen => {
   const header = document.querySelector(".layout-header");
 
-  isMenuOpen
-    ? header.classList.add("layout-header--menu")
-    : header.classList.remove("layout-header--menu");
+  if (isMenuOpen) {
+    header.classList.add("layout-header--menu");
+    header.classList.remove("layout-header--scrolled");
+  } else {
+    header.classList.add("layout-header--scrolled");
+    header.classList.remove("layout-header--menu");
+  }
 };
 
 export const animateHeader = isMenuOpen => {
@@ -78,11 +82,9 @@ export const stickHeader = () => {
   const header = document.querySelector(".layout-header");
   const burger = document.querySelector(".burger");
 
-  if (window.scrollY > window.innerHeight * 2) {
-    header.classList.add("layout-header--scrolled");
-  } else {
-    header.classList.remove("layout-header--scrolled");
-  }
+  window.scrollY > window.innerHeight
+    ? header.classList.add("layout-header--scrolled")
+    : header.classList.remove("layout-header--scrolled");
 
   window.scrollY > window.innerHeight
     ? burger.classList.add("burger--scrolled")

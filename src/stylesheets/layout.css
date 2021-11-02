@@ -225,45 +225,63 @@ img {
   width: 100%;
 }
 
+.brand {
+  display: block;
+  width: 80px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 200ms var(--animation-curve);
+}
+
 .layout-header {
+  display: none;
   position: fixed;
-  top: -100px;
+  top: 0;
   left: 0;
   width: 100%;
-  display: none;
-  padding: 2rem 1rem;
-  background: var(--wolt-blue);
+  height: 63px;
+  padding: 1rem;
+  background: #fff;
   z-index: var(--header-index);
-  overflow: hidden;
+  opacity: 0.9;
+  border-radius: 0 0 8px 8px;
+  transform: translateY(calc(-100% - 50px));
   transition: all 200ms;
 }
 
+.layout-header:hover {
+  opacity: 1;
+}
+
 .header-container {
-  max-width: var(--content-max-width);
+  position: relative;
+  max-width: var(--content-max-width-large);
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+}
+
+.layout-header--scrolled {
+  box-shadow: var(--primary-shadow);
+  transform: translateY(0);
 }
 
 .layout-header--menu {
   height: 63px;
   box-shadow: none !important;
   border-radius: 0 !important;
+  opacity: 1 !important;
+  transform: translateY(0);
 }
 
-.layout-header--scrolled {
-  position: fixed;
-  top: 0;
-  padding: 1rem 2rem;
-  height: 63px;
-  box-shadow: var(--primary-shadow);
-  border-radius: 0 0 8px 8px;
+.layout-header--menu .brand {
+  width: 100px;
 }
 
-.brand {
-  display: block;
-  width: 50px;
+.layout-header--menu:hover {
+  opacity: 1 !important;
 }
 
 /* Burger */
@@ -286,6 +304,7 @@ img {
   width: 100%;
   height: 3px;
   background: #fff;
+  background: var(--wolt-blue);
   border-radius: 8px;
   transition: all 300ms var(--animation-curve);
 }
@@ -1131,6 +1150,26 @@ figcaption {
 }
 
 @media only screen and (max-width: 1260px) {
+  .layout-header {
+    display: block;
+  }
+
+  .center-container {
+    padding: 0 1rem;
+  }
+
+  #main-content {
+    display: block;
+  }
+
+  aside {
+    display: none;
+  }
+
+  .back-to-top {
+    display: none;
+  }
+
   .large-banner {
     height: unset;
     padding: 0;
@@ -1213,25 +1252,6 @@ figcaption {
 }
 
 @media only screen and (max-width: 1200px) {
-  .layout-header {
-    display: block;
-  }
-
-  .center-container {
-    padding: 0 1rem;
-  }
-
-  #main-content {
-    display: block;
-  }
-
-  aside {
-    display: none;
-  }
-
-  .back-to-top {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 560px) {
