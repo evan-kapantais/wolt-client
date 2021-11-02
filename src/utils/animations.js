@@ -94,9 +94,9 @@ export const stickHeader = () => {
 // Animate on scroll
 
 export const scrollBanner = () => {
-  const textWrapper = document.querySelector(".large-banner__text-wrapper");
+  const textWrapper = document.querySelector(".banner__text-wrapper");
   const imageWrapper = document.querySelector(".image-wrapper");
-  const heading = document.querySelector(".large-banner__heading");
+  const heading = document.querySelector(".banner__heading-wrapper");
 
   textWrapper.style.transform = `translateY(-${window.scrollY / 20}px)`;
 
@@ -294,22 +294,25 @@ export const showBackToTop = () => {
 // Load animations
 
 export const animateBanner = () => {
-  const textWrapper = document.querySelector(".large-banner__text-wrapper");
+  const textWrapper = document.querySelector(".banner__text-wrapper");
   const imageWrapper = document.querySelector(".image-wrapper");
-  const heading = document.querySelector(".large-banner__heading");
-  const pars = document.querySelectorAll(".large-banner p");
+  const heading = document.querySelector(".banner__heading-wrapper");
+  const pars = document.querySelectorAll(".banner__paragraphs p");
   const version = document.querySelector(".version");
-  const scrollArrow = document.querySelector(".scroll-arrow__banner");
+  const scrollLink = document.querySelector(".scroll-link__banner");
 
   imageWrapper.classList.add("active");
   textWrapper.classList.add("active");
   heading.classList.add("active");
   pars.forEach(par => par.classList.add("active"));
   version.classList.add("active");
-  scrollArrow.classList.add("active");
+  scrollLink.classList.add("active");
 
   setTimeout(() => {
     heading.style.transitionDelay = "0ms";
     imageWrapper.style.transitionDelay = "0ms";
+    pars.forEach(par => (par.style.transitionDelay = "0ms"));
+    version.style.transitionDelay = "0ms";
+    scrollLink.style.transitionDelay = "0ms";
   }, 2000);
 };

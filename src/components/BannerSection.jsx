@@ -42,19 +42,20 @@ const BannerSection = ({ data, country }) => {
   }, []);
 
   return (
-    <section className="large-banner">
-      <div className="large-banner__inner">
-        <div className="large-banner__text-wrapper">
+    <section className="banner">
+      <div className="banner__inner">
+        <div className="banner__text-wrapper">
           <div className="version">
             <span className="version-emoji">✍️</span>
             <span>{getVersion()}</span>
           </div>
-          <div className="large-banner__text">
-            <h1 className="large-banner__heading">
-              {country.symbol === "Gr" ? "Καλωσήρθες στη" : "Welcome To"} <br />{" "}
-              <span className="site-title">Wolt {country.name}</span>
-            </h1>
+          <div className="banner__text">
+            <div className="banner__heading-wrapper">
+              <h1 className="site-title">Wolt {country.name}</h1>
+              <p>Partner FAQ</p>
+            </div>
             <div
+              className="banner__paragraphs"
               dangerouslySetInnerHTML={{
                 __html: getBannerText(),
               }}
@@ -80,7 +81,7 @@ const BannerSection = ({ data, country }) => {
               <g
                 id="iPhone_XR_XS_Max_11_1"
                 data-name="iPhone XR, XS Max, 11 – 1"
-                clip-path="url(#clip-iPhone_XR_XS_Max_11_1)"
+                clipPath="url(#clip-iPhone_XR_XS_Max_11_1)"
               >
                 <line
                   className="arrow-line"
@@ -89,8 +90,8 @@ const BannerSection = ({ data, country }) => {
                   x2="189"
                   transform="translate(1 1)"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeWidth="2"
                 />
                 <line
                   className="arrow-line"
@@ -99,8 +100,8 @@ const BannerSection = ({ data, country }) => {
                   y1="30"
                   transform="translate(190 1)"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeWidth="2"
                 />
                 <line
                   className="arrow-line"
@@ -110,14 +111,14 @@ const BannerSection = ({ data, country }) => {
                   x2="9"
                   transform="translate(190 21)"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeWidth="2"
                 />
               </g>
             </svg>
           </Link>
         </div>
-        <div className="large-banner__image-div">
+        <div className="banner__image-div">
           <div className="image-wrapper">
             <GatsbyImage
               image={bannerImage}
