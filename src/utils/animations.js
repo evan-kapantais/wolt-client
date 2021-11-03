@@ -1,9 +1,8 @@
 import { addImageListener, formatImages } from "./helpers";
 
-const prefersReducedMotion =
-  (typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)")) ||
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reducedMotionQuery = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+);
 
 // Helpers
 const getShowtime = element =>
@@ -99,7 +98,7 @@ export const stickHeader = () => {
 // Animate on scroll
 
 export const scrollBanner = () => {
-  if (!prefersReducedMotion) {
+  if (!reducedMotionQuery.matches) {
     const textWrapper = document.querySelector(".banner__text-wrapper");
     const imageWrapper = document.querySelector(".image-wrapper");
     const heading = document.querySelector(".banner__heading-wrapper");
@@ -116,7 +115,7 @@ export const scrollBanner = () => {
 };
 
 export const showSections = () => {
-  if (!prefersReducedMotion) {
+  if (!reducedMotionQuery.matches) {
     const sections = document.querySelectorAll(".section");
 
     sections.forEach(section => {
@@ -202,7 +201,7 @@ export const showNews = () => {
 };
 
 export const scrollNews = () => {
-  if (!prefersReducedMotion) {
+  if (!reducedMotionQuery.matches) {
     const phone = document.querySelector(".phone-deco");
 
     if (phone && phone.classList.contains("active")) {
@@ -305,7 +304,7 @@ export const showBackToTop = () => {
 // Load animations
 
 export const animateBanner = () => {
-  if (!prefersReducedMotion) {
+  if (!reducedMotionQuery.matches) {
     const textWrapper = document.querySelector(".banner__text-wrapper");
     const imageWrapper = document.querySelector(".image-wrapper");
     const heading = document.querySelector(".banner__heading-wrapper");
