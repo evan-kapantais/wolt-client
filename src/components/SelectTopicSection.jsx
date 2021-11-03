@@ -18,10 +18,10 @@ const SelectTopicSection = ({ topics }) => {
   }, []);
 
   return (
-    <section id="select-topic" className="large-topics">
+    <section id="select-topic" className="topics">
       <div>
         <h2>{isGreekPage ? "Διάλεξε κατηγορία.." : "Select a category.."}</h2>
-        <ul className="large-topics-grid">
+        <ul className="topics-grid">
           {topics.map((topic, i) => (
             <li key={i} className="topic-item">
               <Link

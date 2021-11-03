@@ -165,9 +165,11 @@ tr:first-child {
 }
 
 td {
+  font-size: 0.9rem;
   padding: 0.5rem;
 }
 
+td span,
 span {
   font-size: 0.9rem;
 }
@@ -660,7 +662,7 @@ img {
 
 /* Topic Links */
 
-.large-topics {
+.topics {
   width: 100%;
   padding: 4rem 2rem;
   display: flex;
@@ -669,13 +671,13 @@ img {
   text-align: center;
 }
 
-.large-topics h2 {
+.topics h2 {
   margin-bottom: 4rem;
   text-align: center;
   font-weight: 200;
 }
 
-.large-topics-grid {
+.topics-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -705,21 +707,21 @@ img {
   text-decoration: none;
 }
 
-.large-topics-grid li.active {
+.topics-grid li.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-.large-topics-grid li:hover {
+.topics-grid li:hover {
   transform: scale(1.02) translateY(-5px);
   box-shadow: var(--primary-shadow);
 }
 
-.large-topics-grid li:hover div {
+.topics-grid li:hover div {
   animation: shake 300ms var(--animation-curve);
 }
 
-.large-topics-grid li a {
+.topics-grid li a {
   display: block;
   height: 100%;
   width: 100%;
@@ -729,7 +731,7 @@ img {
   color: inherit;
 }
 
-.large-topics-grid li a:hover {
+.topics-grid li a:hover {
   text-decoration: none;
 }
 
@@ -1151,7 +1153,8 @@ figcaption {
   .image-wrapper,
   .version,
   .banner__paragraphs p,
-  .scroll-link__banner {
+  .scroll-link__banner,
+  .section {
     opacity: 1;
     transform: none;
   }
@@ -1164,7 +1167,7 @@ figcaption {
     right: 13rem;
   }
 
-  .large-topics-grid li:hover {
+  .topics-grid li:hover {
     transform: none;
   }
 
@@ -1175,11 +1178,7 @@ figcaption {
 
   .aside-list-item,
   .news-container,
-  .large-topics-grid li {
-    transform: none;
-  }
-
-  .section {
+  .topics-grid li {
     transform: none;
   }
 }
@@ -1255,7 +1254,7 @@ figcaption {
     top: 0;
   }
 
-  .large-topics {
+  .topics {
     padding: 0 2rem 4rem 2rem;
   }
 
@@ -1321,7 +1320,7 @@ figcaption {
     font-size: 4.5rem;
   }
 
-  .large-topics-grid {
+  .topics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1356,7 +1355,7 @@ figcaption {
     margin-right: 1rem;
   }
 
-  .large-topics-grid {
+  .topics-grid {
     grid-template-columns: 1fr;
   }
 }

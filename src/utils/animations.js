@@ -116,27 +116,29 @@ export const scrollBanner = () => {
 };
 
 export const showSections = () => {
-  const sections = document.querySelectorAll(".section");
+  if (!prefersReducedMotion) {
+    const sections = document.querySelectorAll(".section");
 
-  sections.forEach(section => {
-    getShowtime(section) <= 0 && section.classList.add("active");
+    sections.forEach(section => {
+      getShowtime(section) <= 0 && section.classList.add("active");
 
-    // Delete empty elements
-    const contentPars = document.querySelectorAll(".section-content *");
-    contentPars.forEach(par => {
-      if (par.innerHTML === "&nbsp;") {
-        par.remove();
-      }
+      // Delete empty elements
+      const contentPars = document.querySelectorAll(".section-content *");
+      contentPars.forEach(par => {
+        if (par.innerHTML === "&nbsp;") {
+          par.remove();
+        }
+      });
     });
-  });
 
-  if (sections[sections.length - 1]?.classList.contains("active")) {
-    window.document.removeEventListener("scroll", showSections);
+    if (sections[sections.length - 1]?.classList.contains("active")) {
+      window.document.removeEventListener("scroll", showSections);
+    }
   }
 };
 
 export const showTopicButtons = () => {
-  const topics = document.querySelectorAll(".large-topics-grid li");
+  const topics = document.querySelectorAll(".topics-grid li");
 
   for (let i = 0; i < topics.length; ++i) {
     topics[i].style.transitionDelay = `${i * 50}ms`;
