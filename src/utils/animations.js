@@ -1,5 +1,10 @@
 import { addImageListener, formatImages } from "./helpers";
 
+const prefersReducedMotion =
+  (typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)")) ||
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Helpers
 const getShowtime = element =>
   element.getBoundingClientRect().top - window.innerHeight;
@@ -94,18 +99,20 @@ export const stickHeader = () => {
 // Animate on scroll
 
 export const scrollBanner = () => {
-  const textWrapper = document.querySelector(".banner__text-wrapper");
-  const imageWrapper = document.querySelector(".image-wrapper");
-  const heading = document.querySelector(".banner__heading-wrapper");
+  if (!prefersReducedMotion) {
+    const textWrapper = document.querySelector(".banner__text-wrapper");
+    const imageWrapper = document.querySelector(".image-wrapper");
+    const heading = document.querySelector(".banner__heading-wrapper");
 
-  textWrapper.style.transform = `translateY(-${window.scrollY / 20}px)`;
+    textWrapper.style.transform = `translateY(-${window.scrollY / 20}px)`;
 
-  if (typeof window !== "undefined" && window.innerWidth > 1260) {
-    imageWrapper.style.transform = `translateX(${window.scrollY / 20}px)`;
+    if (typeof window !== "undefined" && window.innerWidth > 1260) {
+      imageWrapper.style.transform = `translateX(${window.scrollY / 20}px)`;
+    }
+
+    heading.style.transform = `translateX(-${window.scrollY / 20}px)`;
+    heading.style.opacity = 1 - window.scrollY / 400;
   }
-
-  heading.style.transform = `translateX(-${window.scrollY / 20}px)`;
-  heading.style.opacity = 1 - window.scrollY / 400;
 };
 
 export const showSections = () => {
@@ -193,10 +200,12 @@ export const showNews = () => {
 };
 
 export const scrollNews = () => {
-  const phone = document.querySelector(".phone-deco");
+  if (!prefersReducedMotion) {
+    const phone = document.querySelector(".phone-deco");
 
-  if (phone && phone.classList.contains("active")) {
-    phone.style.bottom = `${8 + window.scrollY / 500}rem`;
+    if (phone && phone.classList.contains("active")) {
+      phone.style.bottom = `${8 + window.scrollY / 500}rem`;
+    }
   }
 };
 
@@ -294,25 +303,27 @@ export const showBackToTop = () => {
 // Load animations
 
 export const animateBanner = () => {
-  const textWrapper = document.querySelector(".banner__text-wrapper");
-  const imageWrapper = document.querySelector(".image-wrapper");
-  const heading = document.querySelector(".banner__heading-wrapper");
-  const pars = document.querySelectorAll(".banner__paragraphs p");
-  const version = document.querySelector(".version");
-  const scrollLink = document.querySelector(".scroll-link__banner");
+  if (!prefersReducedMotion) {
+    const textWrapper = document.querySelector(".banner__text-wrapper");
+    const imageWrapper = document.querySelector(".image-wrapper");
+    const heading = document.querySelector(".banner__heading-wrapper");
+    const pars = document.querySelectorAll(".banner__paragraphs p");
+    const version = document.querySelector(".version");
+    const scrollLink = document.querySelector(".scroll-link__banner");
 
-  imageWrapper.classList.add("active");
-  textWrapper.classList.add("active");
-  heading.classList.add("active");
-  pars.forEach(par => par.classList.add("active"));
-  version.classList.add("active");
-  scrollLink.classList.add("active");
+    imageWrapper.classList.add("active");
+    textWrapper.classList.add("active");
+    heading.classList.add("active");
+    pars.forEach(par => par.classList.add("active"));
+    version.classList.add("active");
+    scrollLink.classList.add("active");
 
-  setTimeout(() => {
-    heading.style.transitionDelay = "0ms";
-    imageWrapper.style.transitionDelay = "0ms";
-    pars.forEach(par => (par.style.transitionDelay = "0ms"));
-    version.style.transitionDelay = "0ms";
-    scrollLink.style.transitionDelay = "0ms";
-  }, 2000);
+    setTimeout(() => {
+      heading.style.transitionDelay = "0ms";
+      imageWrapper.style.transitionDelay = "0ms";
+      pars.forEach(par => (par.style.transitionDelay = "0ms"));
+      version.style.transitionDelay = "0ms";
+      scrollLink.style.transitionDelay = "0ms";
+    }, 2000);
+  }
 };

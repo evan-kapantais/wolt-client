@@ -1146,8 +1146,41 @@ figcaption {
 /* Queries */
 
 @media (prefers-reduced-motion) {
+  .banner__text-wrapper,
+  .banner__heading-wrapper,
+  .image-wrapper,
+  .version,
+  .banner__paragraphs p,
+  .scroll-link__banner {
+    opacity: 1;
+    transform: none;
+  }
+
   .scroll-arrow {
     animation: none;
+  }
+
+  .phone-deco {
+    right: 13rem;
+  }
+
+  .large-topics-grid li:hover {
+    transform: none;
+  }
+
+  .topic-text-link:hover,
+  .topic-text-link:focus {
+    transform: none;
+  }
+
+  .aside-list-item,
+  .news-container,
+  .large-topics-grid li {
+    transform: none;
+  }
+
+  .section {
+    transform: none;
   }
 }
 
