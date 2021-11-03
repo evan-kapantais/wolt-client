@@ -14,7 +14,7 @@ const DecoSection = ({ decoImage }) => {
   }, []);
 
   return (
-    <section className="deco">
+    <section className="deco" aria-hidden="true">
       <GatsbyImage
         image={decoImage}
         loading="lazy"

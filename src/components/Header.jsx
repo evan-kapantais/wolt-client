@@ -14,7 +14,11 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
         >
           <img id="logo" src={logo} alt="wolt logo" />
         </Link>
-        <button className="burger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button
+          className="burger"
+          aria-label="toggle menu"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
           <div className="burger-slice" />
           <div className="burger-slice" />
           <div className="burger-slice" />

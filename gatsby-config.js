@@ -27,7 +27,6 @@ module.exports = {
           quality: 50,
           breakpoints: [370, 560, 1200],
           backgroundColor: `transparent`,
-          loading: "lazy",
         },
       },
     },
@@ -57,7 +56,6 @@ module.exports = {
           "cy-news-item",
           "mt-topic",
           "mt-news-item",
-          // "test-items",
         ],
         singleTypes: [
           "version",

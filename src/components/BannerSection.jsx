@@ -118,7 +118,7 @@ const BannerSection = ({ data, country }) => {
             </svg>
           </Link>
         </div>
-        <div className="banner__image-div">
+        <div className="banner__image-div" aria-hidden="true">
           <div className="image-wrapper">
             <GatsbyImage
               image={bannerImage}

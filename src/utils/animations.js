@@ -1,8 +1,8 @@
 import { addImageListener, formatImages } from "./helpers";
 
-const reducedMotionQuery = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-);
+const reducedMotionQuery =
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)");
 
 // Helpers
 const getShowtime = element =>
