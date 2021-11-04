@@ -218,8 +218,6 @@ img {
   padding: 0 1rem;
 }
 
-/* Layout header */
-
 #layout {
   position: relative;
   background: rgb(247, 247, 247);
@@ -227,14 +225,7 @@ img {
   width: 100%;
 }
 
-.brand {
-  display: block;
-  width: 80px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: top 400ms, width 400ms 200ms var(--animation-curve), left 400ms;
-}
+/* Layout header */
 
 .layout-header {
   display: none;
@@ -242,7 +233,7 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  height: 63px;
+  /* height: 63px; */
   padding: 1rem 2rem;
   background: #fff;
   z-index: var(--header-index);
@@ -271,7 +262,7 @@ img {
 }
 
 .layout-header--menu {
-  height: 63px;
+  height: 52px;
   box-shadow: none !important;
   border-radius: 0 !important;
   opacity: 1 !important;
@@ -284,6 +275,15 @@ img {
 
 .layout-header--menu:hover {
   opacity: 1 !important;
+}
+
+.brand {
+  display: block;
+  position: absolute;
+  width: 80px;
+  left: 0;
+  top: 0;
+  transition: top 400ms, width 400ms 200ms var(--animation-curve), left 400ms;
 }
 
 /* Burger */
@@ -343,10 +343,10 @@ img {
 
 .menu {
   position: fixed;
-  top: 63px;
+  top: 52px;
   left: 0;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 52px);
   display: flex;
   align-items: center;
   justify-content: center;
