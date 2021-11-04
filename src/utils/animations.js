@@ -1,5 +1,7 @@
 import { addImageListener, formatImages } from "./helpers";
 
+const windowExists = typeof window !== "undefined";
+
 const reducedMotionQuery =
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -36,14 +38,6 @@ const animateMenuItems = isMenuOpen => {
   }
 };
 
-const animateMenuDeco = isMenuOpen => {
-  const menuDeco = document.querySelector(".menu-deco");
-
-  isMenuOpen
-    ? menuDeco.classList.add("menu-deco--shown")
-    : menuDeco.classList.remove("menu-deco--shown");
-};
-
 export const animateMenu = isMenuOpen => {
   const menu = document.querySelector(".menu");
 
@@ -52,7 +46,19 @@ export const animateMenu = isMenuOpen => {
     : menu.classList.remove("menu--shown");
 
   animateMenuItems(isMenuOpen);
-  animateMenuDeco(isMenuOpen);
+};
+
+const animateBrandLink = isMenuOpen => {
+  const brand = document.querySelector(".brand");
+  const menuHeight = document
+    .querySelector(".menu")
+    .getBoundingClientRect().height;
+
+  isMenuOpen
+    ? (brand.style.top = `${
+        menuHeight / 2 - (window.innerWidth * 20) / 100 / 2 + 31
+      }px`)
+    : brand.removeAttribute("style");
 };
 
 const animateBurger = isMenuOpen => {
@@ -75,6 +81,11 @@ const fixMenuHeader = isMenuOpen => {
     header.classList.add("layout-header--scrolled");
     header.classList.remove("layout-header--menu");
   }
+
+  !reducedMotionQuery.matches &&
+    windowExists &&
+    window.innerWidth > 560 &&
+    animateBrandLink(isMenuOpen);
 };
 
 export const animateHeader = isMenuOpen => {

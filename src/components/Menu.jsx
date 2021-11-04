@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "gatsby";
-import { animateMenu } from "../utils/animations";
-
-import people from "../images/people.png";
 
 const Menu = ({ topics, setIsMenuOpen }) => {
   const getLink = topic =>
@@ -18,13 +15,12 @@ const Menu = ({ topics, setIsMenuOpen }) => {
               to={getLink(topic)}
               onClick={() => setIsMenuOpen(false)}
             >
-              <span>{topic.node.emoji} </span>
+              <span className="menu-link__emoji">{topic.node.emoji}</span>
               {topic.node.title}
             </Link>
           </li>
         ))}
       </ul>
-      <img className="menu-deco" src={people} alt="wolt people" />
       <footer className="menu-footer">
         <p>© Wolt, {new Date().getFullYear()}</p>
       </footer>
