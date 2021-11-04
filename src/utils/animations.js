@@ -40,6 +40,9 @@ const animateMenuItems = isMenuOpen => {
 
 export const animateMenu = isMenuOpen => {
   const menu = document.querySelector(".menu");
+  const deco = document.querySelector(".menu-deco");
+
+  isMenuOpen ? deco.classList.add("active") : deco.classList.remove("active");
 
   isMenuOpen
     ? menu.classList.add("menu--shown")

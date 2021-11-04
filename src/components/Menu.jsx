@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Menu = ({ topics, setIsMenuOpen }) => {
   const getLink = topic =>
@@ -21,6 +22,12 @@ const Menu = ({ topics, setIsMenuOpen }) => {
           </li>
         ))}
       </ul>
+      <StaticImage
+        aria-hidden="true"
+        src="../images/people.png"
+        alt="decoration phone"
+        className="menu-deco"
+      />
       <footer className="menu-footer">
         <p>© Wolt, {new Date().getFullYear()}</p>
       </footer>
