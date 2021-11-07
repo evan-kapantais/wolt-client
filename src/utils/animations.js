@@ -80,7 +80,8 @@ const fixMenuHeader = isMenuOpen => {
   if (isMenuOpen) {
     header.classList.add("layout-header--menu");
     header.classList.remove("layout-header--scrolled");
-  } else {
+  }
+  if (!isMenuOpen && windowExists && window.scrollY > window.innerHeight) {
     header.classList.add("layout-header--scrolled");
     header.classList.remove("layout-header--menu");
   }
@@ -119,7 +120,7 @@ export const scrollBanner = () => {
 
     textWrapper.style.transform = `translateY(-${window.scrollY / 20}px)`;
 
-    if (typeof window !== "undefined" && window.innerWidth > 1260) {
+    if (windowExists && window.innerWidth > 1260) {
       imageWrapper.style.transform = `translateX(${window.scrollY / 20}px)`;
     }
 

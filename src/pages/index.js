@@ -14,8 +14,12 @@ import Menu from "../components/Menu";
 import ImageOverlay from "../components/ImageOverlay";
 
 // Animation inports
-import { animateBanner, stickHeader, showBackToTop } from "../utils/animations";
-import { setDocumentOverflow } from "../utils/helpers";
+import { animateBanner } from "../utils/animations";
+import {
+  setDocumentOverflow,
+  initListeners,
+  initAutomaticInteraction,
+} from "../utils/helpers";
 
 // Dynamic imports
 const Aside = lazy(() => import("../components/Aside"));
@@ -56,10 +60,7 @@ const IndexPage = ({ data }) => {
 
   // Init event listeners after loading
   useEffect(() => {
-    if (typeof window !== "undefined" && !isLoading) {
-      window.addEventListener("scroll", showBackToTop);
-      window.addEventListener("scroll", stickHeader);
-    }
+    initListeners(isLoading);
   }, [isLoading]);
 
   // Cotrol document overflow && menu
