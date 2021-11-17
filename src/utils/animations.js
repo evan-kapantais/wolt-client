@@ -261,9 +261,9 @@ export const toggleSection = e => {
   const icon = title.querySelector(".section-title__icon");
   const dashHor = icon.querySelectorAll("img")[1];
 
-  const isMouseClick = e.screenX > 0 && e.screenY > 0;
-  const isEnterKey = e.code === "Enter";
-  const isSpaceKey = e.code === "Space";
+  const isMouseClick = e.type === "click";
+  const isEnterKey = e.key === "Enter";
+  const isSpaceKey = e.key === "Space";
 
   if (!isMouseClick && !isEnterKey && !isSpaceKey) {
     return;
