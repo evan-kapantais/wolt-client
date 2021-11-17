@@ -8,7 +8,12 @@ const NewsSection = ({ newsItems }) => {
   const isGreekPage =
     typeof window !== "undefined" && window.location.pathname === "/";
 
-  const areThereNews = newsItems.length >= 1 && newsItems[0].node.title !== "";
+  const areThereNews =
+    newsItems.length >= 1 &&
+    newsItems[0].node.title !== "" &&
+    newsItems[0].node.title !== " " &&
+    newsItems[0].node.content !== "" &&
+    newsItems[0].node.content !== " ";
 
   // Add scroll event listeners
   useEffect(() => {
