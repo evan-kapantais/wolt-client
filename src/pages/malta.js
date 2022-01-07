@@ -172,6 +172,7 @@ export const data = graphql`
     }
     strapiMtVersion {
       date(formatString: "MMMM, YYYY")
+      number
     }
   }
 `;

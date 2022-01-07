@@ -9,12 +9,21 @@ const BannerSection = ({ data, country }) => {
   const getVersion = () => {
     switch (country.symbol) {
       case "Cy":
-        return data.strapiCyVersion.date;
+        return {
+          date: data.strapiCyVersion.date,
+          number: data.strapiCyVersion.number,
+        };
       case "Mt":
-        return data.strapiMtVersion.date;
+        return {
+          date: data.strapiMtVersion.date,
+          number: data.strapiMtVersion.number,
+        };
       case "Gr":
       default:
-        return data.strapiVersion.date;
+        return {
+          date: data.strapiVersion.date,
+          number: data.strapiVersion.number,
+        };
     }
   };
 
@@ -47,8 +56,18 @@ const BannerSection = ({ data, country }) => {
         <div className="banner__text-wrapper">
           <div className="banner__text-container">
             <div className="version">
-              <span className="version-emoji">✍️</span>
-              <span>{getVersion()}</span>
+              <div>
+                <p>
+                  <b>Update Date</b>
+                </p>
+                <p>{getVersion().date}</p>
+              </div>
+              <div>
+                <p>
+                  <b>Version</b>
+                </p>
+                <p>{getVersion().number}</p>
+              </div>
             </div>
             <div className="banner__text">
               <div className="banner__heading-wrapper">

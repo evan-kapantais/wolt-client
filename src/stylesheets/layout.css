@@ -519,21 +519,24 @@ img {
 }
 
 .version {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   opacity: 0;
   transition: all 500ms 1600ms;
 }
 
+.version p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.version b {
+  color: grey;
+}
+
 .version.active {
   opacity: 1;
-}
-
-.version span {
-  font-size: 0.85rem;
-}
-
-.version-emoji {
-  display: inline-block;
-  margin-right: 0.75rem;
 }
 
 .banner__heading-wrapper {
@@ -1241,6 +1244,10 @@ figcaption {
 
   .back-to-top {
     display: none;
+  }
+
+  .version b {
+    color: rgb(255, 255, 255);
   }
 
   .banner {
