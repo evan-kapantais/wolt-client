@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import icons from "../utils/icons";
 import links from "../utils/links";
 
@@ -12,41 +11,41 @@ const Social = () => {
   return (
     <div className="social-icons">
       {links[country].facebook && (
-        <Link to={links[country].facebook} className="social-link">
+        <a href={links[country].facebook} className="social-link">
           <img
             className="social-icon"
             src={icons.facebook}
             alt="facebok icon"
           />
-        </Link>
+        </a>
       )}
       {links[country].instagram && (
-        <Link to={links[country].instagram} className="social-link">
+        <a href={links[country].instagram} className="social-link">
           <img
             className="social-icon"
             src={icons.instagram}
             alt="instagram icon"
           />
-        </Link>
+        </a>
       )}
       {links[country].twitter && (
-        <Link to={links[country].twitter} className="social-link">
+        <a href={links[country].twitter} className="social-link">
           <img className="social-icon" src={icons.twitter} alt="twitter icon" />
-        </Link>
+        </a>
       )}
       {links[country].linkedin && (
-        <Link to={links[country].linkedin} className="social-link">
+        <a href={links[country].linkedin} className="social-link">
           <img
             className="social-icon"
             src={icons.linkedin}
             alt="linkedin icon"
           />
-        </Link>
+        </a>
       )}
       {links[country].site && (
-        <Link to={links[country].site} className="social-link">
+        <a href={links[country].site} className="social-link">
           <img className="social-icon" src={icons.website} alt="website icon" />
-        </Link>
+        </a>
       )}
     </div>
   );

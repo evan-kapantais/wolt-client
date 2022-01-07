@@ -15,11 +15,7 @@ import ImageOverlay from "../components/ImageOverlay";
 
 // Animation inports
 import { animateBanner } from "../utils/animations";
-import {
-  setDocumentOverflow,
-  initListeners,
-  initAutomaticInteraction,
-} from "../utils/helpers";
+import { setDocumentOverflow, initListeners } from "../utils/helpers";
 
 // Dynamic imports
 const Aside = lazy(() => import("../components/Aside"));

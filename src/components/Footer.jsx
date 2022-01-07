@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import Social from "./Social";
 
 const Footer = () => {
@@ -32,9 +31,7 @@ const Footer = () => {
           <p>© Wolt, {new Date().getFullYear()}</p>
           <p>
             Built with <span className="heart">❤️</span> by{" "}
-            <Link to="https://instagram.com/evans.webworks">
-              Evan Kapantais
-            </Link>
+            <a href="https://instagram.com/evans.webworks">Evan Kapantais</a>
           </p>
         </div>
       </div>

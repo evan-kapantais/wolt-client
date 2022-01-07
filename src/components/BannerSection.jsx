@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { scrollBanner } from "../utils/animations";
 
