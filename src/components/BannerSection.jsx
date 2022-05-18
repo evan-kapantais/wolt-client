@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { scrollBanner } from "../utils/animations";
+import logo from "../images/logo.png";
 
 const BannerSection = ({ data, country }) => {
   const bannerImage = getImage(data.strapiBannerImage.image.localFile);
@@ -71,9 +72,9 @@ const BannerSection = ({ data, country }) => {
             </div>
             <div className="banner__text">
               <div className="banner__heading-wrapper">
-                <h1 className="site-title">Wolt {country.name}</h1>
-                <p>Partner FAQ</p>
+                <img className="wolt-logo" src={logo} alt="Wolt Logo" />
               </div>
+              <p className="banner__country-heading">{country.name} FAQ</p>
               <div
                 className="banner__paragraphs"
                 dangerouslySetInnerHTML={{
